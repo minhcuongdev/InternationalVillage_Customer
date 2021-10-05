@@ -56,5 +56,41 @@ namespace InternationalVillage_Customer.Store
             }
             return data;
         }
+
+        public int ExecuteNonQuery(string query, object[] parameter = null)
+        {
+            int data = 0;
+            MySqlConnection connection = ConnectDB.Instance.CreateConnection();
+
+            try
+            {
+                connection.Open();
+
+                MySqlCommand command = new MySqlCommand(query, connection);
+
+                if (parameter != null)
+                {
+                    string[] listPara = query.Split(' ');
+                    int i = 0;
+                    foreach (string item in listPara)
+                    {
+                        if (item.Contains('@'))
+                        {
+                            command.Parameters.AddWithValue(item, parameter[i]);
+                            i++;
+                        }
+                    }
+                }
+
+                data = command.ExecuteNonQuery();
+            }
+            catch { MessageBox.Show("Failed connection"); }
+            finally
+            {
+                connection.Close();
+            }
+
+            return data;
+        }
     }
 }
