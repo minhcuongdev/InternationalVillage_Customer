@@ -17,13 +17,17 @@ namespace InternationalVillage_Customer.ViewModel
         public ICommand ClearFocus { get; set; }
         public ICommand SignIn { get; set; }
         public ICommand HandleTextChanged { get; set; }
-        public ICommand HandlePasswordChanged { get; set; }
+        public ICommand HandlePasswordChanged { get; set; }      
+        public ICommand CreateAccount { get; set; }
+        public ICommand Drag { get; set; }
 
         private string username = "";
         private string password = "";
 
         public string Username { get => username; set { username = value; OnPropertyChanged(); } }
         public string Password { get => password; set { password = value; OnPropertyChanged(); } }
+
+        
 
         public LoginViewModel()
         {
@@ -51,13 +55,36 @@ namespace InternationalVillage_Customer.ViewModel
             {
                 if (AccountStore.Instance.Authentication(Username,Password))
                 {
-                    MainWindow main = new MainWindow();
-                    MainViewModel mv = main.DataContext as MainViewModel;
-                    main.Show();
+                    //MainWindow main = new MainWindow();
+                    //MainViewModel mv = main.DataContext as MainViewModel;
+                    //main.Show();
+                    MenuWindow menuform = new MenuWindow();
+                    menuform.Show();
                     p.Close();
                 } else
                 {
                     MessageBox.Show("Wrong Account !! Please, Enter again !!");
+                }
+            });
+
+            CreateAccount = new RelayCommand<Window>((p) => { return true; }, (p) =>
+            {
+              
+               SignupWindow signupform = new SignupWindow();
+               signupform.Show();
+               p.Close();
+            });
+
+            Drag = new RelayCommand<Window>((p) => { return true; }, (p) =>
+            {
+
+                try
+                {
+                    p.DragMove();
+                }
+                catch(Exception)
+                {
+                    //throw
                 }
             });
         }

@@ -3,4 +3,9 @@
                     xmlns:viewmodel ="clr-namespace:InternationalVillage_Customer.ViewModel">
     <viewmodel:MainViewModel x:Key="MainVM"></viewmodel:MainViewModel>
     <viewmodel:LoginViewModel x:Key="LoginVM"></viewmodel:LoginViewModel>
+    <viewmodel:SignupViewModel x:Key="SignupVM"></viewmodel:SignupViewModel>
+    <viewmodel:MenuViewModel x:Key="MenuVM"></viewmodel:MenuViewModel>
+    <viewmodel:HomeViewModel x:Key="HomeVM"></viewmodel:HomeViewModel>
+    <viewmodel:BookApartmentViewModel x:Key="BookApartmentVM"></viewmodel:BookApartmentViewModel>
+    <viewmodel:BookServiceViewModel x:Key="BookServiceVM"></viewmodel:BookServiceViewModel>
 </ResourceDictionary>

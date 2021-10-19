@@ -7,7 +7,7 @@
         mc:Ignorable="d"
         
         xmlns:materialDesign="http://materialdesigninxaml.net/winfx/xaml/themes"
-        xmlns:componet="clr-namespace:InternationalVillage_Customer.Component"
+        xmlns:component="clr-namespace:InternationalVillage_Customer.Component"
         
         TextElement.Foreground="{DynamicResource MaterialDesignBody}"
         TextElement.FontWeight="Regular"
@@ -31,7 +31,7 @@
         </Grid.RowDefinitions>
 
         <Grid Grid.Row="0">
-            <componet:NavBar></componet:NavBar>
+            <!--<componet:NarBar></componet:NarBar>-->
         </Grid>
 
         <Grid Grid.Row="1">

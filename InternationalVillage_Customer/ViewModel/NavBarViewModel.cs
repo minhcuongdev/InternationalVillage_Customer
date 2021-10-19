@@ -7,6 +7,7 @@ using System.Windows.Controls;
 using System.Windows.Input;
 using System.Windows;
 
+
 namespace InternationalVillage_Customer.ViewModel
 {
     public class NavBarViewModel : BaseViewModel

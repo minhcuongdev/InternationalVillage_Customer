@@ -1,0 +1,193 @@
+﻿<Page x:Class="InternationalVillage_Customer.Pages.StandardPage"
+      xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+      xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+      xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+      xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+      xmlns:local="clr-namespace:InternationalVillage_Customer.Pages"
+      mc:Ignorable="d" 
+      d:DesignHeight="450" d:DesignWidth="800"
+      Title="StandardPage">
+
+    <Grid Background="white">
+        <Grid.RowDefinitions>
+            <RowDefinition Height="auto"></RowDefinition>
+            <RowDefinition></RowDefinition>
+        </Grid.RowDefinitions>
+        <Grid Grid.Row="0">
+            <Grid.Resources>
+                <Style x:Key="{x:Type Hyperlink}" TargetType="{x:Type Hyperlink}">
+                    <Setter Property="Foreground" Value="black" />
+
+                    <Setter Property="TextDecorations" Value="None" />
+                    <Style.Triggers>
+                        <Trigger Property="IsMouseOver" Value="True">
+                            <Setter Property="Foreground" Value="#2f9cfa" />
+                        </Trigger>
+                        <Trigger Property="IsEnabled" Value="False">
+                            <Setter Property="Foreground" Value="{DynamicResource {x:Static SystemColors.GrayTextBrushKey}}" />
+                        </Trigger>
+                        <Trigger Property="IsEnabled" Value="True">
+                            <Setter Property="Cursor" Value="Hand" />
+                        </Trigger>
+                    </Style.Triggers>
+                </Style>
+            </Grid.Resources>
+            <TextBlock Foreground="Black" Margin="10,10,0,0" FontWeight="Bold">
+                <Hyperlink NavigateUri="BookingPage.xaml">BACK</Hyperlink>
+            </TextBlock>
+        </Grid>
+
+        <Grid Grid.Row="1" Margin="0,20,0,0">
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition></ColumnDefinition>
+                <ColumnDefinition></ColumnDefinition>
+            </Grid.ColumnDefinitions>
+
+            <Border Grid.Column="0" CornerRadius="15" Margin="10,0,0,0">
+                <Border.Background>
+                    <ImageBrush  Stretch="UniformToFill" ImageSource="/Image/Standard1.jpg" />
+                </Border.Background>
+            </Border>
+
+            <Grid Grid.Column="1" Height="404" VerticalAlignment="Bottom">
+                <Grid.RowDefinitions>
+                    <RowDefinition Height="auto"></RowDefinition>
+                    <RowDefinition Height="150"></RowDefinition>
+                    <RowDefinition Height="120"></RowDefinition>
+                    <RowDefinition></RowDefinition>
+                </Grid.RowDefinitions>
+                <TextBlock Grid.Row="0" Text="STANDARD APARTMENT" FontSize="30" FontWeight="Bold" VerticalAlignment="Top" Margin="35,0,0,0"/>
+
+                <Grid Grid.Row="1">
+                    <Grid.RowDefinitions>
+                        <RowDefinition></RowDefinition>
+                        <RowDefinition></RowDefinition>
+                    </Grid.RowDefinitions>
+
+                    <Grid Grid.Row="0">
+                        <Grid.ColumnDefinitions>
+                            <ColumnDefinition></ColumnDefinition>
+                            <ColumnDefinition></ColumnDefinition>
+                            <ColumnDefinition></ColumnDefinition>
+                        </Grid.ColumnDefinitions>
+
+                        <Grid Grid.Column="0">
+                            <Grid.RowDefinitions>
+                                <RowDefinition></RowDefinition>
+                                <RowDefinition></RowDefinition>
+                            </Grid.RowDefinitions>
+                            <TextBlock Grid.Row="0" Text="Bedrooms" FontSize="12" Foreground="Gray" FontWeight="DemiBold"  VerticalAlignment="Bottom" Margin="35,0,0,0"/>
+                            <Grid Grid.Row="1">
+                                <Grid.ColumnDefinitions>
+                                    <ColumnDefinition Width="auto"></ColumnDefinition>
+                                    <ColumnDefinition></ColumnDefinition>
+                                </Grid.ColumnDefinitions>
+                                <TextBlock Grid.Column="0" Text="2" FontSize="13" Foreground="Black" FontWeight="Bold" VerticalAlignment="Top" Margin="35,0,0,0"/>
+                                <Image Grid.Column="1" Source="/Image/bed-32.png" Height="15" Width="20" Opacity="0.8" HorizontalAlignment="Left" VerticalAlignment="Top" Margin="9,2,0,0" ></Image>
+                            </Grid>
+                        </Grid>
+
+                        <Grid Grid.Column="1">
+                            <Grid.RowDefinitions>
+                                <RowDefinition></RowDefinition>
+                                <RowDefinition></RowDefinition>
+                            </Grid.RowDefinitions>
+                            <TextBlock Grid.Row="0" Text="Bathrooms" FontSize="12" Foreground="Gray" FontWeight="DemiBold"  VerticalAlignment="Bottom" Margin="35,0,0,0"/>
+                            <Grid Grid.Row="1">
+                                <Grid.ColumnDefinitions>
+                                    <ColumnDefinition Width="auto"></ColumnDefinition>
+                                    <ColumnDefinition></ColumnDefinition>
+                                </Grid.ColumnDefinitions>
+                                <TextBlock Grid.Column="0" Text="2" FontSize="13" Foreground="Black" FontWeight="Bold" VerticalAlignment="Top" Margin="35,0,0,0"/>
+                                <Image Grid.Column="1"  Height="15" Width="20" Opacity="0.7" HorizontalAlignment="Left" VerticalAlignment="Top" Margin="9,0,0,0" Source="/Image/icons8-bathroom-64.png" ></Image>
+                            </Grid>
+                        </Grid>
+
+                        <Grid Grid.Column="2">
+                            <Grid.RowDefinitions>
+                                <RowDefinition></RowDefinition>
+                                <RowDefinition></RowDefinition>
+                            </Grid.RowDefinitions>
+                            <TextBlock Grid.Row="0" Text="Area" FontSize="12" Foreground="Gray" FontWeight="DemiBold"  VerticalAlignment="Bottom" Margin="35,0,0,0"/>
+                            <Grid Grid.Row="1">
+                                <TextBlock Text="83,77 m²" FontSize="13" Foreground="Black" FontWeight="Bold" VerticalAlignment="Top" Margin="35,0,0,0"/>
+                            </Grid>
+                        </Grid>
+                    </Grid>
+
+                    <Grid Grid.Row="1" Margin="0,0,0,0">
+                        <Grid.ColumnDefinitions>
+                            <ColumnDefinition></ColumnDefinition>
+                            <ColumnDefinition></ColumnDefinition>
+                            <ColumnDefinition></ColumnDefinition>
+                        </Grid.ColumnDefinitions>
+
+                        <Grid Grid.Column="0">
+                            <Grid.RowDefinitions>
+                                <RowDefinition></RowDefinition>
+                                <RowDefinition></RowDefinition>
+                            </Grid.RowDefinitions>
+                            <TextBlock Grid.Row="0" Text="Built" FontSize="12" Foreground="Gray" FontWeight="DemiBold"  VerticalAlignment="Bottom" Margin="35,0,0,0"/>
+                            <Grid Grid.Row="1">
+                                <TextBlock Grid.Column="0" Text="2017" FontSize="13" Foreground="Black" FontWeight="Bold" VerticalAlignment="Top" Margin="35,0,0,0"/>
+                            </Grid>
+                        </Grid>
+
+                        <Grid Grid.Column="1">
+                            <Grid.RowDefinitions>
+                                <RowDefinition></RowDefinition>
+                                <RowDefinition></RowDefinition>
+                            </Grid.RowDefinitions>
+                            <TextBlock Grid.Row="0" Text="Utilities" FontSize="12" Foreground="Gray" FontWeight="DemiBold"  VerticalAlignment="Bottom" Margin="35,0,0,0"/>
+                            <Grid Grid.Row="1">
+                                <TextBlock Grid.Column="0" Text="Full" FontSize="13" Foreground="Black" FontWeight="Bold" VerticalAlignment="Top" Margin="35,0,0,0"/>
+                            </Grid>
+                        </Grid>
+
+                        <Grid Grid.Column="2">
+                            <Grid.RowDefinitions>
+                                <RowDefinition></RowDefinition>
+                                <RowDefinition></RowDefinition>
+                            </Grid.RowDefinitions>
+                            <TextBlock Grid.Row="0" Text="Rating" FontSize="12" Foreground="Gray" FontWeight="DemiBold"  VerticalAlignment="Bottom" Margin="35,0,0,0"/>
+                            <Grid Grid.Row="1">
+                                <Grid.ColumnDefinitions>
+                                    <ColumnDefinition></ColumnDefinition>
+                                    <ColumnDefinition></ColumnDefinition>
+                                </Grid.ColumnDefinitions>
+                                <TextBlock Grid.Column="0" Text="4.8" FontSize="13" Foreground="Black" FontWeight="Bold" VerticalAlignment="Top" Margin="35,0,0,0"/>
+                                <Image Grid.Column="1"  Height="15" Width="20" Opacity="0.7" HorizontalAlignment="Left" VerticalAlignment="Top" Margin="-12,1,0,0" Source="/Image/star (1).png"   ></Image>
+                            </Grid>
+                        </Grid>
+                    </Grid>
+
+                </Grid>
+                <Grid Grid.Row="2" Margin="0,20,0,0">
+                    <Grid.ColumnDefinitions>
+                        <ColumnDefinition Width="169"></ColumnDefinition>
+                        <ColumnDefinition Width="*"></ColumnDefinition>
+
+                    </Grid.ColumnDefinitions>
+                    <TextBlock Grid.Column="0" Text="Description" FontSize="13" Foreground="Black" FontWeight="Bold" Margin="35,0,0,0"/>
+                    <TextBlock Grid.Column="1" Text="In this apartment, there are 5 rooms, including: one living room, two bathrooms and three bedrooms. This apartment is equipped with fully utilities. Also, we provide many devices in bathrooms, such as: hair shampoo, hair conditioner, hair dryer, ironing and ironing board. I hope you will have a good experience at here." Foreground="Gray" TextWrapping="Wrap" Margin="0,0,2,0"/>
+                </Grid>
+
+                <Grid Grid.Row="3" Margin="0,20,0,0">
+                    <Grid.ColumnDefinitions>
+                        <ColumnDefinition Width="169"></ColumnDefinition>
+                        <ColumnDefinition Width="*"></ColumnDefinition>
+                    </Grid.ColumnDefinitions>
+                    <TextBlock Grid.Column="0" Text="Price" FontSize="13" Foreground="Black" FontWeight="Bold" Margin="35,0,0,0"/>
+                    <Grid Grid.Column="1">
+                        <Grid.RowDefinitions>
+                            <RowDefinition Height="auto"></RowDefinition>
+                            <RowDefinition></RowDefinition>
+                        </Grid.RowDefinitions>
+                        <TextBlock Grid.Row="0" Text="70 USD (per day)" Foreground="Black" FontSize="13" FontWeight="DemiBold" Margin="0,0,0,0" HorizontalAlignment="Left"  />
+                        <TextBlock Grid.Row="1" Text="1,950 USD (per month)" Foreground="Black" FontSize="13" FontWeight="DemiBold" HorizontalAlignment="Left" Margin="0,0,0,0"   />
+                    </Grid>
+                </Grid>
+            </Grid>
+        </Grid>
+    </Grid>
+</Page>
