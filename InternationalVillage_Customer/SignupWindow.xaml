@@ -1,0 +1,242 @@
+﻿<Window x:Class="InternationalVillage_Customer.SignupWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:InternationalVillage_Customer"
+        mc:Ignorable="d"
+        
+        xmlns:i="http://schemas.microsoft.com/expression/2010/interactivity"
+        xmlns:componet="clr-namespace:InternationalVillage_Customer.Component"
+        
+        xmlns:materialDesign="http://materialdesigninxaml.net/winfx/xaml/themes"
+        TextElement.Foreground="{DynamicResource MaterialDesignBody}"
+        TextElement.FontWeight="Regular"
+        TextElement.FontSize="13"
+        TextOptions.TextFormattingMode="Ideal"
+        TextOptions.TextRenderingMode="Auto"
+        FontFamily="{DynamicResource MaterialDesignFont}"
+        
+        DataContext="{StaticResource SignupVM}"
+        
+        x:Name="SignupWD"
+        
+        WindowStyle="None"
+        MinWidth="700" MinHeight="500"
+        WindowStartupLocation="CenterScreen" 
+        Background="Transparent" AllowsTransparency="True"
+        Title="SignupWindow" Height="640" Width="800" ResizeMode="NoResize">
+
+    <i:Interaction.Triggers>
+        <i:EventTrigger EventName="MouseDown">
+            <i:InvokeCommandAction Command="{Binding ClearFocus}" CommandParameter="{Binding ElementName=SignupWD}"/>
+        </i:EventTrigger>
+    </i:Interaction.Triggers>
+
+    <Border CornerRadius="20" Background="White" Margin="0">
+        <Grid>
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition></ColumnDefinition>
+                <ColumnDefinition></ColumnDefinition>
+            </Grid.ColumnDefinitions>
+
+            <Border Grid.Column="1" CornerRadius="0,20,20,0" >
+                <Border.Background>
+                    <ImageBrush Stretch="UniformToFill" ImageSource="/Image/loginform.jpg"/>
+                </Border.Background>
+                <i:Interaction.Triggers>
+                    <i:EventTrigger EventName="MouseLeftButtonDown">
+                        <i:InvokeCommandAction Command="{Binding Drag}" CommandParameter="{Binding ElementName=SignupWD}"/>
+                    </i:EventTrigger>
+                </i:Interaction.Triggers>
+            </Border>
+
+            <Grid Grid.Column="0" >
+                <Grid.RowDefinitions>
+                    <RowDefinition Height="50"></RowDefinition>
+                    <RowDefinition Height="60"></RowDefinition>
+                    <RowDefinition Height="35"></RowDefinition>
+                    <RowDefinition Height="40"></RowDefinition>
+                    <RowDefinition Height="350"></RowDefinition>
+                    <RowDefinition></RowDefinition>
+                    <RowDefinition Height="50"></RowDefinition>
+                    <RowDefinition></RowDefinition>
+                    
+                </Grid.RowDefinitions>
+
+                <StackPanel Grid.Row="0" HorizontalAlignment="Left" Margin="0,0,0,0" VerticalAlignment="Top" >
+                    <materialDesign:PackIcon Kind="ExitToApp"
+                                             VerticalAlignment="Center" Margin="10,10,0,0">
+
+                    </materialDesign:PackIcon>
+                    <Label Style="{StaticResource MaterialDesignLabel}"
+                           Content="Exit" Margin="25,-20,45,0" HorizontalAlignment="Right">
+                        <i:Interaction.Triggers>
+                            <i:EventTrigger EventName="MouseDown">
+                                <i:InvokeCommandAction Command="{Binding CloseSignupWindow}" CommandParameter="{Binding ElementName=SignupWD}"/>
+                            </i:EventTrigger>
+                        </i:Interaction.Triggers>
+                    </Label>
+                </StackPanel>
+
+                <Grid Grid.Row="1" HorizontalAlignment="Stretch" VerticalAlignment="Stretch" Height="100" Margin="0,0,0,0">
+                    <Image  Margin="40,0,0,0"  Stretch="Fill" Width="60" Height="60" HorizontalAlignment="Left" VerticalAlignment="Top" Source="/Image/sunflower.png"     />
+                </Grid>
+
+                <TextBlock Grid.Row="2"
+                       Style="{StaticResource MaterialDesignBody1TextBlock}"
+                       HorizontalAlignment="Left" Margin="40,0,0,0" FontSize="25" FontWeight="Bold" VerticalAlignment="Top">
+                       Sign Up
+                </TextBlock>
+
+                <TextBlock Grid.Row="3"
+                       Style="{StaticResource MaterialDesignBody1TextBlock}"
+                       HorizontalAlignment="Left" Margin="40,0,0,0" FontSize="13" >
+                       International Village Management System
+                </TextBlock>
+
+                <Grid Grid.Row="4" HorizontalAlignment="Left" Margin="40,0,0,0">
+                    <Grid.RowDefinitions>
+                        <RowDefinition></RowDefinition>
+                        <RowDefinition></RowDefinition>
+                        <RowDefinition></RowDefinition>
+                        <RowDefinition></RowDefinition>
+                        <RowDefinition></RowDefinition>
+                    </Grid.RowDefinitions>
+                    <Grid Grid.Row="0">
+                        <Grid.RowDefinitions>
+                            <RowDefinition Height="45"></RowDefinition>
+                            <RowDefinition></RowDefinition>
+                        </Grid.RowDefinitions>
+                        <TextBox Grid.Row="0"
+                        Style="{StaticResource MaterialDesignOutlinedTextBox}"
+                        VerticalAlignment="Top"                    
+                        materialDesign:HintAssist.Hint="FullName" 
+                        x:Name="FullName" 
+                        FontSize="12"
+                        Padding="10"
+                        Width="260" HorizontalAlignment="Left" Margin="0,0,0,0" Height="42" />
+
+                        <TextBlock Grid.Row="1" Text="Error. Please enter again!" FontSize="10" Foreground="Red" Visibility="Hidden"/>
+
+                    </Grid>
+
+                    <Grid Grid.Row="1">
+                        <Grid.RowDefinitions>
+                            <RowDefinition Height="45"></RowDefinition>
+                            <RowDefinition></RowDefinition>
+                        </Grid.RowDefinitions>
+                        <TextBox Grid.Row="0"
+                        Style="{StaticResource MaterialDesignOutlinedTextBox}"
+                        VerticalAlignment="Top"                    
+                        materialDesign:HintAssist.Hint="Identification" 
+                        x:Name="Identification" 
+                        FontSize="12"
+                        Padding="10"
+                        Width="260" HorizontalAlignment="Left" Margin="0,0,0,0" Height="42" />
+
+                        <TextBlock Grid.Row="1" Text="Error. Please enter again!" FontSize="10" Foreground="Red" Visibility="Visible"/>
+
+                    </Grid>
+
+                    <Grid Grid.Row="2">
+                        <Grid.RowDefinitions>
+                            <RowDefinition Height="45"></RowDefinition>
+                            <RowDefinition></RowDefinition>
+                        </Grid.RowDefinitions>
+                        <TextBox Grid.Row="0"
+                        Style="{StaticResource MaterialDesignOutlinedTextBox}"
+                        VerticalAlignment="Top"                    
+                        materialDesign:HintAssist.Hint="VISA" 
+                        x:Name="VISA" 
+                        FontSize="12"
+                        Padding="10"
+                        Width="260" HorizontalAlignment="Left" Margin="0,0,0,0" Height="42" />
+
+                        <TextBlock Grid.Row="1" Text="Error. Please enter again!" FontSize="10" Foreground="Red" Visibility="Visible"/>
+
+                    </Grid>
+
+                    <Grid Grid.Row="3">
+                        <Grid.RowDefinitions>
+                            <RowDefinition Height="45"></RowDefinition>
+                            <RowDefinition></RowDefinition>
+                        </Grid.RowDefinitions>
+                        <TextBox Grid.Row="0"
+                        Style="{StaticResource MaterialDesignOutlinedTextBox}"
+                        VerticalAlignment="Top"                    
+                        materialDesign:HintAssist.Hint="Username" 
+                        x:Name="username" 
+                        FontSize="12"
+                        Padding="10"
+                        Width="260" HorizontalAlignment="Left" Margin="0,0,0,0" Height="42" />
+
+                        <TextBlock Grid.Row="1" Text="Error. Please enter again!" FontSize="10" Foreground="Red" Visibility="Hidden"/>
+
+                    </Grid>
+
+                    <Grid Grid.Row="4">
+                        <Grid.RowDefinitions>
+                            <RowDefinition Height="45"></RowDefinition>
+                            <RowDefinition></RowDefinition>
+                        </Grid.RowDefinitions>
+                        <PasswordBox Grid.Row="0"
+                        Style="{StaticResource MaterialDesignOutlinedPasswordBox}"
+                        VerticalAlignment="Top"
+                        FontSize="12" Height="42"
+                        Padding="10"
+                        IsEnabled="{Binding Path=IsChecked, ElementName=MaterialDesignOutlinedPasswordFieldPasswordBoxEnabledComboBox}"
+                        materialDesign:HintAssist.Hint="Password" />
+
+                        <TextBlock Grid.Row="1" Text="Error. Please enter again!" FontSize="10" Foreground="Red" Visibility="Visible"/>
+
+                    </Grid>
+
+                </Grid>
+
+                <CheckBox Grid.Row="5" Content="I agree with the Terms and Conditions" Margin="40,0,0,0" Padding="2,2,0,0" Foreground="#176EC6" FontWeight="Bold" FontSize="12"></CheckBox>
+                                                      
+                <StackPanel Grid.Row="6" Orientation="Horizontal" HorizontalAlignment="Left" Margin="40,0,0,0">
+                    <Button Style="{StaticResource MaterialDesignRaisedButton}"
+                            materialDesign:ButtonAssist.CornerRadius="18"
+                            Height="35"
+                            Width="260"
+                            Margin="0,7,0,5"
+                            Content="Sign Up"
+                            IsEnabled="True"                           
+                            >
+                    </Button>
+                </StackPanel>
+
+                <StackPanel Grid.Row="7" Orientation="Horizontal" HorizontalAlignment="Left" Margin="40,0,0,0">
+                    <Grid>
+                        <Grid.ColumnDefinitions>
+                            <ColumnDefinition></ColumnDefinition>
+                            <ColumnDefinition></ColumnDefinition>
+                            <ColumnDefinition></ColumnDefinition>
+                        </Grid.ColumnDefinitions>
+                        <Grid Grid.Column="0" VerticalAlignment="Top">
+                            <TextBlock Style="{StaticResource MaterialDesignBody1TextBlock}" Margin="30,0,0,0" FontSize="12" FontWeight="DemiBold"
+                                       Text="?Already have an account" HorizontalAlignment="Center" Padding="0,0,0,0" FlowDirection="RightToLeft" Width="140"
+                                       Foreground="#000000" VerticalAlignment="Top">
+
+                            </TextBlock>
+                        </Grid>
+
+                        <Grid Grid.Column="1">
+                            <TextBlock Style="{StaticResource MaterialDesignBody1TextBlock}" Margin="0,0,0,0" FontSize="12" FontWeight="Bold"
+                                       Text="Sign in" HorizontalAlignment="Left" Padding="0,0,0,0" FlowDirection="RightToLeft" Width="40"
+                                       TextAlignment="Left" Foreground="#176ec6" Cursor="Hand" VerticalAlignment="Top">
+                                 <i:Interaction.Triggers>
+                                    <i:EventTrigger EventName="MouseDown">
+                                        <i:InvokeCommandAction Command="{Binding Signin}" CommandParameter="{Binding ElementName=SignupWD}"/>
+                                    </i:EventTrigger>
+                                 </i:Interaction.Triggers>
+                            </TextBlock>
+                        </Grid>
+                    </Grid>
+                </StackPanel>
+            </Grid>
+        </Grid>
+    </Border>
+</Window>

@@ -1,0 +1,173 @@
+﻿<Page x:Class="InternationalVillage_Customer.Pages.ApartmentFormPage"
+      xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+      xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+      xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+      xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+      xmlns:local="clr-namespace:InternationalVillage_Customer.Pages"     
+      
+      xmlns:i="http://schemas.microsoft.com/expression/2010/interactivity"
+      
+      xmlns:materialDesign="http://materialdesigninxaml.net/winfx/xaml/themes"
+      TextElement.Foreground="{DynamicResource MaterialDesignBody}"
+      TextElement.FontWeight="Regular"
+      TextElement.FontSize="13"
+      TextOptions.TextFormattingMode="Ideal"
+      TextOptions.TextRenderingMode="Auto"
+      FontFamily="{DynamicResource MaterialDesignFont}"
+      
+      
+      DataContext="{StaticResource BookApartmentVM}"
+      
+      x:Name="ApartmentFormVM"
+      
+      mc:Ignorable="d" 
+      d:DesignHeight="450" d:DesignWidth="800"
+      Title="ApartmentFormPage">
+
+    <i:Interaction.Triggers>
+        <i:EventTrigger EventName="MouseDown">
+            <i:InvokeCommandAction Command="{Binding ClearFocus}" CommandParameter="{Binding ElementName=ApartmentFormVM}"/>
+        </i:EventTrigger>
+    </i:Interaction.Triggers>
+
+    <Grid Background="White">
+        <Grid.RowDefinitions>
+            <RowDefinition Height="40"></RowDefinition>
+            <RowDefinition Height="100"></RowDefinition>
+            <RowDefinition Height="40"></RowDefinition>
+            <RowDefinition Height="30"></RowDefinition>
+            <RowDefinition Height="60"></RowDefinition>
+            <RowDefinition Height="55"></RowDefinition>
+            <RowDefinition Height="55"></RowDefinition>
+            <RowDefinition></RowDefinition>
+
+        </Grid.RowDefinitions>
+        <Grid Grid.Row="0">
+            <Grid.Resources>
+                <Style x:Key="{x:Type Hyperlink}" TargetType="{x:Type Hyperlink}">
+                    <Setter Property="Foreground" Value="black" />
+
+                    <Setter Property="TextDecorations" Value="None" />
+                    <Style.Triggers>
+                        <Trigger Property="IsMouseOver" Value="True">
+                            <Setter Property="Foreground" Value="#2f9cfa" />
+                        </Trigger>
+                        <Trigger Property="IsEnabled" Value="False">
+                            <Setter Property="Foreground" Value="{DynamicResource {x:Static SystemColors.GrayTextBrushKey}}" />
+                        </Trigger>
+                        <Trigger Property="IsEnabled" Value="True">
+                            <Setter Property="Cursor" Value="Hand" />
+                        </Trigger>
+                    </Style.Triggers>
+                </Style>
+            </Grid.Resources>
+            <TextBlock Foreground="Black" Margin="50,10,0,0" FontWeight="Bold" VerticalAlignment="Bottom">
+                <Hyperlink NavigateUri="HomePage.xaml">BACK TO HOME</Hyperlink>
+            </TextBlock>
+        </Grid>
+
+        <Grid Grid.Row="1" VerticalAlignment="Stretch"  Margin="0,0,0,-30">
+            <Image  Stretch="Fill" Width="60" Height="60" VerticalAlignment="Center" Source="/Image/sunflower.png" Margin="50,0,0,0" HorizontalAlignment="Left"     />
+        </Grid>
+        <TextBlock Grid.Row="2"
+                       Style="{StaticResource MaterialDesignBody1TextBlock}"
+                       HorizontalAlignment="Left"  FontSize="25" FontWeight="Bold" Margin="50,0,0,0">
+                       BOOK APARTMENT
+        </TextBlock>
+
+        <TextBlock Grid.Row="3"
+                       Style="{StaticResource MaterialDesignBody1TextBlock}"
+                       HorizontalAlignment="Left" Margin="50,-10,0,0" FontSize="14" >
+                       International Village Management System
+        </TextBlock>
+
+        <Grid Grid.Row="4" Margin="0">
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition Width="350"></ColumnDefinition>
+                <ColumnDefinition></ColumnDefinition>
+            </Grid.ColumnDefinitions>
+
+            <TextBox Grid.Column="0"
+            Style="{StaticResource MaterialDesignFilledTextBox}"
+            VerticalAlignment="Bottom"
+            AcceptsReturn="True"
+            TextWrapping="Wrap"
+            MaxWidth="400"
+            materialDesign:HintAssist.Hint="FullName"
+            Width="240"
+            IsEnabled="{Binding Path=IsChecked, ElementName=MaterialDesignFilledTextBoxEnabledComboBox}" Margin="50,0,0,0" HorizontalAlignment="Left" />
+
+            <TextBox Grid.Column="1"
+            Style="{StaticResource MaterialDesignFilledTextBox}"
+            VerticalAlignment="Bottom"
+            AcceptsReturn="True"
+            TextWrapping="Wrap"
+            MaxWidth="400"
+            materialDesign:HintAssist.Hint="Total number of people"
+            Width="240"
+            IsEnabled="{Binding Path=IsChecked, ElementName=MaterialDesignFilledTextBoxEnabledComboBox}" Margin="50,0,0,0" HorizontalAlignment="Left" />
+        </Grid>
+
+        <Grid Grid.Row="5" Margin="0">
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition Width="350"></ColumnDefinition>
+                <ColumnDefinition></ColumnDefinition>
+            </Grid.ColumnDefinitions>
+
+            <DatePicker Grid.Column="0"
+                Width="240"
+                materialDesign:HintAssist.Hint="Check-in Date"
+                Style="{StaticResource MaterialDesignFilledDatePicker}" VerticalAlignment="Bottom" HorizontalAlignment="Left" Margin="50,0,0,0" />
+
+            <DatePicker Grid.Column="1"
+                Width="240"
+                materialDesign:HintAssist.Hint="Check-out Date"
+                Style="{StaticResource MaterialDesignFilledDatePicker}" VerticalAlignment="Bottom" HorizontalAlignment="Left" Margin="50,0,0,0" />
+        </Grid>
+
+        <Grid Grid.Row="6" Margin="0">
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition Width="350"></ColumnDefinition>
+                <ColumnDefinition></ColumnDefinition>
+            </Grid.ColumnDefinitions>
+
+            <ComboBox Grid.Column="0"
+            x:Name="FilledComboBox"
+            Style="{StaticResource MaterialDesignFilledComboBox}"
+            IsEnabled="{Binding Path=IsChecked, ElementName=FilledComboBoxEnabledCheckBox}"
+            materialDesign:HintAssist.Hint="Type of Apartment"
+            Width="240" HorizontalAlignment="Left" VerticalAlignment="Bottom" Margin="50,0,0,0">
+                <ComboBoxItem
+              Content="Luxury (Type 3A)" />
+                <ComboBoxItem
+              Content="High Standard (Type 3B)" />
+                <ComboBoxItem
+              Content="Standard (Type 2A)" />
+            </ComboBox>
+
+            <TextBox Grid.Column="1"
+            Style="{StaticResource MaterialDesignFilledTextBox}"
+            VerticalAlignment="Bottom"
+            AcceptsReturn="True"
+            TextWrapping="Wrap"
+            MaxWidth="400"
+            materialDesign:HintAssist.Hint="Total number"
+            Width="240"
+            IsEnabled="{Binding Path=IsChecked, ElementName=MaterialDesignFilledTextBoxEnabledComboBox}" Margin="50,0,0,0" HorizontalAlignment="Left" />
+        </Grid>
+
+        <Grid Grid.Row="7" >
+            <Button
+            Style="{StaticResource MaterialDesignRaisedDarkButton}"
+            materialDesign:ButtonAssist.CornerRadius="20"
+            ToolTip="MaterialDesignRaisedDarkButton with Round Corners"
+            IsEnabled="{Binding DataContext.ControlsEnabled, RelativeSource={RelativeSource FindAncestor, AncestorType=Window}}" Margin="50,25,0,0" HorizontalAlignment="Left" Width="600" VerticalAlignment="Top">
+                <TextBlock Text="BOOK" />
+            </Button>
+
+        </Grid>
+
+
+
+    </Grid>
+</Page>
