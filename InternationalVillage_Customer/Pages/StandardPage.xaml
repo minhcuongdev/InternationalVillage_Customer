@@ -43,7 +43,7 @@
                 <ColumnDefinition></ColumnDefinition>
             </Grid.ColumnDefinitions>
 
-            <Border Grid.Column="0" CornerRadius="15" Margin="10,0,0,0">
+            <Border Grid.Column="0" CornerRadius="15" Margin="10,0,0,10">
                 <Border.Background>
                     <ImageBrush  Stretch="UniformToFill" ImageSource="/Image/Standard1.jpg" />
                 </Border.Background>

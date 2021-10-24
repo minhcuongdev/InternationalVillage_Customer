@@ -36,8 +36,8 @@
             <RowDefinition Height="40"></RowDefinition>
             <RowDefinition Height="30"></RowDefinition>
             <RowDefinition Height="60"></RowDefinition>
-            <RowDefinition Height="55"></RowDefinition>
-            <RowDefinition Height="55"></RowDefinition>
+            <RowDefinition Height="65"></RowDefinition>
+            <RowDefinition Height="65"></RowDefinition>
             <RowDefinition></RowDefinition>
 
         </Grid.RowDefinitions>
@@ -88,23 +88,26 @@
 
             <TextBox Grid.Column="0"
             Style="{StaticResource MaterialDesignFilledTextBox}"
-            VerticalAlignment="Bottom"
+            VerticalAlignment="Top"
             AcceptsReturn="True"
             TextWrapping="Wrap"
             MaxWidth="400"
             materialDesign:HintAssist.Hint="FullName"
             Width="240"
-            IsEnabled="{Binding Path=IsChecked, ElementName=MaterialDesignFilledTextBoxEnabledComboBox}" Margin="50,0,0,0" HorizontalAlignment="Left" />
-
+            IsEnabled="True" Margin="50,0,0,0" HorizontalAlignment="Left" />
+            <TextBlock x:Name="FullNameError" Grid.Column="0" Text="Error. Please enter again " FontSize="10" Foreground="Black" Visibility="Visible" VerticalAlignment="Bottom" Margin="50,0,0,0" />
+            
             <TextBox Grid.Column="1"
             Style="{StaticResource MaterialDesignFilledTextBox}"
-            VerticalAlignment="Bottom"
+            VerticalAlignment="Top"
             AcceptsReturn="True"
             TextWrapping="Wrap"
             MaxWidth="400"
             materialDesign:HintAssist.Hint="Total number of people"
             Width="240"
-            IsEnabled="{Binding Path=IsChecked, ElementName=MaterialDesignFilledTextBoxEnabledComboBox}" Margin="50,0,0,0" HorizontalAlignment="Left" />
+            IsEnabled="True" Margin="50,0,0,0" HorizontalAlignment="Left" />
+            <TextBlock x:Name="NumberofPeopleError" Grid.Column="1" Text="Error. Please enter again " FontSize="10" Foreground="Black" Visibility="Visible" VerticalAlignment="Bottom" Margin="50,0,0,0" />
+        
         </Grid>
 
         <Grid Grid.Row="5" Margin="0">
@@ -116,12 +119,13 @@
             <DatePicker Grid.Column="0"
                 Width="240"
                 materialDesign:HintAssist.Hint="Check-in Date"
-                Style="{StaticResource MaterialDesignFilledDatePicker}" VerticalAlignment="Bottom" HorizontalAlignment="Left" Margin="50,0,0,0" />
-
+                Style="{StaticResource MaterialDesignFilledDatePicker}" VerticalAlignment="Bottom" HorizontalAlignment="Left" Margin="50,0,0,14" />
+            <TextBlock x:Name="CheckinDateError" Grid.Column="0" Text="Error. Please enter again " FontSize="10" Foreground="Black" Visibility="Visible" VerticalAlignment="Bottom" Margin="50,0,0,0" />
             <DatePicker Grid.Column="1"
                 Width="240"
                 materialDesign:HintAssist.Hint="Check-out Date"
-                Style="{StaticResource MaterialDesignFilledDatePicker}" VerticalAlignment="Bottom" HorizontalAlignment="Left" Margin="50,0,0,0" />
+                Style="{StaticResource MaterialDesignFilledDatePicker}" VerticalAlignment="Bottom" HorizontalAlignment="Left" Margin="50,0,0,14" />
+            <TextBlock x:Name="CheckoutDateError" Grid.Column="1" Text="Error. Please enter again " FontSize="10" Foreground="Black" Visibility="Visible" VerticalAlignment="Bottom" Margin="50,0,0,0" />
         </Grid>
 
         <Grid Grid.Row="6" Margin="0">
@@ -133,9 +137,9 @@
             <ComboBox Grid.Column="0"
             x:Name="FilledComboBox"
             Style="{StaticResource MaterialDesignFilledComboBox}"
-            IsEnabled="{Binding Path=IsChecked, ElementName=FilledComboBoxEnabledCheckBox}"
+            IsEnabled="True"
             materialDesign:HintAssist.Hint="Type of Service"
-            Width="240" HorizontalAlignment="Left" VerticalAlignment="Bottom" Margin="50,0,0,0">
+            Width="240" HorizontalAlignment="Left" VerticalAlignment="Bottom" Margin="50,0,0,14">
                 <ComboBoxItem
               Content="Pool" />
                 <ComboBoxItem
@@ -158,15 +162,16 @@
             MaxWidth="400"
             materialDesign:HintAssist.Hint="Total number"
             Width="240"
-            IsEnabled="{Binding Path=IsChecked, ElementName=MaterialDesignFilledTextBoxEnabledComboBox}" Margin="50,0,0,0" HorizontalAlignment="Left" />
+            IsEnabled="True" Margin="50,0,0,14" HorizontalAlignment="Left" />
+            <TextBlock x:Name="TotalNumberDateError" Grid.Column="1" Text="Error. Please enter again " FontSize="10" Foreground="Black" Visibility="Visible" VerticalAlignment="Bottom" Margin="50,0,0,0" />
         </Grid>
+        
 
         <Grid Grid.Row="7" >
             <Button
             Style="{StaticResource MaterialDesignRaisedDarkButton}"
-            materialDesign:ButtonAssist.CornerRadius="20"
-            ToolTip="MaterialDesignRaisedDarkButton with Round Corners"
-            IsEnabled="{Binding DataContext.ControlsEnabled, RelativeSource={RelativeSource FindAncestor, AncestorType=Window}}" Margin="50,25,0,0" HorizontalAlignment="Left" Width="600" VerticalAlignment="Top">
+            materialDesign:ButtonAssist.CornerRadius="20"            
+            IsEnabled="True" Margin="50,25,0,0" HorizontalAlignment="Left" Width="600" VerticalAlignment="Top">
                 <TextBlock Text="ORDER" />
             </Button>
 

@@ -23,6 +23,8 @@ namespace InternationalVillage_Customer.ViewModel
         public ICommand OpenNotificationPage { get; set; }
         public ICommand OpenIncidentPage { get; set; }
         public ICommand OpenBillPage { get; set; }
+        public ICommand OpenBookingServicePage { get; set; }
+        public ICommand OpenMyBookingPage { get; set; }
         public ICommand Signout { get; set; }
 
 
@@ -52,8 +54,19 @@ namespace InternationalVillage_Customer.ViewModel
 
             OpenBillPage = new RelayCommand<Frame>((p) => { return true; }, (p) =>
             {
-                p.Navigate(new System.Uri("Pages/BillPage.xaml", UriKind.RelativeOrAbsolute));
+                p.Navigate(new System.Uri("Pages/MyBillPage.xaml", UriKind.RelativeOrAbsolute));
             });
+
+            OpenBookingServicePage = new RelayCommand<Frame>((p) => { return true; }, (p) =>
+            {
+                p.Navigate(new System.Uri("Pages/BookingServicePage.xaml", UriKind.RelativeOrAbsolute));
+            });
+
+            OpenMyBookingPage = new RelayCommand<Frame>((p) => { return true; }, (p) =>
+            {
+                p.Navigate(new System.Uri("Pages/MyBookingPage.xaml", UriKind.RelativeOrAbsolute));
+            });
+
 
             Signout = new RelayCommand<Window>((p) => { return true; }, (p) =>
             {

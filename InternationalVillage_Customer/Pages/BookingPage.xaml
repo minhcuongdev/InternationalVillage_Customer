@@ -26,29 +26,6 @@
                 <ColumnDefinition></ColumnDefinition>
             </Grid.ColumnDefinitions>
             <TextBlock Grid.Column="0" Text="BOOK AN APARTMENT"  HorizontalAlignment="Left"  FontSize="20"  FontWeight="Bold" Margin="30,0,0,0" Padding="0,0,0,5" VerticalAlignment="Top"/>
-            <Grid Grid.Column="1" HorizontalAlignment="Right" VerticalAlignment="Center" Margin="0,0,20,0">
-                <Grid.Resources>
-                    <Style x:Key="{x:Type Hyperlink}" TargetType="{x:Type Hyperlink}">
-                        <Setter Property="Foreground" Value="black" />
-
-                        <Setter Property="TextDecorations" Value="None" />
-                        <Style.Triggers>
-                            <Trigger Property="IsMouseOver" Value="True">
-                                <Setter Property="Foreground" Value="#2f9cfa" />
-                            </Trigger>
-                            <Trigger Property="IsEnabled" Value="False">
-                                <Setter Property="Foreground" Value="{DynamicResource {x:Static SystemColors.GrayTextBrushKey}}" />
-                            </Trigger>
-                            <Trigger Property="IsEnabled" Value="True">
-                                <Setter Property="Cursor" Value="Hand" />
-                            </Trigger>
-                        </Style.Triggers>
-                    </Style>
-                </Grid.Resources>
-                <TextBlock Foreground="Black"  FontWeight="Bold" VerticalAlignment="Bottom">
-                <Hyperlink NavigateUri="BookingServicePage.xaml"> >> BOOK SERVICES</Hyperlink>
-                </TextBlock>
-            </Grid>
         </Grid>
         
                     

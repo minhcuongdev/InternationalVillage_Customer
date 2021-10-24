@@ -13,19 +13,16 @@ using System.Windows.Media.Imaging;
 using System.Windows.Navigation;
 using System.Windows.Shapes;
 
-using InternationalVillage_Customer.Component;
-
 namespace InternationalVillage_Customer.Pages
 {
     /// <summary>
-    /// Interaction logic for NotificationPage.xaml
+    /// Interaction logic for BookingDetailPage.xaml
     /// </summary>
-    public partial class NotificationPage : Page
+    public partial class BookingDetailPage : Page
     {
-        public NotificationPage()
+        public BookingDetailPage()
         {
             InitializeComponent();
-            
         }
     }
 }

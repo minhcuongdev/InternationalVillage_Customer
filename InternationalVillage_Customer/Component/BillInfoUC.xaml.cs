@@ -13,19 +13,16 @@ using System.Windows.Media.Imaging;
 using System.Windows.Navigation;
 using System.Windows.Shapes;
 
-using InternationalVillage_Customer.Component;
-
-namespace InternationalVillage_Customer.Pages
+namespace InternationalVillage_Customer.Component
 {
     /// <summary>
-    /// Interaction logic for NotificationPage.xaml
+    /// Interaction logic for BillInfoUC.xaml
     /// </summary>
-    public partial class NotificationPage : Page
+    public partial class BillInfoUC : UserControl
     {
-        public NotificationPage()
+        public BillInfoUC()
         {
             InitializeComponent();
-            
         }
     }
 }

@@ -1,0 +1,114 @@
+﻿<UserControl x:Class="InternationalVillage_Customer.Component.BillInforUC"
+              xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+             xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+             xmlns:local="clr-namespace:InternationalVillage_Customer.Component"
+             
+             xmlns:i="http://schemas.microsoft.com/expression/2010/interactivity"
+             xmlns:materialDesign="http://materialdesigninxaml.net/winfx/xaml/themes"
+             
+             
+             TextElement.Foreground="{DynamicResource MaterialDesignBody}"
+             TextElement.FontWeight="Regular"
+             TextElement.FontSize="13"
+             TextOptions.TextFormattingMode="Ideal"
+             TextOptions.TextRenderingMode="Auto"
+             FontFamily="{DynamicResource MaterialDesignFont}"
+             
+                       
+             x:Name="BillInfoUC"        
+             mc:Ignorable="d" 
+             d:DesignHeight="100" d:DesignWidth="350" Margin="0,0,0,15">
+
+
+    <Grid >
+        <materialDesign:Card materialDesign:ShadowAssist.ShadowDepth="Depth2">
+            <Grid>
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition Width="90"></ColumnDefinition>
+                    <ColumnDefinition Width="170"></ColumnDefinition>
+                    <ColumnDefinition></ColumnDefinition>
+                </Grid.ColumnDefinitions>
+
+                <Grid Grid.Column="0">
+                    <Image Source="/Image/bar.jpg" Stretch="UniformToFill" Margin="8"/>
+                </Grid>
+
+                <Grid Grid.Column="1" Margin="0">
+                    <Grid.RowDefinitions>
+                        <RowDefinition></RowDefinition>
+                        <RowDefinition></RowDefinition>
+                        <RowDefinition></RowDefinition>
+                        <RowDefinition></RowDefinition>
+                    </Grid.RowDefinitions>
+                    <Grid Grid.Row="0">
+                        <Grid.ColumnDefinitions>
+                            <ColumnDefinition Width="15"></ColumnDefinition>
+                            <ColumnDefinition></ColumnDefinition>
+                        </Grid.ColumnDefinitions>
+                        <Image Grid.Column="0" Source="flash.png" Height="13" Width="13" VerticalAlignment="Center" HorizontalAlignment="Left"/>
+                        <TextBlock Grid.Column="1" Text="Bill Information" FontSize="10" FontWeight="ExtraBold" VerticalAlignment="Center" Foreground="Black" HorizontalAlignment="Left" />
+                    </Grid>
+                    <TextBlock Grid.Row="1" Text="ID Bill"  Foreground="Black" FontWeight="Bold"
+                           FontSize="9" VerticalAlignment="Center"  TextWrapping="Wrap"/>
+                    <Grid Grid.Row="2">
+                        <Grid.ColumnDefinitions>
+                            <ColumnDefinition></ColumnDefinition>
+                            <ColumnDefinition></ColumnDefinition>
+                        </Grid.ColumnDefinitions>
+                        <Grid Grid.Column="0">
+                            <Grid.RowDefinitions>
+                                <RowDefinition></RowDefinition>
+                                <RowDefinition></RowDefinition>
+                            </Grid.RowDefinitions>
+                            <TextBlock Grid.Row="0" Text="Check_in Date" FontSize="9" Foreground="gray" VerticalAlignment="Top"/>
+                            <TextBlock Grid.Row="1" Text="Check_in Date" FontSize="9" Foreground="gray" VerticalAlignment="Bottom"/>
+                        </Grid>
+
+                        <Grid Grid.Column="1">
+                            <Grid.RowDefinitions>
+                                <RowDefinition></RowDefinition>
+                                <RowDefinition></RowDefinition>
+                            </Grid.RowDefinitions>
+                            <TextBlock Grid.Row="0" Text="21/10/2020" FontSize="9" Foreground="Black" FontWeight="Bold" VerticalAlignment="Top"/>
+                            <TextBlock Grid.Row="1" Text="23/10/2020" FontSize="9" Foreground="Black" FontWeight="Bold" VerticalAlignment="Bottom"/>
+                        </Grid>
+
+
+                    </Grid>
+                    <TextBlock Grid.Row="4" Text="2,650$"  Foreground="Black" FontWeight="Bold"
+                           FontSize="10" VerticalAlignment="Center"  TextWrapping="Wrap"/>
+                </Grid>
+
+                <Grid Grid.Column="2">
+                    <Grid.Resources>
+                        <Style x:Key="{x:Type Hyperlink}" TargetType="{x:Type Hyperlink}">
+                            <Setter Property="Foreground" Value="#2f9cfa" />
+                            <Setter Property="TextDecorations" Value="Underline" />
+                            <Style.Triggers>
+                                <Trigger Property="IsMouseOver" Value="True">
+                                    <Setter Property="FontWeight" Value="Bold" />
+                                </Trigger>
+                                <Trigger Property="IsEnabled" Value="False">
+                                    <Setter Property="Foreground" Value="{DynamicResource {x:Static SystemColors.GrayTextBrushKey}}" />
+                                </Trigger>
+                                <Trigger Property="IsEnabled" Value="True">
+                                    <Setter Property="Cursor" Value="Hand" />
+                                </Trigger>
+                            </Style.Triggers>
+                        </Style>
+                    </Grid.Resources>
+                    <Button Background="White" Width="90" FontSize="9" FontWeight="Normal" Margin="-12,0,10,0" HorizontalAlignment="Right">
+                        <Hyperlink NavigateUri="/Pages/BillPage.xaml">View details</Hyperlink>
+                    </Button>
+                </Grid>
+
+
+
+
+
+            </Grid>
+        </materialDesign:Card>
+    </Grid>
+</UserControl>

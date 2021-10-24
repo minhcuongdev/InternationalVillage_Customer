@@ -18,14 +18,13 @@ using InternationalVillage_Customer.Component;
 namespace InternationalVillage_Customer.Pages
 {
     /// <summary>
-    /// Interaction logic for NotificationPage.xaml
+    /// Interaction logic for MyBookingPage.xaml
     /// </summary>
-    public partial class NotificationPage : Page
+    public partial class MyBookingPage : Page
     {
-        public NotificationPage()
+        public MyBookingPage()
         {
             InitializeComponent();
-            
         }
     }
 }

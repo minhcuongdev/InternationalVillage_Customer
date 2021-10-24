@@ -37,7 +37,7 @@
                 <RowDefinition Height="30"></RowDefinition>
                 <RowDefinition Height="60"></RowDefinition>
                 <RowDefinition Height="55"></RowDefinition>
-                <RowDefinition Height="80"></RowDefinition>
+                <RowDefinition Height="90"></RowDefinition>
                 <RowDefinition></RowDefinition>
 
             </Grid.RowDefinitions>
@@ -87,24 +87,25 @@
                 </Grid.ColumnDefinitions>
                 <TextBox Grid.Column="0"
                 Style="{StaticResource MaterialDesignFilledTextBox}"
-                VerticalAlignment="Bottom"
+                VerticalAlignment="Top"
                 AcceptsReturn="True"
                 TextWrapping="Wrap"
                 MaxWidth="400"
                 materialDesign:HintAssist.Hint="FullName"
                 Width="240"
-                IsEnabled="{Binding Path=IsChecked, ElementName=MaterialDesignFilledTextBoxEnabledComboBox}" Margin="50,0,0,0" HorizontalAlignment="Left" />
-
+                IsEnabled="True" Margin="50,0,0,0" HorizontalAlignment="Left" />
+                <TextBlock x:Name="FullNameError" Grid.Column="0" Text="Error. Please enter again " FontSize="10" Foreground="Black" Visibility="Visible" VerticalAlignment="Bottom" Margin="50,0,0,0" />
+                
                 <TextBox Grid.Column="1"
                 Style="{StaticResource MaterialDesignFilledTextBox}"
-                VerticalAlignment="Bottom"
+                VerticalAlignment="Top"
                 AcceptsReturn="True"
                 TextWrapping="Wrap"
                 MaxWidth="400"
                 materialDesign:HintAssist.Hint="Number of Apartment"
                 Width="240"
-                IsEnabled="{Binding Path=IsChecked, ElementName=MaterialDesignFilledTextBoxEnabledComboBox}" Margin="50,0,0,0" HorizontalAlignment="Left" />
-
+                IsEnabled="True" Margin="50,0,0,0" HorizontalAlignment="Left" />
+                <TextBlock x:Name="NumberofApartmentError" Grid.Column="1" Text="Error. Please enter again " FontSize="10" Foreground="Black" Visibility="Visible" VerticalAlignment="Bottom" Margin="50,0,0,0" />
             </Grid>
 
 
@@ -117,7 +118,7 @@
                 <ComboBox Grid.Column="0"
                 x:Name="FilledComboBox1"
                 Style="{StaticResource MaterialDesignFilledComboBox}"
-                IsEnabled="{Binding Path=IsChecked, ElementName=FilledComboBoxEnabledCheckBox}"
+                IsEnabled="True"
                 materialDesign:HintAssist.Hint="Type of Incident"
                 Width="240" HorizontalAlignment="Left" VerticalAlignment="Bottom" Margin="50,0,0,0">
                     <ComboBoxItem
@@ -131,7 +132,7 @@
                 <ComboBox Grid.Column="1"
                 x:Name="FilledComboBox2"
                 Style="{StaticResource MaterialDesignFilledComboBox}"
-                IsEnabled="{Binding Path=IsChecked, ElementName=FilledComboBoxEnabledCheckBox}"
+                IsEnabled="True"
                 materialDesign:HintAssist.Hint="Level of affection"
                 Width="240" HorizontalAlignment="Left" VerticalAlignment="Bottom" Margin="50,0,0,0">
                     <ComboBoxItem
@@ -154,15 +155,16 @@
                 materialDesign:HintAssist.Hint="Description"
                 Height="80"
                 Width="590"
-                IsEnabled="{Binding Path=IsChecked, ElementName=MaterialDesignFilledTextBoxEnabledComboBox}" Margin="50,0,0,0" HorizontalAlignment="Left" />
+                IsEnabled="True" Margin="50,0,0,15" HorizontalAlignment="Left" />
             </Grid>
+            <TextBlock x:Name="DescriptionError" Grid.Row="6" Text="Error. Please enter again " FontSize="10" Foreground="Black" Visibility="Visible" VerticalAlignment="Bottom" Margin="50,0,0,-14" />
 
             <Grid Grid.Row="7" Margin="0,0,0,0" VerticalAlignment="Center" >
                 <Button
             Style="{StaticResource MaterialDesignRaisedDarkButton}"
             materialDesign:ButtonAssist.CornerRadius="20"
             ToolTip="MaterialDesignRaisedDarkButton with Round Corners"
-            IsEnabled="{Binding DataContext.ControlsEnabled, RelativeSource={RelativeSource FindAncestor, AncestorType=Window}}" Margin="50,25,0,0" HorizontalAlignment="Left" Width="600" VerticalAlignment="Top">
+            IsEnabled="True" Margin="50,25,0,0" HorizontalAlignment="Left" Width="600" VerticalAlignment="Top">
                     <TextBlock Text="SEND" />
                 </Button>
 
