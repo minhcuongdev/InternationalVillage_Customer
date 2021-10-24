@@ -128,8 +128,10 @@
       <DependentUpon>SignupWindow.xaml</DependentUpon>
     </Compile>
     <Compile Include="Store\AccountStore.cs" />
+    <Compile Include="Store\CustomerStore.cs" />
     <Compile Include="Store\DataProvider.cs" />
     <Compile Include="Utilities\ConnectDB.cs" />
+    <Compile Include="Utilities\Validate.cs" />
     <Compile Include="ViewModel\BaseViewModel.cs" />
     <Compile Include="ViewModel\BookApartmentViewModel.cs" />
     <Compile Include="ViewModel\BookServiceViewModel.cs" />
@@ -138,6 +140,7 @@
     <Compile Include="ViewModel\MainViewModel.cs" />
     <Compile Include="ViewModel\MenuViewModel.cs" />
     <Compile Include="ViewModel\NavBarViewModel.cs" />
+    <Compile Include="ViewModel\NotificationPageViewModel.cs" />
     <Compile Include="ViewModel\NotificationUCViewModel.cs" />
     <Compile Include="ViewModel\SignupViewModel.cs" />
     <Page Include="Assets\Icon\Icon.xaml">

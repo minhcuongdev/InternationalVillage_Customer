@@ -8,4 +8,5 @@
     <viewmodel:HomeViewModel x:Key="HomeVM"></viewmodel:HomeViewModel>
     <viewmodel:BookApartmentViewModel x:Key="BookApartmentVM"></viewmodel:BookApartmentViewModel>
     <viewmodel:BookServiceViewModel x:Key="BookServiceVM"></viewmodel:BookServiceViewModel>
+    <viewmodel:NotificationPageViewModel x:Key="NotificationPageVM"></viewmodel:NotificationPageViewModel>
 </ResourceDictionary>

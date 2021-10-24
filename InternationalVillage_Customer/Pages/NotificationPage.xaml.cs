@@ -13,6 +13,8 @@ using System.Windows.Media.Imaging;
 using System.Windows.Navigation;
 using System.Windows.Shapes;
 
+using InternationalVillage_Customer.Component;
+
 namespace InternationalVillage_Customer.Pages
 {
     /// <summary>
@@ -23,6 +25,7 @@ namespace InternationalVillage_Customer.Pages
         public NotificationPage()
         {
             InitializeComponent();
+            
         }
     }
 }

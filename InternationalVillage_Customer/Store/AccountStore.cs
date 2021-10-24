@@ -30,6 +30,22 @@ namespace InternationalVillage_Customer.Store
             return result.Rows.Count > 0;
         }
 
+        public int InsertAccount(string user, string pass, string role, string id_user)
+        {
+            string id = CreateIDAccount();
+            string query = string.Format("insert into Account values ('{0}','{1}','{2}','{3}','{4}');", id, user, pass, role, id_user);
+            return DataProvider.Instance.ExecuteNonQuery(query);
+        }
+
+        public string CreateIDAccount()
+        {
+            string query = string.Format("select * from Account;");
+            DataTable dt = DataProvider.Instance.ExecuteQuery(query);
+            int count = dt.Rows.Count;
+
+            return "A_" + (count + 1).ToString();
+        }
+
         // Test get data
         public Account GetAccount(string username,string password)
         {
