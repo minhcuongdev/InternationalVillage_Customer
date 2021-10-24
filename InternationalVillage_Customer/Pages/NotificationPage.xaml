@@ -8,10 +8,18 @@
       xmlns:component="clr-namespace:InternationalVillage_Customer.Component"
       xmlns:i="http://schemas.microsoft.com/expression/2010/interactivity" 
       
+      DataContext="{StaticResource NotificationPageVM}"
+      
       mc:Ignorable="d" 
       d:DesignHeight="450" d:DesignWidth="800"
       Title="NotificationPage">
-
+    
+    <i:Interaction.Triggers>
+        <i:EventTrigger EventName="Loaded">
+            <i:InvokeCommandAction Command="{Binding LoadNotification}" CommandParameter="{Binding ElementName=NotificationForm}"/>
+        </i:EventTrigger>
+    </i:Interaction.Triggers>
+    
     <Grid Background="White">
         <Grid.RowDefinitions>
             <RowDefinition Height="70"></RowDefinition>
@@ -21,15 +29,7 @@
         <TextBlock Grid.Row="0" Text="NOTIFICATION" FontSize="30" FontWeight="Bold" VerticalAlignment="Center" Margin="40,10,0,0" ></TextBlock>
         <TextBlock Grid.Row="1" Text="All approvals were be notified here" FontSize="15" Margin="40,-10,0,0" ></TextBlock>
         <ScrollViewer Grid.Row="2" Margin="40,0" Height="auto"  HorizontalScrollBarVisibility="Visible"  ScrollViewer.VerticalScrollBarVisibility="Auto">
-            <StackPanel Margin="0,0,100,0">
-                <Grid>
-                    <Grid.ColumnDefinitions>
-                        <ColumnDefinition></ColumnDefinition>
-                        <ColumnDefinition></ColumnDefinition>
-                    </Grid.ColumnDefinitions>
-                    <component:NotificationUC Grid.Column="0" Height="70"></component:NotificationUC>
-                    
-                </Grid>
+            <StackPanel x:Name="NotificationForm" Margin="0,0,100,0" >
                 
             </StackPanel>
         </ScrollViewer>

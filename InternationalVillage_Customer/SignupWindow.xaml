@@ -115,9 +115,18 @@
                         x:Name="FullName" 
                         FontSize="12"
                         Padding="10"
-                        Width="260" HorizontalAlignment="Left" Margin="0,0,0,0" Height="42" />
+                        Width="260" HorizontalAlignment="Left" Margin="0,0,0,0" Height="42" >
+                            <i:Interaction.Triggers>
+                                <i:EventTrigger EventName="TextChanged">
+                                    <i:InvokeCommandAction Command="{Binding FullNameChanged}" CommandParameter="{Binding ElementName=FullName}"/>
+                                </i:EventTrigger>
+                                <i:EventTrigger EventName="LostKeyboardFocus">
+                                    <i:InvokeCommandAction Command="{Binding ValidateFullName}" CommandParameter="{Binding ElementName=FullNameError}"/>
+                                </i:EventTrigger>
+                            </i:Interaction.Triggers>
+                        </TextBox>
 
-                        <TextBlock Grid.Row="1" Text="Error. Please enter again!" FontSize="10" Foreground="Red" Visibility="Hidden"/>
+                        <TextBlock x:Name="FullNameError" Grid.Row="1" Text="Example: VictoryA " FontSize="10" Foreground="Black" Visibility="Visible" VerticalAlignment="Center"/>
 
                     </Grid>
 
@@ -133,9 +142,18 @@
                         x:Name="Identification" 
                         FontSize="12"
                         Padding="10"
-                        Width="260" HorizontalAlignment="Left" Margin="0,0,0,0" Height="42" />
+                        Width="260" HorizontalAlignment="Left" Margin="0,0,0,0" Height="42">
+                            <i:Interaction.Triggers>
+                                <i:EventTrigger EventName="TextChanged">
+                                    <i:InvokeCommandAction Command="{Binding IdentificationChanged}" CommandParameter="{Binding ElementName=Identification}"/>
+                                </i:EventTrigger>
+                                <i:EventTrigger EventName="LostKeyboardFocus">
+                                    <i:InvokeCommandAction Command="{Binding ValidateIdentification}" CommandParameter="{Binding ElementName=IdentificationError}"/>
+                                </i:EventTrigger>
+                            </i:Interaction.Triggers>
+                        </TextBox>
 
-                        <TextBlock Grid.Row="1" Text="Error. Please enter again!" FontSize="10" Foreground="Red" Visibility="Visible"/>
+                        <TextBlock x:Name="IdentificationError" Grid.Row="1" Text="Example: 123456789" FontSize="10" Foreground="Black" Visibility="Visible" VerticalAlignment="Center"/>
 
                     </Grid>
 
@@ -151,9 +169,18 @@
                         x:Name="VISA" 
                         FontSize="12"
                         Padding="10"
-                        Width="260" HorizontalAlignment="Left" Margin="0,0,0,0" Height="42" />
+                        Width="260" HorizontalAlignment="Left" Margin="0,0,0,0" Height="42">
+                            <i:Interaction.Triggers>
+                                <i:EventTrigger EventName="TextChanged">
+                                    <i:InvokeCommandAction Command="{Binding VisaChanged}" CommandParameter="{Binding ElementName=VISA}"/>
+                                </i:EventTrigger>
+                                <i:EventTrigger EventName="LostKeyboardFocus">
+                                    <i:InvokeCommandAction Command="{Binding ValidateVisa}" CommandParameter="{Binding ElementName=VisaError}"/>
+                                </i:EventTrigger>
+                            </i:Interaction.Triggers>
+                        </TextBox>
 
-                        <TextBlock Grid.Row="1" Text="Error. Please enter again!" FontSize="10" Foreground="Red" Visibility="Visible"/>
+                        <TextBlock x:Name="VisaError" Grid.Row="1" Text="Example: 1234ABC" FontSize="10" Foreground="Black" Visibility="Visible" VerticalAlignment="Center"/>
 
                     </Grid>
 
@@ -166,12 +193,21 @@
                         Style="{StaticResource MaterialDesignOutlinedTextBox}"
                         VerticalAlignment="Top"                    
                         materialDesign:HintAssist.Hint="Username" 
-                        x:Name="username" 
+                        x:Name="UserName" 
                         FontSize="12"
                         Padding="10"
-                        Width="260" HorizontalAlignment="Left" Margin="0,0,0,0" Height="42" />
+                        Width="260" HorizontalAlignment="Left" Margin="0,0,0,0" Height="42">
+                            <i:Interaction.Triggers>
+                                <i:EventTrigger EventName="TextChanged">
+                                    <i:InvokeCommandAction Command="{Binding UserNameChanged}" CommandParameter="{Binding ElementName=UserName}"/>
+                                </i:EventTrigger>
+                                <i:EventTrigger EventName="LostKeyboardFocus">
+                                    <i:InvokeCommandAction Command="{Binding ValidateUserName}" CommandParameter="{Binding ElementName=UserNameError}"/>
+                                </i:EventTrigger>
+                            </i:Interaction.Triggers>
+                        </TextBox>
 
-                        <TextBlock Grid.Row="1" Text="Error. Please enter again!" FontSize="10" Foreground="Red" Visibility="Hidden"/>
+                        <TextBlock x:Name="UserNameError" Grid.Row="1" Text="Please enter username !" FontSize="10" Foreground="Red" Visibility="Hidden" VerticalAlignment="Center"/>
 
                     </Grid>
 
@@ -183,18 +219,34 @@
                         <PasswordBox Grid.Row="0"
                         Style="{StaticResource MaterialDesignOutlinedPasswordBox}"
                         VerticalAlignment="Top"
+                        x:Name="Password"
                         FontSize="12" Height="42"
                         Padding="10"
-                        IsEnabled="{Binding Path=IsChecked, ElementName=MaterialDesignOutlinedPasswordFieldPasswordBoxEnabledComboBox}"
-                        materialDesign:HintAssist.Hint="Password" />
+                        IsEnabled="True"
+                        materialDesign:HintAssist.Hint="Password" >
+                            <i:Interaction.Triggers>
+                                <i:EventTrigger EventName="PasswordChanged">
+                                    <i:InvokeCommandAction Command="{Binding PasswordChanged}" CommandParameter="{Binding ElementName=Password}"/>
+                                </i:EventTrigger>
+                                <i:EventTrigger EventName="LostKeyboardFocus">
+                                    <i:InvokeCommandAction Command="{Binding ValidatePassword}" CommandParameter="{Binding ElementName=PasswordError}"/>
+                                </i:EventTrigger>
+                            </i:Interaction.Triggers>
+                        </PasswordBox>
 
-                        <TextBlock Grid.Row="1" Text="Error. Please enter again!" FontSize="10" Foreground="Red" Visibility="Visible"/>
+                        <TextBlock x:Name="PasswordError" Grid.Row="1" Text="Please enter password !" FontSize="10" Foreground="Red" Visibility="Hidden" VerticalAlignment="Center"/>
 
                     </Grid>
 
                 </Grid>
 
-                <CheckBox Grid.Row="5" Content="I agree with the Terms and Conditions" Margin="40,0,0,0" Padding="2,2,0,0" Foreground="#176EC6" FontWeight="Bold" FontSize="12"></CheckBox>
+                <CheckBox x:Name="Policy" Grid.Row="5" Content="I agree with the Terms and Conditions" Margin="40,0,0,0" Padding="2,2,0,0" Foreground="#176EC6" FontWeight="Bold" FontSize="12">
+                    <i:Interaction.Triggers>
+                        <i:EventTrigger EventName="Click">
+                            <i:InvokeCommandAction Command="{Binding PolicyClicked}" CommandParameter="{Binding ElementName=Policy}"/>
+                        </i:EventTrigger>
+                    </i:Interaction.Triggers>
+                </CheckBox>
                                                       
                 <StackPanel Grid.Row="6" Orientation="Horizontal" HorizontalAlignment="Left" Margin="40,0,0,0">
                     <Button Style="{StaticResource MaterialDesignRaisedButton}"
@@ -203,7 +255,9 @@
                             Width="260"
                             Margin="0,7,0,5"
                             Content="Sign Up"
-                            IsEnabled="True"                           
+                            x:Name="Submit"
+                            Command="{Binding Submited}"
+                            CommandParameter="{Binding ElementName=SignupWD}"
                             >
                     </Button>
                 </StackPanel>
