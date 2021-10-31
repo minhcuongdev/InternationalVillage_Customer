@@ -94,6 +94,7 @@
       <DependentUpon>MenuWindow.xaml</DependentUpon>
     </Compile>
     <Compile Include="Model\Account.cs" />
+    <Compile Include="Model\BookingApartmentTemp.cs" />
     <Compile Include="Pages\ApartmentFormPage.xaml.cs">
       <DependentUpon>ApartmentFormPage.xaml</DependentUpon>
     </Compile>
@@ -143,6 +144,7 @@
       <DependentUpon>SignupWindow.xaml</DependentUpon>
     </Compile>
     <Compile Include="Store\AccountStore.cs" />
+    <Compile Include="Store\BookingTempStore.cs" />
     <Compile Include="Store\CustomerStore.cs" />
     <Compile Include="Store\DataProvider.cs" />
     <Compile Include="Utilities\ConnectDB.cs" />
@@ -159,6 +161,7 @@
     <Compile Include="ViewModel\NavBarViewModel.cs" />
     <Compile Include="ViewModel\NotificationPageViewModel.cs" />
     <Compile Include="ViewModel\NotificationUCViewModel.cs" />
+    <Compile Include="ViewModel\ReportIncidentViewModel.cs" />
     <Compile Include="ViewModel\SignupViewModel.cs" />
     <Page Include="Assets\Icon\Icon.xaml">
       <SubType>Designer</SubType>

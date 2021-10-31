@@ -8,6 +8,7 @@ using System.Windows.Controls;
 using System.Windows.Input;
 
 using InternationalVillage_Customer.Store;
+using InternationalVillage_Customer.Model;
 
 namespace InternationalVillage_Customer.ViewModel
 {
@@ -58,6 +59,7 @@ namespace InternationalVillage_Customer.ViewModel
                     //MainWindow main = new MainWindow();
                     //MainViewModel mv = main.DataContext as MainViewModel;
                     //main.Show();
+                    Account acc = AccountStore.Instance.GetAccount(Username, Password);
                     MenuWindow menuform = new MenuWindow();
                     menuform.Show();
                     p.Close();
