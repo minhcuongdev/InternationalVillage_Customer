@@ -11,4 +11,5 @@
     <viewmodel:NotificationPageViewModel x:Key="NotificationPageVM"></viewmodel:NotificationPageViewModel>
     <viewmodel:MyBookingPageViewModel x:Key="MyBookingPageVM"></viewmodel:MyBookingPageViewModel>
     <viewmodel:MyBillPageViewModel x:Key="MyBillPageVM"></viewmodel:MyBillPageViewModel>
+    <viewmodel:ReportIncidentViewModel x:Key="ReportIncidentVM"></viewmodel:ReportIncidentViewModel>
 </ResourceDictionary>

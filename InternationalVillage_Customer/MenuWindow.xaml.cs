@@ -13,21 +13,26 @@ using System.Windows.Media.Imaging;
 using System.Windows.Navigation;
 using System.Windows.Shapes;
 
-
+using InternationalVillage_Customer.Model;
 
 namespace InternationalVillage_Customer
 {
     /// <summary>
     /// Interaction logic for MenuWindow.xaml
     /// </summary>
+    
     public partial class MenuWindow : Window
     {
+         Account account;
         
+
         public MenuWindow()
         {
             
             InitializeComponent();
         }
+        
+        
 
         private void btnClose_Click(object sender, RoutedEventArgs e)
         {

@@ -15,8 +15,8 @@
       TextOptions.TextRenderingMode="Auto"
       FontFamily="{DynamicResource MaterialDesignFont}"
       
-      
-      
+      DataContext="{StaticResource ReportIncidentVM}"
+      x:Name="IncidentFormVM"
         
       mc:Ignorable="d" 
       d:DesignHeight="450" d:DesignWidth="800"
@@ -93,9 +93,19 @@
                 MaxWidth="400"
                 materialDesign:HintAssist.Hint="FullName"
                 Width="240"
-                IsEnabled="True" Margin="50,0,0,0" HorizontalAlignment="Left" />
-                <TextBlock x:Name="FullNameError" Grid.Column="0" Text="Error. Please enter again " FontSize="10" Foreground="Black" Visibility="Visible" VerticalAlignment="Bottom" Margin="50,0,0,0" />
-                
+                x:Name="FullName"
+                IsEnabled="True" Margin="50,0,0,0" HorizontalAlignment="Left"   >
+                    <i:Interaction.Triggers>
+                        <i:EventTrigger EventName="TextChanged">
+                            <i:InvokeCommandAction Command="{Binding FullNameChanged}" CommandParameter="{Binding ElementName=FullName}"/>
+                        </i:EventTrigger>
+                        <i:EventTrigger EventName="LostKeyboardFocus">
+                            <i:InvokeCommandAction Command="{Binding ValidateFullName}" CommandParameter="{Binding ElementName=FullNameError}"/>
+                        </i:EventTrigger>
+                    </i:Interaction.Triggers>
+                </TextBox>
+                <TextBlock x:Name="FullNameError" Grid.Column="0" Text="Example: VictoryA " FontSize="10" Foreground="Black" Visibility="Visible" VerticalAlignment="Bottom" Margin="50,0,0,0" />
+
                 <TextBox Grid.Column="1"
                 Style="{StaticResource MaterialDesignFilledTextBox}"
                 VerticalAlignment="Top"
@@ -104,8 +114,18 @@
                 MaxWidth="400"
                 materialDesign:HintAssist.Hint="Number of Apartment"
                 Width="240"
-                IsEnabled="True" Margin="50,0,0,0" HorizontalAlignment="Left" />
-                <TextBlock x:Name="NumberofApartmentError" Grid.Column="1" Text="Error. Please enter again " FontSize="10" Foreground="Black" Visibility="Visible" VerticalAlignment="Bottom" Margin="50,0,0,0" />
+                x:Name="NumberOfApartment"
+                IsEnabled="True" Margin="50,0,0,0" HorizontalAlignment="Left" >
+                    <i:Interaction.Triggers>
+                        <i:EventTrigger EventName="TextChanged">
+                            <i:InvokeCommandAction Command="{Binding NumberOfApartmentChanged}" CommandParameter="{Binding ElementName=NumberOfApartment}"/>
+                        </i:EventTrigger>
+                        <i:EventTrigger EventName="LostKeyboardFocus">
+                            <i:InvokeCommandAction Command="{Binding ValidateNumberOfApartment}" CommandParameter="{Binding ElementName=NumberofApartmentError}"/>
+                        </i:EventTrigger>
+                    </i:Interaction.Triggers>
+                </TextBox>
+                <TextBlock x:Name="NumberofApartmentError" Grid.Column="1" Text="Example: 2A01 " FontSize="10" Foreground="Black" Visibility="Visible" VerticalAlignment="Bottom" Margin="50,0,0,0" />
             </Grid>
 
 
@@ -116,9 +136,9 @@
                 </Grid.ColumnDefinitions>
 
                 <ComboBox Grid.Column="0"
-                x:Name="FilledComboBox1"
                 Style="{StaticResource MaterialDesignFilledComboBox}"
                 IsEnabled="True"
+                x:Name="TypeOfIncident"
                 materialDesign:HintAssist.Hint="Type of Incident"
                 Width="240" HorizontalAlignment="Left" VerticalAlignment="Bottom" Margin="50,0,0,0">
                     <ComboBoxItem
@@ -127,10 +147,19 @@
                   Content="Water/Electricity" />
                     <ComboBoxItem
                   Content="Other" />
+                    <i:Interaction.Triggers>
+                        <i:EventTrigger EventName="SelectionChanged">
+                            <i:InvokeCommandAction Command="{Binding TypeOfIncidentChanged}" CommandParameter="{Binding ElementName=TypeOfIncident}"/>
+                        </i:EventTrigger>
+                        <i:EventTrigger EventName="LostKeyboardFocus">
+                            <i:InvokeCommandAction Command="{Binding ValidateTypeOfIncident}" CommandParameter="{Binding ElementName=TypeIncidentError}"/>
+                        </i:EventTrigger>
+                    </i:Interaction.Triggers>
                 </ComboBox>
+                <TextBlock x:Name="TypeIncidentError" Grid.Column="0"  FontSize="10" Foreground="Black" Visibility="Visible" VerticalAlignment="Bottom" Margin="50,0,0,0" />
 
                 <ComboBox Grid.Column="1"
-                x:Name="FilledComboBox2"
+                x:Name="LevelOfAffection"
                 Style="{StaticResource MaterialDesignFilledComboBox}"
                 IsEnabled="True"
                 materialDesign:HintAssist.Hint="Level of affection"
@@ -141,11 +170,24 @@
                   Content="Medium" />
                     <ComboBoxItem
                   Content="High" />
+                    <i:Interaction.Triggers>
+                        <i:EventTrigger EventName="SelectionChanged">
+                            <i:InvokeCommandAction Command="{Binding LevelOfAffectionChanged}" CommandParameter="{Binding ElementName=LevelOfAffection}"/>
+                        </i:EventTrigger>
+                        <i:EventTrigger EventName="LostKeyboardFocus">
+                            <i:InvokeCommandAction Command="{Binding ValidateLevelOfAffection}" CommandParameter="{Binding ElementName=LevelAffectionError}"/>
+                        </i:EventTrigger>
+                    </i:Interaction.Triggers>
                 </ComboBox>
+                <TextBlock x:Name="LevelAffectionError" Grid.Column="1"  FontSize="10" Foreground="Black" Visibility="Visible" VerticalAlignment="Bottom" Margin="50,0,0,0" />
 
             </Grid>
 
             <Grid Grid.Row="6" Margin="0,0,0,-15" >
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition Width="4*"/>
+                    <ColumnDefinition Width="21*"/>
+                </Grid.ColumnDefinitions>
                 <TextBox Grid.Column="0"
                 Style="{StaticResource MaterialDesignFilledTextBox}"
                 VerticalAlignment="Bottom"
@@ -153,11 +195,21 @@
                 TextWrapping="Wrap"
                 MaxWidth="800"
                 materialDesign:HintAssist.Hint="Description"
-                Height="80"
+                Height="70"
                 Width="590"
-                IsEnabled="True" Margin="50,0,0,15" HorizontalAlignment="Left" />
+                x:Name="Description"
+                IsEnabled="True" Margin="50,0,0,14.6" HorizontalAlignment="Left" Grid.ColumnSpan="2" >
+                    <i:Interaction.Triggers>
+                        <i:EventTrigger EventName="TextChanged">
+                            <i:InvokeCommandAction Command="{Binding DescriptionChanged}" CommandParameter="{Binding ElementName=Description}"/>
+                        </i:EventTrigger>
+                        <i:EventTrigger EventName="LostKeyboardFocus">
+                            <i:InvokeCommandAction Command="{Binding ValidateDescription}" CommandParameter="{Binding ElementName=DescriptionError}"/>
+                        </i:EventTrigger>
+                    </i:Interaction.Triggers>
+                </TextBox>
             </Grid>
-            <TextBlock x:Name="DescriptionError" Grid.Row="6" Text="Error. Please enter again " FontSize="10" Foreground="Black" Visibility="Visible" VerticalAlignment="Bottom" Margin="50,0,0,-14" />
+            <TextBlock x:Name="DescriptionError" Grid.Row="6" Text="Please enter Description" FontSize="10" Foreground="Black" Visibility="Visible" VerticalAlignment="Bottom" Margin="50,0,0,-14" />
 
             <Grid Grid.Row="7" Margin="0,0,0,0" VerticalAlignment="Center" >
                 <Button

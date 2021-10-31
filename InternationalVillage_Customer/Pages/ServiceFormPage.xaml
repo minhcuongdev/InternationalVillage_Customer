@@ -6,6 +6,7 @@
       xmlns:local="clr-namespace:InternationalVillage_Customer.Pages"
       
       xmlns:i="http://schemas.microsoft.com/expression/2010/interactivity"
+      xmlns:System="clr-namespace:System;assembly=mscorlib"
       
       xmlns:materialDesign="http://materialdesigninxaml.net/winfx/xaml/themes"
       TextElement.Foreground="{DynamicResource MaterialDesignBody}"
@@ -26,6 +27,9 @@
     <i:Interaction.Triggers>
         <i:EventTrigger EventName="MouseDown">
             <i:InvokeCommandAction Command="{Binding ClearFocus}" CommandParameter="{Binding ElementName=ServiceFormVM}"/>
+        </i:EventTrigger>
+        <i:EventTrigger EventName="Loaded">
+            <i:InvokeCommandAction Command="{Binding CheckinDateSetUp}" CommandParameter="{Binding ElementName=CheckinRange}"/>
         </i:EventTrigger>
     </i:Interaction.Triggers>
 
@@ -94,9 +98,19 @@
             MaxWidth="400"
             materialDesign:HintAssist.Hint="FullName"
             Width="240"
-            IsEnabled="True" Margin="50,0,0,0" HorizontalAlignment="Left" />
-            <TextBlock x:Name="FullNameError" Grid.Column="0" Text="Error. Please enter again " FontSize="10" Foreground="Black" Visibility="Visible" VerticalAlignment="Bottom" Margin="50,0,0,0" />
-            
+            x:Name="FullName"
+            IsEnabled="True" Margin="50,0,0,0" HorizontalAlignment="Left"   >
+                <i:Interaction.Triggers>
+                    <i:EventTrigger EventName="TextChanged">
+                        <i:InvokeCommandAction Command="{Binding FullNameChanged}" CommandParameter="{Binding ElementName=FullName}"/>
+                    </i:EventTrigger>
+                    <i:EventTrigger EventName="LostKeyboardFocus">
+                        <i:InvokeCommandAction Command="{Binding ValidateFullName}" CommandParameter="{Binding ElementName=FullNameError}"/>
+                    </i:EventTrigger>
+                </i:Interaction.Triggers>
+            </TextBox>
+            <TextBlock x:Name="FullNameError" Grid.Column="0" Text="Example: VictoryA " FontSize="10" Foreground="Black" Visibility="Visible" VerticalAlignment="Bottom" Margin="50,0,0,0" />
+
             <TextBox Grid.Column="1"
             Style="{StaticResource MaterialDesignFilledTextBox}"
             VerticalAlignment="Top"
@@ -105,8 +119,18 @@
             MaxWidth="400"
             materialDesign:HintAssist.Hint="Total number of people"
             Width="240"
-            IsEnabled="True" Margin="50,0,0,0" HorizontalAlignment="Left" />
-            <TextBlock x:Name="NumberofPeopleError" Grid.Column="1" Text="Error. Please enter again " FontSize="10" Foreground="Black" Visibility="Visible" VerticalAlignment="Bottom" Margin="50,0,0,0" />
+            x:Name="NumberOfPeople"
+            IsEnabled="True" Margin="50,0,0,0" HorizontalAlignment="Left"   >
+                <i:Interaction.Triggers>
+                    <i:EventTrigger EventName="TextChanged">
+                        <i:InvokeCommandAction Command="{Binding NumberPeopleChanged}" CommandParameter="{Binding ElementName=NumberOfPeople}"/>
+                    </i:EventTrigger>
+                    <i:EventTrigger EventName="LostKeyboardFocus">
+                        <i:InvokeCommandAction Command="{Binding ValidateNumberPeople}" CommandParameter="{Binding ElementName=NumberofPeopleError}"/>
+                    </i:EventTrigger>
+                </i:Interaction.Triggers>
+            </TextBox>
+            <TextBlock x:Name="NumberofPeopleError" Grid.Column="1" FontSize="10" Foreground="Black" Visibility="Visible" VerticalAlignment="Bottom" Margin="50,0,0,0" />
         
         </Grid>
 
@@ -117,15 +141,45 @@
             </Grid.ColumnDefinitions>
 
             <DatePicker Grid.Column="0"
+                x:Name="CheckinDate"  
                 Width="240"
                 materialDesign:HintAssist.Hint="Check-in Date"
-                Style="{StaticResource MaterialDesignFilledDatePicker}" VerticalAlignment="Bottom" HorizontalAlignment="Left" Margin="50,0,0,14" />
-            <TextBlock x:Name="CheckinDateError" Grid.Column="0" Text="Error. Please enter again " FontSize="10" Foreground="Black" Visibility="Visible" VerticalAlignment="Bottom" Margin="50,0,0,0" />
+                Style="{StaticResource MaterialDesignFilledDatePicker}" VerticalAlignment="Bottom" HorizontalAlignment="Left" Margin="50,0,0,14" FirstDayOfWeek="Monday"  >
+                <DatePicker.BlackoutDates>
+                    <CalendarDateRange  x:Name="CheckinRange" />
+                </DatePicker.BlackoutDates>
+                <i:Interaction.Triggers>
+                    <i:EventTrigger EventName="SelectedDateChanged">
+                        <i:InvokeCommandAction Command="{Binding CheckinDateChanged}" CommandParameter="{Binding ElementName=CheckinDate}"/>
+                    </i:EventTrigger>
+                    <i:EventTrigger EventName="SelectedDateChanged">
+                        <i:InvokeCommandAction Command="{Binding CheckoutDateSetUp}" CommandParameter="{Binding ElementName=CheckoutRange}"/>
+                    </i:EventTrigger>
+                    <i:EventTrigger EventName="LostKeyboardFocus">
+                        <i:InvokeCommandAction Command="{Binding ValidateCheckinDate}" CommandParameter="{Binding ElementName=CheckinDateError}"/>
+                    </i:EventTrigger>
+                </i:Interaction.Triggers>
+            </DatePicker>
+            <TextBlock x:Name="CheckinDateError" Grid.Column="0"  FontSize="10" Foreground="Black" Visibility="Visible" VerticalAlignment="Bottom" Margin="50,0,0,0" />
+
             <DatePicker Grid.Column="1"
+                x:Name="CheckoutDate"
                 Width="240"
                 materialDesign:HintAssist.Hint="Check-out Date"
-                Style="{StaticResource MaterialDesignFilledDatePicker}" VerticalAlignment="Bottom" HorizontalAlignment="Left" Margin="50,0,0,14" />
-            <TextBlock x:Name="CheckoutDateError" Grid.Column="1" Text="Error. Please enter again " FontSize="10" Foreground="Black" Visibility="Visible" VerticalAlignment="Bottom" Margin="50,0,0,0" />
+                Style="{StaticResource MaterialDesignFilledDatePicker}" VerticalAlignment="Bottom" HorizontalAlignment="Left" Margin="50,0,0,14" >
+                <DatePicker.BlackoutDates>
+                    <CalendarDateRange x:Name="CheckoutRange" End="{x:Static System:DateTime.Today}" Start="{x:Static System:DateTime.MinValue}" />
+                </DatePicker.BlackoutDates>
+                <i:Interaction.Triggers>
+                    <i:EventTrigger EventName="SelectedDateChanged">
+                        <i:InvokeCommandAction Command="{Binding CheckoutDateChanged}" CommandParameter="{Binding ElementName=CheckoutDate}"/>
+                    </i:EventTrigger>
+                    <i:EventTrigger EventName="LostKeyboardFocus">
+                        <i:InvokeCommandAction Command="{Binding ValidateCheckoutDate}" CommandParameter="{Binding ElementName=CheckoutDateError}"/>
+                    </i:EventTrigger>
+                </i:Interaction.Triggers>
+            </DatePicker>
+            <TextBlock x:Name="CheckoutDateError" Grid.Column="1"  FontSize="10" Foreground="Black" Visibility="Visible" VerticalAlignment="Bottom" Margin="50,0,0,0" />
         </Grid>
 
         <Grid Grid.Row="6" Margin="0">
@@ -135,7 +189,7 @@
             </Grid.ColumnDefinitions>
 
             <ComboBox Grid.Column="0"
-            x:Name="FilledComboBox"
+            x:Name="TypeOfService"
             Style="{StaticResource MaterialDesignFilledComboBox}"
             IsEnabled="True"
             materialDesign:HintAssist.Hint="Type of Service"
@@ -152,8 +206,18 @@
               Content="Golf" />
                 <ComboBoxItem
               Content="Bar" />
-            </ComboBox>
+                <i:Interaction.Triggers>
+                    <i:EventTrigger EventName="SelectionChanged">
+                        <i:InvokeCommandAction Command="{Binding TypeOfServiceChanged}" CommandParameter="{Binding ElementName=TypeOfService}"/>
+                    </i:EventTrigger>
+                    <i:EventTrigger EventName="LostKeyboardFocus">
+                        <i:InvokeCommandAction Command="{Binding ValidateTypeOfService}" CommandParameter="{Binding ElementName=TypeOfServiceError}"/>
+                    </i:EventTrigger>
+                </i:Interaction.Triggers>
 
+            </ComboBox>
+            
+            <TextBlock x:Name="TypeOfServiceError" Grid.Column="0"  FontSize="10" Foreground="Black" Visibility="Visible" VerticalAlignment="Bottom" Margin="50,0,0,0" />
             <TextBox Grid.Column="1"
             Style="{StaticResource MaterialDesignFilledTextBox}"
             VerticalAlignment="Bottom"
@@ -162,8 +226,18 @@
             MaxWidth="400"
             materialDesign:HintAssist.Hint="Total number"
             Width="240"
-            IsEnabled="True" Margin="50,0,0,14" HorizontalAlignment="Left" />
-            <TextBlock x:Name="TotalNumberDateError" Grid.Column="1" Text="Error. Please enter again " FontSize="10" Foreground="Black" Visibility="Visible" VerticalAlignment="Bottom" Margin="50,0,0,0" />
+            x:Name="TotalNumberofService"
+            IsEnabled="True" Margin="50,0,0,14" HorizontalAlignment="Left" >
+                <i:Interaction.Triggers>
+                    <i:EventTrigger EventName="TextChanged">
+                        <i:InvokeCommandAction Command="{Binding NumberServiceChanged}" CommandParameter="{Binding ElementName=TotalNumberofService}"/>
+                    </i:EventTrigger>
+                    <i:EventTrigger EventName="LostKeyboardFocus">
+                        <i:InvokeCommandAction Command="{Binding ValidateNumberService}" CommandParameter="{Binding ElementName=TotalNumberError}"/>
+                    </i:EventTrigger>
+                </i:Interaction.Triggers>
+            </TextBox>
+            <TextBlock x:Name="TotalNumberError" Grid.Column="1"  FontSize="10" Foreground="Black" Visibility="Visible" VerticalAlignment="Bottom" Margin="50,0,0,0" />
         </Grid>
         
 

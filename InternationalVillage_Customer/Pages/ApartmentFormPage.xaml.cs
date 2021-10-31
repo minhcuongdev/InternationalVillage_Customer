@@ -24,5 +24,10 @@ namespace InternationalVillage_Customer.Pages
         {
             InitializeComponent();
         }
+
+        private void Book_Click(object sender, RoutedEventArgs e)
+        {
+
+        }
     }
 }
