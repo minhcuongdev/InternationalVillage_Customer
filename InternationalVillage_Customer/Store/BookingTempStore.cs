@@ -11,11 +11,15 @@ namespace InternationalVillage_Customer.Store
 {
     class BookingTempStore
     {
-        private string typeOfApartment = "";
+        
         private static BookingTempStore instance;
         internal static BookingTempStore Instance { get { if (instance == null) instance = new BookingTempStore(); return instance; } set => instance = value; }
 
+        private string typeOfApartment = "";
         public string TypeOfApartment { get => typeOfApartment; set => typeOfApartment = value; }
+
+        private int indexTypeOfApartment = 0;
+        public int IndexTypeOfApartment { get => indexTypeOfApartment; set => indexTypeOfApartment = value; }
 
         public int InsertBooking(string id_Cus, string id_Apart, DateTime checkin, DateTime checkout, int quantity, string state, DateTime time)
         {

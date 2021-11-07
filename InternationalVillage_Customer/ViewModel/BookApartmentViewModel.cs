@@ -30,6 +30,8 @@ namespace InternationalVillage_Customer.ViewModel
         public ICommand NumberApartmentChanged { get; set; }
         public ICommand ValidateNumberApartment { get; set; }
 
+        public ICommand TypeOfApartmentLoaded { get; set; }
+
         public ICommand Book { get; set; }
 
         //Validate data
@@ -89,16 +91,12 @@ namespace InternationalVillage_Customer.ViewModel
             });
             ValidateNumberPeople = new RelayCommand<TextBlock>((p) => { return true; }, (p) =>
             {
-                
-                    isNumberPeopleCorrect = Validate.Instance.NumberRange(p, numberPeople, "Total number of people", 0,150);
-               
-                
+                isNumberPeopleCorrect = Validate.Instance.NumberRange(p, numberPeople, "Total number of people", 0,150);
             });
 
             ValidateCheckinDate = new RelayCommand<TextBlock>((p) => { return true; }, (p) =>
             {
                 isCheckinDateCorrect = Validate.Instance.Required(p, strCheckinDate, "Check in Date");
-               
             });
             ValidateCheckoutDate = new RelayCommand<TextBlock>((p) => { return true; }, (p) =>
             {
@@ -131,59 +129,54 @@ namespace InternationalVillage_Customer.ViewModel
                 strCheckoutDate = checkoutDate.ToString();
             });
 
+            TypeOfApartmentLoaded = new RelayCommand<ComboBox>((p) => { return true; }, (p) =>
+            {
+                p.SelectedIndex = BookingTempStore.Instance.IndexTypeOfApartment;
+                typeofApartment = Validate.Instance.SelecttionChanged(p);
+            });
+
             TypeOfApartmentChanged = new RelayCommand<ComboBox>((p) => { return true; }, (p) =>
             {
                 typeofApartment = Validate.Instance.SelecttionChanged(p);
-                MessageBox.Show("@"+typeofApartment+"@");
-                
-
             });
             ValidateTypeOfApartment = new RelayCommand<TextBlock>((p) => { return true; }, (p) =>
             {
                 isTypeOfApartmentCorrect = Validate.Instance.Required(p, typeofApartment, "Type of Apartment");
-            
-
             });
             NumberApartmentChanged = new RelayCommand<TextBox>((p) => { return true; }, (p) =>
             {
                 numberApartment = Validate.Instance.TextChanged(p, 0,2);
-
             });
             ValidateNumberApartment = new RelayCommand<TextBlock>((p) => { return true; }, (p) =>
             {
-                
-                    isNumberApartmentCorrect = Validate.Instance.NumberRange(p, numberApartment, "Total number of apartment", 0, 72);
-              //  MessageBox.Show(isTypeOfApartmentCorrect + " "+isNumberApartmentCorrect + "");
-
+                isNumberApartmentCorrect = Validate.Instance.NumberRange(p, numberApartment, "Total number of apartment", 0, 72);
             });
             Book = new RelayCommand<Button>((p) => { return isFullNameCorrect && isNumberPeopleCorrect && isCheckinDateCorrect && isCheckoutDateCorrect 
-                                                            && isNumberApartmentCorrect && isTypeOfApartmentCorrect; }, (p) =>
+                                                            && isNumberApartmentCorrect && isTypeOfApartmentCorrect; 
+            }, (p) =>
             {
-                int insertBooking = 0;
+               int insertBooking = 0;
                if (typeofApartment.Equals("Luxury (Type 3A)"))
-                {
-                    
+               {
                     insertBooking = BookingTempStore.Instance.InsertBooking(AccountStore.Instance.IdUser, "3A", checkinDate, checkoutDate, Int32.Parse(numberApartment), "No Accept", DateTime.Now);
-                  
-                }
+               }
                else if (typeofApartment.Equals("High Standard(Type 3B)"))
-                {
-                   insertBooking = BookingTempStore.Instance.InsertBooking(AccountStore.Instance.IdUser, "3B", checkinDate, checkoutDate, Int32.Parse(numberApartment), "No Accept", DateTime.Now);
-                }
+               {
+                    insertBooking = BookingTempStore.Instance.InsertBooking(AccountStore.Instance.IdUser, "3B", checkinDate, checkoutDate, Int32.Parse(numberApartment), "No Accept", DateTime.Now);
+               }
                else if (typeofApartment.Equals("Standard (Type 2A)"))
-                {
+               {
                    insertBooking = BookingTempStore.Instance.InsertBooking(AccountStore.Instance.IdUser, "2A", checkinDate, checkoutDate, Int32.Parse(numberApartment), "No Accept", DateTime.Now);
-                }
+               }
 
-                if (insertBooking > 0 )
-                {
+               if (insertBooking > 0 )
+               {
                     MessageBox.Show("Success");
-                    
-                }
-                else 
-                {
+               }
+               else 
+               {
                     MessageBox.Show("Error");
-                }
+               }
                
             });
         }
