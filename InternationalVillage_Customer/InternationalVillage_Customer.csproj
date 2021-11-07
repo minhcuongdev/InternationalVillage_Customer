@@ -87,6 +87,7 @@
     <Compile Include="Component\NotificationUC.xaml.cs">
       <DependentUpon>NotificationUC.xaml</DependentUpon>
     </Compile>
+    <Compile Include="FAKE_DATA\BillDataFake.cs" />
     <Compile Include="LoginWindow.xaml.cs">
       <DependentUpon>LoginWindow.xaml</DependentUpon>
     </Compile>
@@ -94,6 +95,7 @@
       <DependentUpon>MenuWindow.xaml</DependentUpon>
     </Compile>
     <Compile Include="Model\Account.cs" />
+    <Compile Include="Model\Bill.cs" />
     <Compile Include="Model\BookingApartmentTemp.cs" />
     <Compile Include="Pages\ApartmentFormPage.xaml.cs">
       <DependentUpon>ApartmentFormPage.xaml</DependentUpon>
@@ -144,13 +146,17 @@
       <DependentUpon>SignupWindow.xaml</DependentUpon>
     </Compile>
     <Compile Include="Store\AccountStore.cs" />
+    <Compile Include="Store\BillStore.cs" />
     <Compile Include="Store\BookingTempStore.cs" />
     <Compile Include="Store\CustomerStore.cs" />
     <Compile Include="Store\DataProvider.cs" />
     <Compile Include="Utilities\ConnectDB.cs" />
     <Compile Include="Utilities\Validate.cs" />
     <Compile Include="ViewModel\BaseViewModel.cs" />
+    <Compile Include="ViewModel\BillInfoViewModel.cs" />
+    <Compile Include="ViewModel\BillPageViewModel.cs" />
     <Compile Include="ViewModel\BookApartmentViewModel.cs" />
+    <Compile Include="ViewModel\BookingPageViewModel.cs" />
     <Compile Include="ViewModel\BookServiceViewModel.cs" />
     <Compile Include="ViewModel\HomeViewModel.cs" />
     <Compile Include="ViewModel\LoginViewModel.cs" />

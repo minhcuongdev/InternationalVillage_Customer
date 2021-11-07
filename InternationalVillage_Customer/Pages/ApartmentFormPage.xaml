@@ -66,7 +66,7 @@
                 </Style>
             </Grid.Resources>
             <TextBlock Foreground="Black" Margin="50,10,0,0" FontWeight="Bold" VerticalAlignment="Bottom">
-                <Hyperlink NavigateUri="HomePage.xaml">BACK TO HOME</Hyperlink>
+                <Hyperlink NavigateUri="BookingPage.xaml">BACK TO HOME</Hyperlink>
             </TextBlock>
         </Grid>
 
@@ -196,17 +196,16 @@
             IsEnabled="True"
             materialDesign:HintAssist.Hint="Type of Apartment"
             Width="240" HorizontalAlignment="Left" VerticalAlignment="Bottom" Margin="50,0,0,14"
-            SelectedIndex="0">
+            >
                 
-                <ComboBoxItem
-              Content="Luxury (Type 3A)" 
-                   />
-                <ComboBoxItem
-              Content="High Standard (Type 3B)" />
-                <ComboBoxItem
-              Content="Standard (Type 2A)" />
+                <ComboBoxItem Content="Luxury (Type 3A)" />
+                <ComboBoxItem Content="High Standard (Type 3B)" />
+                <ComboBoxItem Content="Standard (Type 2A)" />
              
                 <i:Interaction.Triggers>
+                    <i:EventTrigger EventName="Loaded">
+                        <i:InvokeCommandAction Command="{Binding TypeOfApartmentLoaded}" CommandParameter="{Binding ElementName=TypeOfApartment}"/>
+                    </i:EventTrigger>
                     <i:EventTrigger EventName="SelectionChanged">
                         <i:InvokeCommandAction Command="{Binding TypeOfApartmentChanged}" CommandParameter="{Binding ElementName=TypeOfApartment}"/>
                     </i:EventTrigger>
