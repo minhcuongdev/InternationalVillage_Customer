@@ -6,7 +6,8 @@
       xmlns:local="clr-namespace:InternationalVillage_Customer.Pages"      
       mc:Ignorable="d"
       
-      xmlns:materialDesign="http://materialdesigninxaml.net/winfx/xaml/themes"
+      xmlns:materialDesign="http://materialdesigninxaml.net/winfx/xaml/themes" 
+      xmlns:i="http://schemas.microsoft.com/expression/2010/interactivity"
       TextElement.Foreground="{DynamicResource MaterialDesignBody}"
       TextElement.FontWeight="Regular"
       TextElement.FontSize="13"
@@ -14,7 +15,7 @@
       TextOptions.TextRenderingMode="Auto"
       FontFamily="{DynamicResource MaterialDesignFont}"
       
-      
+      DataContext="{StaticResource BookingServicePageVM}"
       
       d:DesignHeight="450" d:DesignWidth="800"
       Title="BookingServicePage">
@@ -130,10 +131,13 @@
                                             <ColumnDefinition></ColumnDefinition>
                                         </Grid.ColumnDefinitions>
                                         <TextBlock Grid.Column="0" Text="FREE" FontSize="16" FontWeight="Bold"/>
-                                        <Button Grid.Column="1" VerticalAlignment="Top">
-                                            <Button.Content>
-                                                <Hyperlink NavigateUri="ServiceFormPage.xaml">Book now</Hyperlink>
-                                            </Button.Content>
+                                        <Button x:Name="SwimmingPoolBtn" Grid.Column="1" VerticalAlignment="Top">
+                                            <Hyperlink NavigateUri="ServiceFormPage.xaml">Book now</Hyperlink>
+                                            <i:Interaction.Triggers>
+                                                <i:EventTrigger EventName="Click">
+                                                    <i:InvokeCommandAction Command="{Binding SwimmingPoolBtnClick}" CommandParameter="{Binding ElementName=SwimmingPoolBtn}"/>
+                                                </i:EventTrigger>
+                                            </i:Interaction.Triggers>
                                         </Button>
                                     </Grid>
                                 </Grid>
@@ -203,10 +207,13 @@
                                             <ColumnDefinition></ColumnDefinition>
                                         </Grid.ColumnDefinitions>
                                         <TextBlock Grid.Column="0" Text="20$" FontSize="15" FontWeight="Bold"/>
-                                        <Button Grid.Column="1" VerticalAlignment="Top">
-                                            <Button.Content>
-                                                <Hyperlink NavigateUri="ServiceFormPage.xaml">Book now</Hyperlink>
-                                            </Button.Content>
+                                        <Button x:Name="RestaurentBtn" Grid.Column="1" VerticalAlignment="Top">
+                                            <Hyperlink NavigateUri="ServiceFormPage.xaml">Book now</Hyperlink>
+                                            <i:Interaction.Triggers>
+                                                <i:EventTrigger EventName="Click">
+                                                    <i:InvokeCommandAction Command="{Binding RestaurantBtnClick}" CommandParameter="{Binding ElementName=RestaurentBtn}"/>
+                                                </i:EventTrigger>
+                                            </i:Interaction.Triggers>
                                         </Button>
                                     </Grid>
                                 </Grid>
@@ -276,10 +283,13 @@
                                             <ColumnDefinition></ColumnDefinition>
                                         </Grid.ColumnDefinitions>
                                         <TextBlock Grid.Column="0" Text="9$" FontSize="16" FontWeight="Bold"/>
-                                        <Button Grid.Column="1" VerticalAlignment="Top">
-                                            <Button.Content>
-                                                <Hyperlink NavigateUri="ServiceFormPage.xaml">Book now</Hyperlink>
-                                            </Button.Content>
+                                        <Button x:Name="GymBtn" Grid.Column="1" VerticalAlignment="Top">
+                                            <Hyperlink NavigateUri="ServiceFormPage.xaml">Book now</Hyperlink>
+                                            <i:Interaction.Triggers>
+                                                <i:EventTrigger EventName="Click">
+                                                    <i:InvokeCommandAction Command="{Binding GymBtnClick}" CommandParameter="{Binding ElementName=GymBtn}"/>
+                                                </i:EventTrigger>
+                                            </i:Interaction.Triggers>
                                         </Button>
                                     </Grid>
                                 </Grid>

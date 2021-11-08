@@ -29,6 +29,8 @@ namespace InternationalVillage_Customer.ViewModel
         public ICommand ValidateTypeOfService { get; set; }
         public ICommand NumberServiceChanged { get; set; }
         public ICommand ValidateNumberService { get; set; }
+        public ICommand TypeOfServiceLoaded { get; set; }
+        
 
         //Validate data
         private string fullname = "";
@@ -53,7 +55,7 @@ namespace InternationalVillage_Customer.ViewModel
         public string StrCheckoutDate { get => strCheckoutDate; set => strCheckoutDate = value; }
         bool isCheckoutDateCorrect = false;
 
-        private string typeofService = "";
+        private string typeofService = BookingTempStore.Instance.TypeOfService;
         public string TypeOfService { get => typeofService; set => typeofService = value; }
         bool isTypeOfServiceCorrect = false;
 
@@ -113,23 +115,22 @@ namespace InternationalVillage_Customer.ViewModel
                 p.End = (checkinDate.AddDays(-1));
 
             });
-            CheckinDateChanged = new RelayCommand<DatePicker>((p) => { return true; }, (p) =>
-            {
-                checkinDate = Validate.Instance.DateChanged(p);
-                strCheckinDate = checkinDate.ToString();
-
-            });
+         
             CheckoutDateChanged = new RelayCommand<DatePicker>((p) => { return true; }, (p) =>
             {
                 checkoutDate = Validate.Instance.DateChanged(p);
                 strCheckoutDate = checkoutDate.ToString();
             });
 
+            TypeOfServiceLoaded = new RelayCommand<ComboBox>((p) => { return true; }, (p) =>
+            {
+                p.SelectedIndex = BookingTempStore.Instance.IndexTypeOfService;
+                typeofService = Validate.Instance.SelecttionChanged(p);
+            });
+
             TypeOfServiceChanged = new RelayCommand<ComboBox>((p) => { return true; }, (p) =>
             {
                 typeofService = Validate.Instance.SelecttionChanged(p);
-
-
             });
             ValidateTypeOfService = new RelayCommand<TextBlock>((p) => { return true; }, (p) =>
             {
