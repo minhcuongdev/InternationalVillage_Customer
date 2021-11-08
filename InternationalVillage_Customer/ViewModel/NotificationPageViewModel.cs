@@ -21,7 +21,7 @@ namespace InternationalVillage_Customer.ViewModel
                 for(int i=0;i<20;i++)
                 {
                     NotificationUC notificationUC = new NotificationUC();
-                    notificationUC.ContentOfNotification.Text = "MinhCuongdeptrai";
+                    notificationUC.ContentOfNotification.Text = i.ToString();
                     p.Children.Add(notificationUC);
                 }
             });

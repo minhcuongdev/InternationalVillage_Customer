@@ -65,7 +65,7 @@
                 </Style>
             </Grid.Resources>
             <TextBlock Foreground="Black" Margin="50,10,0,0" FontWeight="Bold" VerticalAlignment="Bottom">
-                <Hyperlink NavigateUri="HomePage.xaml">BACK TO HOME</Hyperlink>
+                <Hyperlink NavigateUri="/Pages/BookingServicePage.xaml">BACK</Hyperlink>
             </TextBlock>
         </Grid>
 
@@ -207,6 +207,9 @@
                 <ComboBoxItem
               Content="Bar" />
                 <i:Interaction.Triggers>
+                    <i:EventTrigger EventName="Loaded">
+                        <i:InvokeCommandAction Command="{Binding TypeOfServiceLoaded}" CommandParameter="{Binding ElementName=TypeOfService}"/>
+                    </i:EventTrigger>
                     <i:EventTrigger EventName="SelectionChanged">
                         <i:InvokeCommandAction Command="{Binding TypeOfServiceChanged}" CommandParameter="{Binding ElementName=TypeOfService}"/>
                     </i:EventTrigger>

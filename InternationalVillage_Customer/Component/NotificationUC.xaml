@@ -16,6 +16,7 @@
              TextOptions.TextRenderingMode="Auto"
              FontFamily="{DynamicResource MaterialDesignFont}"
              
+             
              x:Name="NotiUC"
              mc:Ignorable="d" 
              d:DesignWidth="300" Height="70" Margin="0,0,0,10">
@@ -35,7 +36,12 @@
                     </Grid.ColumnDefinitions>
                     <Image Grid.Column="0" Source="flash.png" Height="18" Width="25" VerticalAlignment="Center"/>
                     <TextBlock Grid.Column="1" Text="Request Successfully" FontSize="10" FontWeight="Bold" VerticalAlignment="Center" Foreground="Black" />
-                    <Image Grid.Column="2" Source="cancel.png" Stretch="UniformToFill" Width="18" Height="18" HorizontalAlignment="Right" Margin="0,0,10,0">
+                    <Image Grid.Column="2" Source="cancel.png" Stretch="UniformToFill" Width="18" Height="18" HorizontalAlignment="Right" Margin="0,0,10,0" Cursor="Hand">
+                        <i:Interaction.Triggers>
+                            <i:EventTrigger EventName="MouseDown">
+                                <i:InvokeCommandAction Command="{Binding CloseNoti}" CommandParameter="{Binding ElementName=NotiUC}"/>
+                            </i:EventTrigger>
+                        </i:Interaction.Triggers>
                     </Image>
 
                 </Grid>

@@ -21,6 +21,12 @@ namespace InternationalVillage_Customer.Store
         private int indexTypeOfApartment = 0;
         public int IndexTypeOfApartment { get => indexTypeOfApartment; set => indexTypeOfApartment = value; }
 
+        private string typeOfService = "";
+        public string TypeOfService { get => typeOfService; set => typeOfService = value; }
+
+        private int indexTypeOfService = 0;
+        public int IndexTypeOfService { get => indexTypeOfService; set => indexTypeOfService = value; }
+
         public int InsertBooking(string id_Cus, string id_Apart, DateTime checkin, DateTime checkout, int quantity, string state, DateTime time)
         {
             
