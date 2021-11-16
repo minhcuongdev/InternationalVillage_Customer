@@ -86,29 +86,60 @@
                             
 
                             <Button Grid.Row="0" Background="Transparent" BorderThickness="0"  >
-                                
+                                <Button.Resources>
+                                    
+                                    <Style TargetType="TextBlock" >
+                                        <Setter Property="Foreground" Value="Gray"/>
+                                        <Setter Property="FontWeight" Value="Normal"/>
+                                        <Style.Triggers>
+                                            <Trigger Property="IsMouseOver" Value="True">
+                                                <Setter Property="Foreground" Value="#2f9cfa"/>
+                                                <Setter Property="FontWeight" Value="Bold"/>
+                                            </Trigger>
+                                            
+                                        </Style.Triggers>
+                                    </Style>
+                                    
+                                </Button.Resources>
                                 <Grid>
+                                    
                                     <Grid.ColumnDefinitions>
                                         <ColumnDefinition Width="45"/>
-                                        <ColumnDefinition/>
+                                        <ColumnDefinition>
+                                            
+                                        </ColumnDefinition>
                                     </Grid.ColumnDefinitions>
 
                                     <Border Grid.ColumnSpan="2"  CornerRadius="4" Width="210" HorizontalAlignment="Right"/>
-                                    <Rectangle HorizontalAlignment="Left" Width="4" Height="40" VerticalAlignment="Center" RadiusX="2" RadiusY="2"/>
-                                    <Image  Margin="0,0,21,0" VerticalAlignment="Center" HorizontalAlignment="Right" Source="/Image/house.png"/>
-                                    <TextBlock HorizontalAlignment="Left" VerticalAlignment="Center" Margin="12 0 0 0"
-                                                Grid.Column="1" Text="HOME" Foreground="black"
-                                                FontWeight="Normal" 
-                                                FontSize="14"/>
+                                    <Rectangle  HorizontalAlignment="Left" Width="4" Height="40" VerticalAlignment="Center" RadiusX="2" RadiusY="2"/>
+                                    <Image Grid.Column="0" Margin="0,0,21,0" VerticalAlignment="Center" HorizontalAlignment="Right" Source="/Image/house.png"/>
+                                    <TextBlock x:Name="txb1" Grid.Column="1" HorizontalAlignment="Left" VerticalAlignment="Center" Margin="12 0 0 0"
+                                                 Text="HOME"  FontSize="14"/>
                                 </Grid>
+
                                 <i:Interaction.Triggers>
                                     <i:EventTrigger EventName="Click">
                                         <i:InvokeCommandAction Command="{Binding OpenHomePage}" CommandParameter="{Binding ElementName=PagesNavigation}"/>
                                     </i:EventTrigger>
+                                    
                                 </i:Interaction.Triggers>
                             </Button>
 
                             <Button Grid.Row="1" Background="Transparent" BorderThickness="0" Margin="0,10,0,0" >
+                                <Button.Resources>
+                                    <Style TargetType="TextBlock" >
+                                        <Setter Property="Foreground" Value="Gray"/>
+                                        <Setter Property="FontWeight" Value="Normal"/>
+                                        <Style.Triggers>
+                                            <Trigger Property="IsMouseOver" Value="True">
+                                                <Setter Property="Foreground" Value="#2f9cfa"/>
+                                                <Setter Property="FontWeight" Value="Bold" />
+
+                                            </Trigger>
+                                        </Style.Triggers>
+                                    </Style>
+
+                                </Button.Resources>
                                 <Grid>
                                     <Grid.ColumnDefinitions>
                                         <ColumnDefinition Width="45"/>
@@ -119,8 +150,7 @@
                                     <Rectangle HorizontalAlignment="Left" Width="4" Height="40" VerticalAlignment="Center" RadiusX="2" RadiusY="2"/>
                                     <Image  Margin="0,0,21,0" VerticalAlignment="Center" HorizontalAlignment="Right" Source="/Image/booking.png"/>
                                     <TextBlock  HorizontalAlignment="Left" VerticalAlignment="Center" Margin="12 0 0 0"
-                                                Grid.Column="1" Text="BOOK APARTMENT" Foreground="black"
-                                                FontWeight="Normal" 
+                                                Grid.Column="1" Text="BOOK APARTMENT" 
                                                 FontSize="14"/>
                                 </Grid>
                                 <i:Interaction.Triggers>
@@ -131,6 +161,20 @@
                             </Button>
 
                             <Button Grid.Row="2" Background="Transparent" BorderThickness="0" Margin="0,10,0,0" >
+                                <Button.Resources>
+                                    <Style TargetType="TextBlock" >
+                                        <Setter Property="Foreground" Value="Gray"/>
+                                        <Setter Property="FontWeight" Value="Normal"/>
+                                        <Style.Triggers>
+                                            <Trigger Property="IsMouseOver" Value="True">
+                                                <Setter Property="Foreground" Value="#2f9cfa"/>
+                                                <Setter Property="FontWeight" Value="Bold"/>
+
+                                            </Trigger>
+                                        </Style.Triggers>
+                                    </Style>
+
+                                </Button.Resources>
                                 <Grid>
                                     <Grid.ColumnDefinitions>
                                         <ColumnDefinition Width="45"/>
@@ -139,10 +183,9 @@
 
                                     <Border Grid.ColumnSpan="2"  CornerRadius="4" Width="210" HorizontalAlignment="Right"/>
                                     <Rectangle HorizontalAlignment="Left" Width="4" Height="40" VerticalAlignment="Center" RadiusX="2" RadiusY="2"/>
-                                    <Image  Margin="0,0,21,0" VerticalAlignment="Center" HorizontalAlignment="Right" Source="/Image/bookingservice.png"/>
+                                    <Image  Margin="0,0,21,0" VerticalAlignment="Center" HorizontalAlignment="Right" Source="/Image/online-service.png"/>
                                     <TextBlock  HorizontalAlignment="Left" VerticalAlignment="Center" Margin="12 0 0 0"
-                                                Grid.Column="1" Text="BOOK SERVICES" Foreground="black"
-                                                FontWeight="Normal" 
+                                                Grid.Column="1" Text="BOOK SERVICES" 
                                                 FontSize="14"/>
                                 </Grid>
                                 <i:Interaction.Triggers>
@@ -153,6 +196,21 @@
                             </Button>
 
                             <Button Grid.Row="3" Background="Transparent" BorderThickness="0" Margin="0,10,0,0" >
+                                
+                                <Button.Resources>
+                                    <Style TargetType="TextBlock" >
+                                        <Setter Property="Foreground" Value="Gray"/>
+                                        <Setter Property="FontWeight" Value="Normal"/>
+                                        <Style.Triggers>
+                                            <Trigger Property="IsMouseOver" Value="True">
+                                                <Setter Property="Foreground" Value="#2f9cfa"/>
+                                                <Setter Property="FontWeight" Value="Bold"/>
+
+                                            </Trigger>
+                                        </Style.Triggers>
+                                    </Style>
+
+                                </Button.Resources>
                                 <Grid>
                                     <Grid.ColumnDefinitions>
                                         <ColumnDefinition Width="45"/>
@@ -161,10 +219,9 @@
 
                                     <Border Grid.ColumnSpan="2"  CornerRadius="4" Width="210" HorizontalAlignment="Right"/>
                                     <Rectangle HorizontalAlignment="Left" Width="4" Height="40" VerticalAlignment="Center" RadiusX="2" RadiusY="2"/>
-                                    <Image  Margin="0,0,21,0" VerticalAlignment="Center" HorizontalAlignment="Right" Source="/Image/history-book.png"/>
+                                    <Image  Margin="0,0,21,0" VerticalAlignment="Center" HorizontalAlignment="Right" Source="Image/mybooking.png"/>
                                     <TextBlock  HorizontalAlignment="Left" VerticalAlignment="Center" Margin="12 0 0 0"
-                                                Grid.Column="1" Text="MY BOOKING" Foreground="black"
-                                                FontWeight="Normal" 
+                                                Grid.Column="1" Text="MY BOOKING" 
                                                 FontSize="14"/>
                                 </Grid>
                                 <i:Interaction.Triggers>
@@ -175,6 +232,20 @@
                             </Button>
 
                             <Button Grid.Row="4" Background="Transparent" BorderThickness="0" Margin="0,10,0,0" >
+                                <Button.Resources>
+                                    <Style TargetType="TextBlock" >
+                                        <Setter Property="Foreground" Value="Gray"/>
+                                        <Setter Property="FontWeight" Value="Normal"/>
+                                        <Style.Triggers>
+                                            <Trigger Property="IsMouseOver" Value="True">
+                                                <Setter Property="Foreground" Value="#2f9cfa"/>
+                                                <Setter Property="FontWeight" Value="Bold"/>
+
+                                            </Trigger>
+                                        </Style.Triggers>
+                                    </Style>
+
+                                </Button.Resources>
                                 <Grid>
                                     <Grid.ColumnDefinitions>
                                         <ColumnDefinition Width="45"/>
@@ -185,8 +256,7 @@
                                     <Rectangle  HorizontalAlignment="Left" Width="4" Height="40" VerticalAlignment="Center" RadiusX="2" RadiusY="2"/>
                                     <Image  Margin="0,0,21,0" VerticalAlignment="Center" HorizontalAlignment="Right" Source="/Image/budget.png"/>
                                     <TextBlock  HorizontalAlignment="Left" VerticalAlignment="Center" Margin="12 0 0 0"
-                                                Grid.Column="1" Text="MY BILL" Foreground="black"
-                                                FontWeight="Normal" 
+                                                Grid.Column="1" Text="MY BILL" 
                                                 FontSize="14"/>
                                 </Grid>
                                 <i:Interaction.Triggers>
@@ -197,6 +267,20 @@
                             </Button>
 
                             <Button Grid.Row="5" Background="Transparent" BorderThickness="0" Margin="0,10,0,0" >
+                                <Button.Resources>
+                                    <Style TargetType="TextBlock" >
+                                        <Setter Property="Foreground" Value="Gray"/>
+                                        <Setter Property="FontWeight" Value="Normal"/>
+                                        <Style.Triggers>
+                                            <Trigger Property="IsMouseOver" Value="True">
+                                                <Setter Property="Foreground" Value="#2f9cfa"/>
+                                                <Setter Property="FontWeight" Value="Bold"/>
+
+                                            </Trigger>
+                                        </Style.Triggers>
+                                    </Style>
+
+                                </Button.Resources>
                                 <Grid>
                                     <Grid.ColumnDefinitions>
                                         <ColumnDefinition Width="45"/>
@@ -207,8 +291,7 @@
                                     <Rectangle  HorizontalAlignment="Left" Width="4" Height="40" VerticalAlignment="Center" RadiusX="2" RadiusY="2"/>
                                     <Image  Margin="0,0,21,0" VerticalAlignment="Center" HorizontalAlignment="Right" Source="/Image/notification.png" />
                                     <TextBlock  HorizontalAlignment="Left" VerticalAlignment="Center" Margin="12 0 0 0"
-                                                Grid.Column="1" Text="NOTIFICATION" Foreground="black"
-                                                FontWeight="Normal" 
+                                                Grid.Column="1" Text="NOTIFICATION" 
                                                 FontSize="14"/>
                                 </Grid>
                                 <i:Interaction.Triggers>
@@ -219,6 +302,20 @@
                             </Button>
 
                             <Button Grid.Row="6" Background="Transparent" BorderThickness="0" Margin="0,10,0,0" >
+                                <Button.Resources>
+                                    <Style TargetType="TextBlock" >
+                                        <Setter Property="Foreground" Value="Gray"/>
+                                        <Setter Property="FontWeight" Value="Normal"/>
+                                        <Style.Triggers>
+                                            <Trigger Property="IsMouseOver" Value="True">
+                                                <Setter Property="Foreground" Value="#2f9cfa"/>
+                                                <Setter Property="FontWeight" Value="Bold"/>
+
+                                            </Trigger>
+                                        </Style.Triggers>
+                                    </Style>
+
+                                </Button.Resources>
                                 <Grid>
                                     <Grid.ColumnDefinitions>
                                         <ColumnDefinition Width="45"/>
@@ -229,8 +326,7 @@
                                     <Rectangle  HorizontalAlignment="Left" Width="4" Height="40" VerticalAlignment="Center" RadiusX="2" RadiusY="2"/>
                                     <Image  Margin="0,0,21,0" VerticalAlignment="Center" HorizontalAlignment="Right" Source="/Image/warning.png"/>
                                     <TextBlock  HorizontalAlignment="Left" VerticalAlignment="Center" Margin="12 0 0 0"
-                                                Grid.Column="1" Text="INCIDENT" Foreground="black"
-                                                FontWeight="Normal" 
+                                                Grid.Column="1" Text="INCIDENT" 
                                                 FontSize="14"/>
                                 </Grid>
                                 <i:Interaction.Triggers>
@@ -243,6 +339,20 @@
                             
 
                             <Button Grid.Row="7" Background="Transparent" BorderThickness="0" Margin="-1,10,0,0" >
+                                <Button.Resources>
+                                    <Style TargetType="TextBlock" >
+                                        <Setter Property="Foreground" Value="Gray"/>
+                                        <Setter Property="FontWeight" Value="Normal"/>
+                                        <Style.Triggers>
+                                            <Trigger Property="IsMouseOver" Value="True">
+                                                <Setter Property="Foreground" Value="#2f9cfa"/>
+                                                <Setter Property="FontWeight" Value="Bold"/>
+
+                                            </Trigger>
+                                        </Style.Triggers>
+                                    </Style>
+
+                                </Button.Resources>
                                 <Grid>
                                     <Grid.ColumnDefinitions>
                                         <ColumnDefinition Width="45"/>
@@ -253,8 +363,7 @@
                                     <Rectangle  HorizontalAlignment="Left" Width="4" Height="40" VerticalAlignment="Center" RadiusX="2" RadiusY="2"/>
                                     <Image  Margin="0,0,21,0" VerticalAlignment="Center" HorizontalAlignment="Right" Source="/Image/check-out.png"/>
                                     <TextBlock  HorizontalAlignment="Left" VerticalAlignment="Center" Margin="12 0 0 0"
-                                                Grid.Column="1" Text="LOG OUT" Foreground="black"
-                                                FontWeight="Normal" 
+                                                Grid.Column="1" Text="LOG OUT" 
                                                 FontSize="14"/>
                                 </Grid>
                                 <i:Interaction.Triggers>

@@ -26,6 +26,7 @@ namespace InternationalVillage_Customer.ViewModel
         public ICommand OpenBookingServicePage { get; set; }
         public ICommand OpenMyBookingPage { get; set; }
         public ICommand Signout { get; set; }
+        
 
 
 
@@ -77,6 +78,8 @@ namespace InternationalVillage_Customer.ViewModel
                 
 
             });
+
+            
         }
     }
 }
