@@ -213,8 +213,17 @@
                                     </ListView.View>
 
                                 </ListView>-->
-                                <DataGrid Height="auto" HorizontalAlignment="Left"  Name="BillDataGrid" VerticalAlignment="Top" Width="490">
-                                    
+                                <DataGrid x:Name="BillTable" Height="auto" ColumnWidth="200" IsReadOnly="True" AlternatingRowBackground="AliceBlue" HorizontalAlignment="Center" VerticalAlignment="Top" Width="600" CanUserAddRows="False" AutoGenerateColumns="False">
+                                    <DataGrid.Columns>
+                                        <DataGridTextColumn Header="A/s" Binding="{Binding Name}" />
+                                        <DataGridTextColumn Header="Quantity" Binding="{Binding Quantity}" />
+                                        <DataGridTextColumn Header="Price" Binding="{Binding Price}" />
+                                    </DataGrid.Columns>
+                                    <i:Interaction.Triggers>
+                                        <i:EventTrigger EventName="Loaded">
+                                            <i:InvokeCommandAction Command="{Binding LoadTable}" CommandParameter="{Binding ElementName=BillTable}"/>
+                                        </i:EventTrigger>
+                                    </i:Interaction.Triggers>
                                 </DataGrid>
                             </Grid>
                             

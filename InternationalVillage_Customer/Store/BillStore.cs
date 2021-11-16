@@ -21,6 +21,17 @@ namespace InternationalVillage_Customer.Store
 
         List<Bill> billList = FAKE_DATA.BillDataFake.Instance.GetListBill();
 
+        public List<DetailBill> GetTableById(string id)
+        {
+            Bill bill = GetBillById(id);
+            List<DetailBill> apartmentBills = new List<DetailBill>();
+            if (bill.DetailBills.Count != 0)
+            {
+                apartmentBills = bill.DetailBills;
+            }
+            return apartmentBills;
+        }
+
         public List<Bill> GetBillList()
         {
             return billList;
