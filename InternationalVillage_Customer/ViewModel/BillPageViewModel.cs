@@ -21,8 +21,16 @@ namespace InternationalVillage_Customer.ViewModel
         public ICommand LoadReceptionist { get; set; }
         public ICommand LoadTotalMoney { get; set; }
 
+        public ICommand LoadTable { get; set; }
+
         public BillPageViewModel()
         {
+            LoadTable = new RelayCommand<DataGrid>((p) => { return true; }, (p) =>
+            {
+                List<DetailBill> detailBills = BillStore.Instance.GetTableById(BillStore.Instance.IdDetailBill);
+                p.ItemsSource = detailBills;
+            });
+
             LoadIdBill = new RelayCommand<TextBlock>((p) => { return true; }, (p) =>
             {
                 Bill bill = BillStore.Instance.GetBillById(BillStore.Instance.IdDetailBill);

@@ -95,8 +95,11 @@
       <DependentUpon>MenuWindow.xaml</DependentUpon>
     </Compile>
     <Compile Include="Model\Account.cs" />
+    <Compile Include="Model\ApartmentBill.cs" />
     <Compile Include="Model\Bill.cs" />
     <Compile Include="Model\BookingApartmentTemp.cs" />
+    <Compile Include="Model\DetailBill.cs" />
+    <Compile Include="Model\ServiceBill.cs" />
     <Compile Include="Pages\ApartmentFormPage.xaml.cs">
       <DependentUpon>ApartmentFormPage.xaml</DependentUpon>
     </Compile>
@@ -108,9 +111,6 @@
     </Compile>
     <Compile Include="Pages\BookingServicePage.xaml.cs">
       <DependentUpon>BookingServicePage.xaml</DependentUpon>
-    </Compile>
-    <Compile Include="Pages\BookingServicePage2.xaml.cs">
-      <DependentUpon>BookingServicePage2.xaml</DependentUpon>
     </Compile>
     <Compile Include="Pages\BillPage.xaml.cs">
       <DependentUpon>BillPage.xaml</DependentUpon>
@@ -223,10 +223,6 @@
       <Generator>MSBuild:Compile</Generator>
     </Page>
     <Page Include="Pages\BookingServicePage.xaml">
-      <SubType>Designer</SubType>
-      <Generator>MSBuild:Compile</Generator>
-    </Page>
-    <Page Include="Pages\BookingServicePage2.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>

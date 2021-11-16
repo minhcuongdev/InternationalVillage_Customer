@@ -15,6 +15,9 @@ namespace InternationalVillage_Customer.ViewModel
         public ICommand SwimmingPoolBtnClick { get; set; }
         public ICommand RestaurantBtnClick { get; set; }
         public ICommand GymBtnClick { get; set; }
+        public ICommand TennisBtnClick { get; set; }
+        public ICommand GolfBtnClick { get; set; }
+        public ICommand BarBtnClick { get; set; }
 
         public BookingServicePageViewModel()
         {
@@ -34,6 +37,24 @@ namespace InternationalVillage_Customer.ViewModel
             {
                 BookingTempStore.Instance.TypeOfService = "Gym";
                 BookingTempStore.Instance.IndexTypeOfService = 1;
+            });
+
+            TennisBtnClick = new RelayCommand<Button>((p) => { return true; }, (p) =>
+            {
+                BookingTempStore.Instance.TypeOfService = "Tennis";
+                BookingTempStore.Instance.IndexTypeOfService = 3;
+            });
+
+            GolfBtnClick = new RelayCommand<Button>((p) => { return true; }, (p) =>
+            {
+                BookingTempStore.Instance.TypeOfService = "Golf";
+                BookingTempStore.Instance.IndexTypeOfService = 4;
+            });
+
+            BarBtnClick = new RelayCommand<Button>((p) => { return true; }, (p) =>
+            {
+                BookingTempStore.Instance.TypeOfService = "Bar";
+                BookingTempStore.Instance.IndexTypeOfService = 5;
             });
         }
     }

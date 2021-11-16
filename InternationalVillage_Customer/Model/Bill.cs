@@ -29,6 +29,7 @@ namespace InternationalVillage_Customer.Model
         private string receptionistName;
         private string checkInDate;
         private string checkOutDate;
+        private List<DetailBill> detailBills = new List<DetailBill>();
         private string totalMoney;
 
         public string IdBill { get => idBill; set => idBill = value; }
@@ -37,5 +38,6 @@ namespace InternationalVillage_Customer.Model
         public string CheckOutDate { get => checkOutDate; set => checkOutDate = value; }
         public string TotalMoney { get => totalMoney; set => totalMoney = value; }
         public string ReceptionistName { get => receptionistName; set => receptionistName = value; }
+        internal List<DetailBill> DetailBills { get => detailBills; set => detailBills = value; }
     }
 }
