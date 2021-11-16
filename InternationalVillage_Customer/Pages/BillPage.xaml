@@ -13,242 +13,255 @@
       d:DesignHeight="450" d:DesignWidth="800"
       Title="CheckoutPage">
     <Grid Background="white">
-        <Grid >
-            <Grid.ColumnDefinitions>
-                <ColumnDefinition Width="300"></ColumnDefinition>
-                <ColumnDefinition></ColumnDefinition>
-            </Grid.ColumnDefinitions>
+        <Grid>
+            <Grid.RowDefinitions>
+                <RowDefinition Height="30"></RowDefinition>
+                <RowDefinition></RowDefinition>
+            </Grid.RowDefinitions>
 
-            <Border Grid.Column="0" CornerRadius="15" >
-                <Border.Background>
-                    <ImageBrush  Stretch="UniformToFill" ImageSource="/Image/tour.jpg" />
-                </Border.Background>
-            </Border>
+            <Grid Grid.Row="0">
+                <Grid.Resources>
+                    <Style x:Key="{x:Type Hyperlink}" TargetType="{x:Type Hyperlink}">
+                        <Setter Property="Foreground" Value="black" />
 
-            <Grid Grid.Column="1">
-                <Grid.RowDefinitions>
-                    <RowDefinition Height="auto"></RowDefinition>
-                    <RowDefinition Height="130"></RowDefinition>
-                    <RowDefinition Height="200"></RowDefinition>
-                    <RowDefinition Height="40"></RowDefinition>
-                    <RowDefinition></RowDefinition>
-                    <RowDefinition></RowDefinition>
-                </Grid.RowDefinitions>
-                <TextBlock Grid.Row="0" Text="THANK YOU FOR YOUR COMING" FontSize="25" FontWeight="Bold" VerticalAlignment="Top" Margin="35,0,0,0"/>
+                        <Setter Property="TextDecorations" Value="None" />
+                        <Style.Triggers>
+                            <Trigger Property="IsMouseOver" Value="True">
+                                <Setter Property="Foreground" Value="#2f9cfa" />
+                            </Trigger>
+                            <Trigger Property="IsEnabled" Value="False">
+                                <Setter Property="Foreground" Value="{DynamicResource {x:Static SystemColors.GrayTextBrushKey}}" />
+                            </Trigger>
+                            <Trigger Property="IsEnabled" Value="True">
+                                <Setter Property="Cursor" Value="Hand" />
+                            </Trigger>
+                        </Style.Triggers>
+                    </Style>
+                </Grid.Resources>
+                <TextBlock Foreground="Black" Margin="10,10,0,0" FontWeight="Bold">
+                <Hyperlink NavigateUri="MyBillPage.xaml">BACK</Hyperlink>
+                </TextBlock>
+            </Grid>
+            <Grid Grid.Row="1">
+                <Grid >
+                    <Grid.ColumnDefinitions>
+                        <ColumnDefinition Width="300"></ColumnDefinition>
+                        <ColumnDefinition></ColumnDefinition>
+                    </Grid.ColumnDefinitions>
 
-                <Grid Grid.Row="1">
-                    <Grid.RowDefinitions>
-                        <RowDefinition></RowDefinition>
-                        <RowDefinition></RowDefinition>
-                        <RowDefinition></RowDefinition>
-                    </Grid.RowDefinitions>
+                    <Border Grid.Column="0" CornerRadius="15" Margin="10,0,0,10" >
+                        <Border.Background>
+                            <ImageBrush  Stretch="UniformToFill" ImageSource="/Image/tour.jpg" />
+                        </Border.Background>
+                    </Border>
 
-                    <Grid Grid.Row="0">
-                        <Grid.ColumnDefinitions>
-                            <ColumnDefinition></ColumnDefinition>
-                            <ColumnDefinition></ColumnDefinition>
-                        </Grid.ColumnDefinitions>
+                    <Grid Grid.Column="1">
+                        <Grid.RowDefinitions>
+                            <RowDefinition Height="auto"></RowDefinition>
+                            <RowDefinition Height="130"></RowDefinition>
+                            <RowDefinition Height="170"></RowDefinition>
+                            <RowDefinition Height="40"></RowDefinition>
+                            <RowDefinition></RowDefinition>
+                            <RowDefinition></RowDefinition>
+                        </Grid.RowDefinitions>
+                        <TextBlock Grid.Row="0" Text="THANK YOU FOR YOUR COMING" FontSize="25" FontWeight="Bold" VerticalAlignment="Top" Margin="35,0,0,0"/>
 
-                        <Grid Grid.Column="0">
+                        <Grid Grid.Row="1">
                             <Grid.RowDefinitions>
                                 <RowDefinition></RowDefinition>
                                 <RowDefinition></RowDefinition>
+                                <RowDefinition></RowDefinition>
                             </Grid.RowDefinitions>
-                            <TextBlock Grid.Row="0" Text="ID Bill" FontSize="12" Foreground="Gray" FontWeight="DemiBold"  VerticalAlignment="Bottom" Margin="35,0,0,0"/>
-                            <TextBlock x:Name="IdBill" Grid.Row="1" Text="011111" FontSize="13" Foreground="Black" FontWeight="Bold" VerticalAlignment="Top" Margin="35,0,0,0">
+
+                            <Grid Grid.Row="0">
+                                <Grid.ColumnDefinitions>
+                                    <ColumnDefinition></ColumnDefinition>
+                                    <ColumnDefinition></ColumnDefinition>
+                                </Grid.ColumnDefinitions>
+
+                                <Grid Grid.Column="0">
+                                    <Grid.RowDefinitions>
+                                        <RowDefinition></RowDefinition>
+                                        <RowDefinition></RowDefinition>
+                                    </Grid.RowDefinitions>
+                                    <TextBlock Grid.Row="0" Text="ID Bill" FontSize="12" Foreground="Gray" FontWeight="DemiBold"  VerticalAlignment="Bottom" Margin="35,0,0,0"/>
+                                    <TextBlock x:Name="IdBill" Grid.Row="1" Text="011111" FontSize="13" Foreground="Black" FontWeight="Bold" VerticalAlignment="Top" Margin="35,0,0,0">
                                 <i:Interaction.Triggers>
                                     <i:EventTrigger EventName="Loaded">
                                         <i:InvokeCommandAction Command="{Binding LoadIdBill}" CommandParameter="{Binding ElementName=IdBill}"/>
                                     </i:EventTrigger>
                                 </i:Interaction.Triggers>
-                            </TextBlock>
+                                    </TextBlock>
 
-                        </Grid>
+                                </Grid>
 
-                        <Grid Grid.Column="1">
-                            <Grid.RowDefinitions>
-                                <RowDefinition></RowDefinition>
-                                <RowDefinition></RowDefinition>
-                            </Grid.RowDefinitions>
-                            <TextBlock Grid.Row="0" Text="Date" FontSize="12" Foreground="Gray" FontWeight="DemiBold"  VerticalAlignment="Bottom" Margin="35,0,0,0"/>
-                            <TextBlock x:Name="Date" Grid.Row="1" Text="23/10/2021" FontSize="13" Foreground="Black" FontWeight="Bold" VerticalAlignment="Top" Margin="35,0,0,0">
+                                <Grid Grid.Column="1">
+                                    <Grid.RowDefinitions>
+                                        <RowDefinition></RowDefinition>
+                                        <RowDefinition></RowDefinition>
+                                    </Grid.RowDefinitions>
+                                    <TextBlock Grid.Row="0" Text="Date" FontSize="12" Foreground="Gray" FontWeight="DemiBold"  VerticalAlignment="Bottom" Margin="35,0,0,0"/>
+                                    <TextBlock x:Name="Date" Grid.Row="1" Text="23/10/2021" FontSize="13" Foreground="Black" FontWeight="Bold" VerticalAlignment="Top" Margin="35,0,0,0">
                                 <i:Interaction.Triggers>
                                     <i:EventTrigger EventName="Loaded">
                                         <i:InvokeCommandAction Command="{Binding LoadDate}" CommandParameter="{Binding ElementName=Date}"/>
                                     </i:EventTrigger>
                                 </i:Interaction.Triggers>
-                            </TextBlock>
+                                    </TextBlock>
 
-                        </Grid>
-                    </Grid>
-                    
-                    <Grid Grid.Row="1">
-                        <Grid.ColumnDefinitions>
-                            <ColumnDefinition></ColumnDefinition>
-                            <ColumnDefinition></ColumnDefinition>
-                        </Grid.ColumnDefinitions>
+                                </Grid>
+                            </Grid>
 
-                        <Grid Grid.Column="0">
-                            <Grid.RowDefinitions>
-                                <RowDefinition></RowDefinition>
-                                <RowDefinition></RowDefinition>
-                            </Grid.RowDefinitions>
-                            <TextBlock Grid.Row="0" Text="Customer" FontSize="12" Foreground="Gray" FontWeight="DemiBold"  VerticalAlignment="Bottom" Margin="35,0,0,0"/>
-                            <TextBlock x:Name="Customer" Grid.Row="1" Text="Khanh Quynh" FontSize="13" Foreground="Black" FontWeight="Bold" VerticalAlignment="Top" Margin="35,0,0,0">
+                            <Grid Grid.Row="1">
+                                <Grid.ColumnDefinitions>
+                                    <ColumnDefinition></ColumnDefinition>
+                                    <ColumnDefinition></ColumnDefinition>
+                                </Grid.ColumnDefinitions>
+
+                                <Grid Grid.Column="0">
+                                    <Grid.RowDefinitions>
+                                        <RowDefinition></RowDefinition>
+                                        <RowDefinition></RowDefinition>
+                                    </Grid.RowDefinitions>
+                                    <TextBlock Grid.Row="0" Text="Customer" FontSize="12" Foreground="Gray" FontWeight="DemiBold"  VerticalAlignment="Bottom" Margin="35,0,0,0"/>
+                                    <TextBlock x:Name="Customer" Grid.Row="1" Text="Khanh Quynh" FontSize="13" Foreground="Black" FontWeight="Bold" VerticalAlignment="Top" Margin="35,0,0,0">
                                 <i:Interaction.Triggers>
                                     <i:EventTrigger EventName="Loaded">
                                         <i:InvokeCommandAction Command="{Binding LoadCustomer}" CommandParameter="{Binding ElementName=Customer}"/>
                                     </i:EventTrigger>
                                 </i:Interaction.Triggers>
-                            </TextBlock>
+                                    </TextBlock>
 
-                        </Grid>
+                                </Grid>
 
-                        <Grid Grid.Column="1">
-                            <Grid.RowDefinitions>
-                                <RowDefinition></RowDefinition>
-                                <RowDefinition></RowDefinition>
-                            </Grid.RowDefinitions>
-                            <TextBlock Grid.Row="0" Text="Receptionist" FontSize="12" Foreground="Gray" FontWeight="DemiBold"  VerticalAlignment="Bottom" Margin="35,0,0,0"/>
-                            <TextBlock x:Name="Receptionist" Grid.Row="1" Text="Minh Cuong" FontSize="13" Foreground="Black" FontWeight="Bold" VerticalAlignment="Top" Margin="35,0,0,0">
+                                <Grid Grid.Column="1">
+                                    <Grid.RowDefinitions>
+                                        <RowDefinition></RowDefinition>
+                                        <RowDefinition></RowDefinition>
+                                    </Grid.RowDefinitions>
+                                    <TextBlock Grid.Row="0" Text="Receptionist" FontSize="12" Foreground="Gray" FontWeight="DemiBold"  VerticalAlignment="Bottom" Margin="35,0,0,0"/>
+                                    <TextBlock x:Name="Receptionist" Grid.Row="1" Text="Minh Cuong" FontSize="13" Foreground="Black" FontWeight="Bold" VerticalAlignment="Top" Margin="35,0,0,0">
                                 <i:Interaction.Triggers>
                                     <i:EventTrigger EventName="Loaded">
                                         <i:InvokeCommandAction Command="{Binding LoadReceptionist}" CommandParameter="{Binding ElementName=Receptionist}"/>
                                     </i:EventTrigger>
                                 </i:Interaction.Triggers>
-                            </TextBlock>
+                                    </TextBlock>
 
-                        </Grid>
-                        
-                    </Grid>
+                                </Grid>
 
-                    <Grid Grid.Row="2">
-                        <Grid.ColumnDefinitions>
-                            <ColumnDefinition></ColumnDefinition>
-                            <ColumnDefinition></ColumnDefinition>
-                        </Grid.ColumnDefinitions>
+                            </Grid>
 
-                        <Grid Grid.Column="0">
-                            <Grid.RowDefinitions>
-                                <RowDefinition></RowDefinition>
-                                <RowDefinition></RowDefinition>
-                            </Grid.RowDefinitions>
-                            <TextBlock Grid.Row="0" Text="Check-in date" FontSize="12" Foreground="Gray" FontWeight="DemiBold"  VerticalAlignment="Bottom" Margin="35,0,0,0"/>
-                            <TextBlock x:Name="Checkin" Grid.Row="1" Text="19/10/2021" FontSize="13" Foreground="Black" FontWeight="Bold" VerticalAlignment="Top" Margin="35,0,0,0">
+                            <Grid Grid.Row="2">
+                                <Grid.ColumnDefinitions>
+                                    <ColumnDefinition></ColumnDefinition>
+                                    <ColumnDefinition></ColumnDefinition>
+                                </Grid.ColumnDefinitions>
+
+                                <Grid Grid.Column="0">
+                                    <Grid.RowDefinitions>
+                                        <RowDefinition></RowDefinition>
+                                        <RowDefinition></RowDefinition>
+                                    </Grid.RowDefinitions>
+                                    <TextBlock Grid.Row="0" Text="Check-in date" FontSize="12" Foreground="Gray" FontWeight="DemiBold"  VerticalAlignment="Bottom" Margin="35,0,0,0"/>
+                                    <TextBlock x:Name="Checkin" Grid.Row="1" Text="19/10/2021" FontSize="13" Foreground="Black" FontWeight="Bold" VerticalAlignment="Top" Margin="35,0,0,0">
                                 <i:Interaction.Triggers>
                                     <i:EventTrigger EventName="Loaded">
                                         <i:InvokeCommandAction Command="{Binding LoadCheckInDate}" CommandParameter="{Binding ElementName=Checkin}"/>
                                     </i:EventTrigger>
                                 </i:Interaction.Triggers>
-                            </TextBlock>
+                                    </TextBlock>
 
-                        </Grid>
+                                </Grid>
 
-                        <Grid Grid.Column="1">
-                            <Grid.RowDefinitions>
-                                <RowDefinition></RowDefinition>
-                                <RowDefinition></RowDefinition>
-                            </Grid.RowDefinitions>
-                            <TextBlock Grid.Row="0" Text="Check-out date" FontSize="12" Foreground="Gray" FontWeight="DemiBold"  VerticalAlignment="Bottom" Margin="35,0,0,0"/>
-                            <TextBlock x:Name="Checkout" Grid.Row="1" Text="23/10/2021" FontSize="13" Foreground="Black" FontWeight="Bold" VerticalAlignment="Top" Margin="35,0,0,0">
+                                <Grid Grid.Column="1">
+                                    <Grid.RowDefinitions>
+                                        <RowDefinition></RowDefinition>
+                                        <RowDefinition></RowDefinition>
+                                    </Grid.RowDefinitions>
+                                    <TextBlock Grid.Row="0" Text="Check-out date" FontSize="12" Foreground="Gray" FontWeight="DemiBold"  VerticalAlignment="Bottom" Margin="35,0,0,0"/>
+                                    <TextBlock x:Name="Checkout" Grid.Row="1" Text="23/10/2021" FontSize="13" Foreground="Black" FontWeight="Bold" VerticalAlignment="Top" Margin="35,0,0,0">
                                 <i:Interaction.Triggers>
                                     <i:EventTrigger EventName="Loaded">
                                         <i:InvokeCommandAction Command="{Binding LoadCheckOutDate}" CommandParameter="{Binding ElementName=Checkout}"/>
                                     </i:EventTrigger>
                                 </i:Interaction.Triggers>
-                            </TextBlock>
+                                    </TextBlock>
 
-                        </Grid>
+                                </Grid>
 
-                    </Grid>
-
-                </Grid>
-
-                <Grid Grid.Row="2">
-                    <Grid.RowDefinitions>
-                        <RowDefinition Height="45"></RowDefinition>
-                        <RowDefinition></RowDefinition>
-                    </Grid.RowDefinitions>
-
-                    <TextBlock Grid.Row="0" Text="DETAILS" FontSize="15" FontWeight="Bold" Foreground="#176EC6" HorizontalAlignment="Left" Margin="35,16,0,0" VerticalAlignment="Bottom"/>
-
-                    <Grid Grid.Row="1">
-                        <Grid.ColumnDefinitions>
-                            <ColumnDefinition></ColumnDefinition>
-                            <ColumnDefinition></ColumnDefinition>
-                            <ColumnDefinition></ColumnDefinition>
-                        </Grid.ColumnDefinitions>
-
-                        <Grid Grid.Column="0" VerticalAlignment="Top">
-                            <Grid.RowDefinitions>
-                                <RowDefinition></RowDefinition>
-                                <RowDefinition></RowDefinition>
-                            </Grid.RowDefinitions>
-                            <TextBlock Grid.Row="0" Text="A / S" FontSize="12" Foreground="Gray" FontWeight="DemiBold"  VerticalAlignment="Bottom" Margin="35,0,0,0"/>
-                            <TextBlock Grid.Row="1" Text="Luxury" FontSize="13" Foreground="Black" FontWeight="Bold" VerticalAlignment="Top" Margin="35,0,0,0"/>
-
-                        </Grid>
-
-                        <Grid Grid.Column="1" VerticalAlignment="Top">
-                            <Grid.RowDefinitions>
-                                <RowDefinition></RowDefinition>
-                                <RowDefinition></RowDefinition>
-                            </Grid.RowDefinitions>
-                            <TextBlock Grid.Row="0" Text="Quantity" FontSize="12" Foreground="Gray" FontWeight="DemiBold"  VerticalAlignment="Bottom" Margin="35,0,0,0"/>
-                            <TextBlock Grid.Row="1" Text="1" FontSize="13" Foreground="Black" FontWeight="Bold" VerticalAlignment="Top" Margin="35,0,0,0"/>
-                        </Grid>
-
-
-                        <Grid Grid.Column="2" VerticalAlignment="Top">
-                            <Grid.RowDefinitions>
-                                <RowDefinition></RowDefinition>
-                                <RowDefinition></RowDefinition>
-                            </Grid.RowDefinitions>
-                            <TextBlock Grid.Row="0" Text="Price" FontSize="12" Foreground="Gray" FontWeight="DemiBold"  VerticalAlignment="Bottom" Margin="35,0,0,0"/>
-                            <Grid Grid.Row="1">
-                                <TextBlock Text="70$" FontSize="13" Foreground="Black" FontWeight="Bold" VerticalAlignment="Top" Margin="35,0,0,0"/>
                             </Grid>
+
                         </Grid>
-                    </Grid>
-                </Grid>
-                <Grid Grid.Row="3" Margin="0,20,0,0">
-                    <Grid.ColumnDefinitions>
-                        <ColumnDefinition Width="169"></ColumnDefinition>
-                        <ColumnDefinition Width="*"></ColumnDefinition>
 
-                    </Grid.ColumnDefinitions>
-                    <TextBlock Grid.Column="0" Text="Payment approach" FontSize="12" Foreground="Black" FontWeight="Bold" Margin="35,0,0,0"/>
-                    <TextBlock Grid.Column="1" Text="Cash" Foreground="Black" FontSize="13" FontWeight="DemiBold" TextWrapping="Wrap" Margin="0,0,2,0"/>
-                </Grid>
+                        <Grid Grid.Row="2">
+                            <Grid.RowDefinitions>
+                                <RowDefinition Height="45"></RowDefinition>
+                                <RowDefinition></RowDefinition>
+                            </Grid.RowDefinitions>
 
-                <Grid Grid.Row="4" Margin="0,0,0,0">
-                    <Grid.ColumnDefinitions>
-                        <ColumnDefinition Width="169"></ColumnDefinition>
-                        <ColumnDefinition Width="*"></ColumnDefinition>
-                    </Grid.ColumnDefinitions>
-                    <TextBlock Grid.Column="0" Text="Total money" FontSize="12" Foreground="Black" FontWeight="Bold" Margin="35,0,0,0"/>
-                    <TextBlock x:Name="TotalMoney" Grid.Column="1" Text="2,650$" Foreground="Black" FontSize="13" FontWeight="DemiBold" Margin="0,0,0,0" HorizontalAlignment="Left">
-                        <i:Interaction.Triggers>
+                            <TextBlock Grid.Row="0" Text="DETAILS" FontSize="15" FontWeight="Bold" Foreground="#176EC6" HorizontalAlignment="Left" Margin="35,16,0,0" VerticalAlignment="Bottom"/>
+
+                            <Grid Grid.Row="1">
+                                <!--<ListView HorizontalAlignment = "Left" Height = "auto" Margin = "10,0,0,0"  VerticalAlignment = "Top" Width = "490">
+                                    <ListView.View>
+                                        <GridView>
+                                            <GridViewColumn Header = "A/S" Width = "150" />
+                                            <GridViewColumn Header = "Quantity" Width = "150"/>
+                                            <GridViewColumn Header = "Price" Width = "100"/>
+                                        </GridView>
+                                    </ListView.View>
+
+                                </ListView>-->
+                                <DataGrid Height="auto" HorizontalAlignment="Left"  Name="BillDataGrid" VerticalAlignment="Top" Width="490">
+                                    
+                                </DataGrid>
+                            </Grid>
+                            
+                        </Grid>
+                        <Grid Grid.Row="3" Margin="0,20,0,0">
+                            <Grid.ColumnDefinitions>
+                                <ColumnDefinition></ColumnDefinition>
+                                <ColumnDefinition></ColumnDefinition>
+                                <ColumnDefinition></ColumnDefinition>
+                            </Grid.ColumnDefinitions>
+                            <TextBlock Grid.Column="0" Text="Total money" FontSize="12" Foreground="Black" FontWeight="Bold" Margin="35,0,0,0"/>
+                            <TextBlock x:Name="TotalMoney" Grid.Column="1" Text="2,650$" Foreground="Black" FontSize="13" FontWeight="DemiBold" Margin="0,0,0,0" HorizontalAlignment="Left">
+                                <i:Interaction.Triggers>
                                     <i:EventTrigger EventName="Loaded">
                                         <i:InvokeCommandAction Command="{Binding LoadTotalMoney}" CommandParameter="{Binding ElementName=TotalMoney}"/>
                                     </i:EventTrigger>
                                 </i:Interaction.Triggers>
-                    </TextBlock>
-                </Grid>
+                            </TextBlock>
+                        </Grid>
 
-                <Grid Grid.Row="5" Margin="0,0,0,0" VerticalAlignment="Top">
-                    <Grid.ColumnDefinitions>
-                        <ColumnDefinition Width="169"></ColumnDefinition>
-                        <ColumnDefinition Width="*"></ColumnDefinition>
-                        <ColumnDefinition Width="*"></ColumnDefinition>
-                    </Grid.ColumnDefinitions>
-                    <TextBlock Grid.Column="0" Text="Status" FontSize="12" Foreground="Black" FontWeight="Bold" Margin="35,0,0,0"/>
-                    <TextBlock Grid.Column="1" Text="Completed payment" Foreground="Black" FontSize="13" FontWeight="DemiBold"  HorizontalAlignment="Left"  />
-                    <Button Grid.Column="3">
-                        <Hyperlink NavigateUri="/Pages/MyBillPage.xaml">Nút quay về My Bill Page</Hyperlink>
-                    </Button>
+                        <Grid Grid.Row="4" Margin="0,0,0,0">
+                            <Grid.ColumnDefinitions>
+                                <ColumnDefinition Width="169"></ColumnDefinition>
+                                <ColumnDefinition Width="*"></ColumnDefinition>
+
+                            </Grid.ColumnDefinitions>
+                            <TextBlock Grid.Column="0" Text="Payment approach" FontSize="12" Foreground="Black" FontWeight="Bold" Margin="35,0,0,0"/>
+                            <TextBlock Grid.Column="1" Text="Cash" Foreground="Black" FontSize="13" FontWeight="DemiBold" TextWrapping="Wrap" Margin="0,0,2,0"/>
+                        </Grid>
+
+                        <Grid Grid.Row="5" Margin="0,0,0,0" VerticalAlignment="Top">
+                            <Grid.ColumnDefinitions>
+                                <ColumnDefinition Width="169"></ColumnDefinition>
+                                <ColumnDefinition Width="*"></ColumnDefinition>
+                                <ColumnDefinition Width="*"></ColumnDefinition>
+                            </Grid.ColumnDefinitions>
+                            <TextBlock Grid.Column="0" Text="Status" FontSize="12" Foreground="Black" FontWeight="Bold" Margin="35,0,0,0"/>
+                            <TextBlock Grid.Column="1" Text="Completed payment" Foreground="Black" FontSize="13" FontWeight="DemiBold"  HorizontalAlignment="Left"  />
+                        </Grid>
+                    </Grid>
                 </Grid>
             </Grid>
         </Grid>
+        
+        
+        
+        
+        
     </Grid>
 </Page>
