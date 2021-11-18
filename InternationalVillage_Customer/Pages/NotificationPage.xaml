@@ -28,10 +28,10 @@
         </Grid.RowDefinitions>
         <TextBlock Grid.Row="0" Text="NOTIFICATION" FontSize="30" FontWeight="Bold" VerticalAlignment="Center" Margin="40,10,0,0" ></TextBlock>
         <TextBlock Grid.Row="1" Text="All approvals were be notified here" FontSize="15" Margin="40,-10,0,0" ></TextBlock>
-        <ScrollViewer Grid.Row="2" Margin="40,0" Height="auto"  HorizontalScrollBarVisibility="Visible"  ScrollViewer.VerticalScrollBarVisibility="Auto">
-            <StackPanel x:Name="NotificationForm" Margin="0,0,100,0" >
+        <ScrollViewer Grid.Row="2" Margin="40,0" Height="auto"  HorizontalScrollBarVisibility="Visible"  ScrollViewer.VerticalScrollBarVisibility="Auto" >
+            <WrapPanel x:Name="NotificationForm" Margin="0,0,100,0"  Width="600">
                 
-            </StackPanel>
+            </WrapPanel>
         </ScrollViewer>
     </Grid>
 </Page>

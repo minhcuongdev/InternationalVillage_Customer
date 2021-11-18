@@ -16,9 +16,9 @@ namespace InternationalVillage_Customer.ViewModel
 
         public NotificationPageViewModel()
         {
-            LoadNotification = new RelayCommand<StackPanel>((p) => { return true; }, (p) =>
+            LoadNotification = new RelayCommand<WrapPanel>((p) => { return true; }, (p) =>
             {
-                for(int i=0;i<20;i++)
+                for(int i=0;i<30;i++)
                 {
                     NotificationUC notificationUC = new NotificationUC();
                     notificationUC.ContentOfNotification.Text = i.ToString();
