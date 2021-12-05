@@ -99,6 +99,7 @@
     <Compile Include="Model\Bill.cs" />
     <Compile Include="Model\BookingApartmentTemp.cs" />
     <Compile Include="Model\DetailBill.cs" />
+    <Compile Include="Model\DetailBooking.cs" />
     <Compile Include="Model\ServiceBill.cs" />
     <Compile Include="Pages\ApartmentFormPage.xaml.cs">
       <DependentUpon>ApartmentFormPage.xaml</DependentUpon>
@@ -150,9 +151,11 @@
     <Compile Include="Store\BookingTempStore.cs" />
     <Compile Include="Store\CustomerStore.cs" />
     <Compile Include="Store\DataProvider.cs" />
+    <Compile Include="Store\DetailBillStore.cs" />
     <Compile Include="Utilities\ConnectDB.cs" />
     <Compile Include="Utilities\Validate.cs" />
     <Compile Include="ViewModel\BaseViewModel.cs" />
+    <Compile Include="ViewModel\BillInforViewModel.cs" />
     <Compile Include="ViewModel\BillInfoViewModel.cs" />
     <Compile Include="ViewModel\BillPageViewModel.cs" />
     <Compile Include="ViewModel\BookApartmentViewModel.cs" />

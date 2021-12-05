@@ -12,6 +12,20 @@
       x:Name="BillPage"
       d:DesignHeight="450" d:DesignWidth="800"
       Title="CheckoutPage">
+    <i:Interaction.Triggers>
+        <i:EventTrigger EventName="Loaded">
+            <i:InvokeCommandAction Command="{Binding LoadBillTable}" CommandParameter="{Binding ElementName=BillTable}"/>
+            <i:InvokeCommandAction Command="{Binding LoadIDBill}" CommandParameter="{Binding ElementName=IdBill}"/>
+            <i:InvokeCommandAction Command="{Binding LoadCustomer}" CommandParameter="{Binding ElementName=Customer}"/>
+            <i:InvokeCommandAction Command="{Binding LoadReceptionist}" CommandParameter="{Binding ElementName=Receptionist}"/>
+            <i:InvokeCommandAction Command="{Binding LoadCheckInDate}" CommandParameter="{Binding ElementName=Checkin}"/>
+            <i:InvokeCommandAction Command="{Binding LoadCheckOutDate}" CommandParameter="{Binding ElementName=Checkout}"/>
+            <i:InvokeCommandAction Command="{Binding LoadTotalMoney}" CommandParameter="{Binding ElementName=TotalMoney}"/>
+            <i:InvokeCommandAction Command="{Binding LoadStatus}" CommandParameter="{Binding ElementName=Status}"/>
+            <i:InvokeCommandAction Command="{Binding LoadPaymentApproach}" CommandParameter="{Binding ElementName=PaymentApproach}"/>
+
+        </i:EventTrigger>
+    </i:Interaction.Triggers>
     <Grid Background="white">
         <Grid>
             <Grid.RowDefinitions>
@@ -251,7 +265,7 @@
 
                             </Grid.ColumnDefinitions>
                             <TextBlock Grid.Column="0" Text="Payment approach" FontSize="12" Foreground="Black" FontWeight="Bold" Margin="35,0,0,0"/>
-                            <TextBlock Grid.Column="1" Text="Cash" Foreground="Black" FontSize="13" FontWeight="DemiBold" TextWrapping="Wrap" Margin="0,0,2,0"/>
+                            <TextBlock x:Name="PaymentApproach" Grid.Column="1" Text="Cash" Foreground="Black" FontSize="13" FontWeight="DemiBold" TextWrapping="Wrap" Margin="0,0,2,0"/>
                         </Grid>
 
                         <Grid Grid.Row="5" Margin="0,0,0,0" VerticalAlignment="Top">
@@ -261,7 +275,7 @@
                                 <ColumnDefinition Width="*"></ColumnDefinition>
                             </Grid.ColumnDefinitions>
                             <TextBlock Grid.Column="0" Text="Status" FontSize="12" Foreground="Black" FontWeight="Bold" Margin="35,0,0,0"/>
-                            <TextBlock Grid.Column="1" Text="Completed payment" Foreground="Black" FontSize="13" FontWeight="DemiBold"  HorizontalAlignment="Left"  />
+                            <TextBlock x:Name="Status" Grid.Column="1" Text="Completed payment" Foreground="Black" FontSize="13" FontWeight="DemiBold"  HorizontalAlignment="Left"  />
                         </Grid>
                     </Grid>
                 </Grid>

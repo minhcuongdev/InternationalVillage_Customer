@@ -4,12 +4,13 @@ using System.Data;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using InternationalVillage_Customer.Store; 
 
 namespace InternationalVillage_Customer.Model
 {
     class Bill
     {
-        public Bill(string id, string customer, string receptionist, string checkin, string checkout, string totalmoney)
+        public Bill(string id, string customer, string receptionist, string checkin, string checkout, string totalmoney, string status)
         {
             IdBill = id;
             CustomerName = customer;
@@ -17,11 +18,18 @@ namespace InternationalVillage_Customer.Model
             CheckInDate = checkin;
             CheckOutDate = checkout;
             TotalMoney = totalmoney;
+            Status = status;
         }
 
         public Bill(DataRow row)
         {
-            
+            IdBill = row["Id_Bill"].ToString(); ;
+            CustomerName = AccountStore.Instance.Name;
+            ReceptionistName = row["FullName"].ToString(); 
+            CheckInDate = row["CheckInDate"].ToString();
+            CheckOutDate = row["CheckOutDate"].ToString();
+            TotalMoney = row["TotalMoney"].ToString();
+            Status = row["Status"].ToString();
         }
 
         private string idBill;
@@ -31,6 +39,7 @@ namespace InternationalVillage_Customer.Model
         private string checkOutDate;
         private List<DetailBill> detailBills = new List<DetailBill>();
         private string totalMoney;
+        private string status;
 
         public string IdBill { get => idBill; set => idBill = value; }
         public string CustomerName { get => customerName; set => customerName = value; }
@@ -39,5 +48,6 @@ namespace InternationalVillage_Customer.Model
         public string TotalMoney { get => totalMoney; set => totalMoney = value; }
         public string ReceptionistName { get => receptionistName; set => receptionistName = value; }
         internal List<DetailBill> DetailBills { get => detailBills; set => detailBills = value; }
+        public string Status { get => status; set => status = value; }
     }
 }

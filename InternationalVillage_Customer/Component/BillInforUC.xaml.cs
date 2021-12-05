@@ -12,8 +12,9 @@ using System.Windows.Media;
 using System.Windows.Media.Imaging;
 using System.Windows.Navigation;
 using System.Windows.Shapes;
-
+using InternationalVillage_Customer.Store;
 using InternationalVillage_Customer.ViewModel;
+using InternationalVillage_Customer.Pages;
 
 namespace InternationalVillage_Customer.Component
 {
@@ -28,11 +29,17 @@ namespace InternationalVillage_Customer.Component
         {
             InitializeComponent();
             this.IDBill.Text = id;
-            this.CheckInDate.Text = checkin;
-            this.CheckOutDate.Text = checkout;
-            this.TotalMoney.Text = total;
+            this.CheckInDate.Text = DateTime.Parse(checkin).ToShortDateString();
+            this.CheckOutDate.Text = DateTime.Parse(checkout).ToShortDateString();
+            this.TotalMoney.Text = total + "$";
+            
 
             this.DataContext = BillInfo = new BillInfoViewModel();
+        }
+
+        private void ViewDetailBill_Click(object sender, RoutedEventArgs e)
+        {
+            DetailBillStore.Instance.FindBill(this.IDBill.Text);
         }
     }
 }
