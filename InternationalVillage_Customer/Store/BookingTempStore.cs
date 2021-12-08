@@ -35,5 +35,26 @@ namespace InternationalVillage_Customer.Store
             return DataProvider.Instance.ExecuteNonQuery(query);
         }
 
+        public int InsertService(string id_Cus, string id_Service, DateTime checkin, DateTime checkout, DateTime time,int quantity)
+        {
+            string query = string.Format("insert into OderingServiceTable values ('{0}','{1}','{2}','{3}','{4}',{5});",
+                                                                         id_Cus, id_Service, checkin.ToString("yyyy-MM-dd H:mm:ss"), checkout.ToString("yyyy-MM-dd H:mm:ss"), time.ToString("yyyy-MM-dd H:mm:ss"), quantity);
+
+            return DataProvider.Instance.ExecuteNonQuery(query);
+        }
+        public int InsertIncident(string id_In, string id_Cus,string id_Receptionist, string id_Apart, string type, string content, string level, string status)
+        {
+            string query = string.Format("insert into Incident values ('{0}','{1}','{2}','{3}','{4}','{5}','{6}','{7}');",
+                                                                        id_In, id_Cus,id_Receptionist,id_Apart,type,content,level,status );
+
+            return DataProvider.Instance.ExecuteNonQuery(query);
+        }
+
+        public bool CheckIdApartment (string id)
+        {
+            string query = "Select * from Apartment where Id_Apartment = '" + id + "'";
+            DataTable data = DataProvider.Instance.ExecuteQuery(query);
+            return data.Rows.Count > 0;
+        }
     }
 }

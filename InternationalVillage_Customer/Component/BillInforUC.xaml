@@ -15,11 +15,16 @@
              TextOptions.TextFormattingMode="Ideal"
              TextOptions.TextRenderingMode="Auto"
              FontFamily="{DynamicResource MaterialDesignFont}"
-             
+             DataContext="{StaticResource BillInforVM}"
                        
-             x:Name="BillInfoUC"        
+             x:Name="BillInfor"
              mc:Ignorable="d" 
              d:DesignHeight="100" d:DesignWidth="350" Margin="0,0,0,15">
+    <i:Interaction.Triggers>
+        <i:EventTrigger EventName="Loaded">
+            <i:InvokeCommandAction Command="{Binding LoadIDBill}" CommandParameter="{Binding ElementName=IDBill}"/>
+        </i:EventTrigger>
+    </i:Interaction.Triggers>
 
 
     <Grid >
@@ -99,16 +104,17 @@
                             </Style.Triggers>
                         </Style>
                     </Grid.Resources>
-                    <Button Background="White" Width="90" FontSize="9" FontWeight="Normal" Margin="-12,0,10,0" HorizontalAlignment="Right">
-                        <Hyperlink NavigateUri="/Pages/BillPage.xaml">View details</Hyperlink>
+                    <Button x:Name="ViewDetailBill" Background="White" Width="90" FontSize="9" FontWeight="Normal" Margin="-12,0,10,0" HorizontalAlignment="Right" Command="{Binding ViewDetailBill}" CommandParameter="{Binding ElementName=ViewDetailBill}" Click="ViewDetailBill_Click" >
                         <i:Interaction.Triggers>
                             <i:EventTrigger EventName="Click">
-                                <i:InvokeCommandAction Command="{Binding OpenDetailBill}" CommandParameter="{Binding ElementName=IDBill}"/>
+                                <i:InvokeCommandAction Command="{Binding ViewDetailBill}" CommandParameter="{Binding ElementName=ViewDetailBill}"/>
                             </i:EventTrigger>
                         </i:Interaction.Triggers>
+                        <Hyperlink NavigateUri="/Pages/BillPage.xaml">View details</Hyperlink>
+
                     </Button>
-                </Grid>
-            </Grid>
+            </Grid>                </Grid>
+
         </materialDesign:Card>
     </Grid>
 </UserControl>

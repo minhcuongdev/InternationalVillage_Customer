@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Data;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -19,7 +20,7 @@ namespace InternationalVillage_Customer.Store
         string idDetailBill = "";
         public string IdDetailBill { get => idDetailBill; set => idDetailBill = value; }
 
-        List<Bill> billList = FAKE_DATA.BillDataFake.Instance.GetListBill();
+        List<Bill> billList = new List<Bill>();
 
         public List<DetailBill> GetTableById(string id)
         {
@@ -34,6 +35,16 @@ namespace InternationalVillage_Customer.Store
 
         public List<Bill> GetBillList()
         {
+            billList.Clear();
+            string query = "Select Id_Bill, Receptionist.FullName, CheckInDate, CheckOutDate,TotalMoney, Bill.Status " +
+                           "from Bill, Customer,Receptionist where Bill.Id_Customer = Customer.Id_Customer and Receptionist.Id_Receptionist = Bill.Id_Receptionist and Bill.Id_Customer = '" + AccountStore.Instance.IdUser + "'";
+            DataTable data = DataProvider.Instance.ExecuteQuery(query);
+            foreach (DataRow item in data.Rows)
+            {
+                Bill bill = new Bill(item);
+                billList.Add(bill);
+                
+            }
             return billList;
         }
 

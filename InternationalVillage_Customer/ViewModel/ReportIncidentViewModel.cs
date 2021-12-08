@@ -25,6 +25,7 @@ namespace InternationalVillage_Customer.ViewModel
         public ICommand ValidateLevelOfAffection { get; set; }
         public ICommand DescriptionChanged { get; set; }
         public ICommand ValidateDescription { get; set; }
+        public ICommand Report { get; set; }
 
         //Validate data
         private string fullname = "";
@@ -105,6 +106,36 @@ namespace InternationalVillage_Customer.ViewModel
             ValidateDescription = new RelayCommand<TextBlock>((p) => { return true; }, (p) =>
             {
                 isDescriptionCorrect = Validate.Instance.Required(p, description, "Description", 0);
+            });
+
+            Report = new RelayCommand<Button>((p) => {
+                return isFullNameCorrect && isNumberOfApartmentCorrect && isTypeOfIncidentCorrect && isLevelOfAffectionCorrect
+                     && isDescriptionCorrect ;
+            }, (p) =>
+            {
+                bool checkIdApartment = BookingTempStore.Instance.CheckIdApartment(numberofapartment);
+                if (checkIdApartment == false)
+                {
+                    MessageBox.Show("Number of apartment is not exist");
+                }
+                else
+                {
+                    int insertReport = 0;
+
+                    {
+                        insertReport = BookingTempStore.Instance.InsertIncident("I01", AccountStore.Instance.IdUser, "", numberofapartment, typeofincident, description, levelofaffection, "No accepted");
+                    }
+
+                    if (insertReport > 0)
+                    {
+                        MessageBox.Show("Success");
+                    }
+                    else
+                    {
+                        MessageBox.Show("Error");
+                    }
+                }
+
             });
 
         }

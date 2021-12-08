@@ -246,9 +246,12 @@
 
         <Grid Grid.Row="7" >
             <Button
+             x:Name="Order"
             Style="{StaticResource MaterialDesignRaisedDarkButton}"
             materialDesign:ButtonAssist.CornerRadius="20"            
-            IsEnabled="True" Margin="50,25,0,0" HorizontalAlignment="Left" Width="600" VerticalAlignment="Top">
+            IsEnabled="True" Margin="50,25,0,0" HorizontalAlignment="Left" Width="600" VerticalAlignment="Top"
+             Command="{Binding Order}"
+             CommandParameter="{Binding ElementName=Order}" >
                 <TextBlock Text="ORDER" />
             </Button>
 

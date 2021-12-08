@@ -213,10 +213,13 @@
 
             <Grid Grid.Row="7" Margin="0,0,0,0" VerticalAlignment="Center" >
                 <Button
+                    x:Name="Report"
             Style="{StaticResource MaterialDesignRaisedDarkButton}"
             materialDesign:ButtonAssist.CornerRadius="20"
             ToolTip="MaterialDesignRaisedDarkButton with Round Corners"
-            IsEnabled="True" Margin="50,25,0,0" HorizontalAlignment="Left" Width="600" VerticalAlignment="Top">
+            IsEnabled="True" Margin="50,25,0,0" HorizontalAlignment="Left" Width="600" VerticalAlignment="Top"
+             Command="{Binding Report}"
+             CommandParameter="{Binding ElementName=Report}" >
                     <TextBlock Text="SEND" />
                 </Button>
 

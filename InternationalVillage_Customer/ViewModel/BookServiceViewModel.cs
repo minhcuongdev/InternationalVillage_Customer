@@ -30,7 +30,8 @@ namespace InternationalVillage_Customer.ViewModel
         public ICommand NumberServiceChanged { get; set; }
         public ICommand ValidateNumberService { get; set; }
         public ICommand TypeOfServiceLoaded { get; set; }
-        
+        public ICommand Order { get; set; }
+
 
         //Validate data
         private string fullname = "";
@@ -57,12 +58,13 @@ namespace InternationalVillage_Customer.ViewModel
 
         private string typeofService = BookingTempStore.Instance.TypeOfService;
         public string TypeOfService { get => typeofService; set => typeofService = value; }
-        bool isTypeOfServiceCorrect = false;
+        bool isTypeOfServiceCorrect = true;
 
         private string numberService = "";
         public string NumberService { get => numberService; set => numberService = value; }
         bool isNumberServiceCorrect = false;
 
+       
 
         public BookServiceViewModel()
         {
@@ -80,6 +82,7 @@ namespace InternationalVillage_Customer.ViewModel
             ValidateFullName = new RelayCommand<TextBlock>((p) => { return true; }, (p) =>
             {
                 isFullNameCorrect = Validate.Instance.Required(p, fullname, "Full Name", 5);
+                
             });
 
             NumberPeopleChanged = new RelayCommand<TextBox>((p) => { return true; }, (p) =>
@@ -90,17 +93,19 @@ namespace InternationalVillage_Customer.ViewModel
             ValidateNumberPeople = new RelayCommand<TextBlock>((p) => { return true; }, (p) =>
             {
                
-                    isNumberPeopleCorrect = Validate.Instance.NumberRange(p, numberPeople, "Total number of people", 0, 150);
+               isNumberPeopleCorrect = Validate.Instance.NumberRange(p, numberPeople, "Total number of people", 0, 150);
                 
             });
 
             ValidateCheckinDate = new RelayCommand<TextBlock>((p) => { return true; }, (p) =>
             {
                 isCheckinDateCorrect = Validate.Instance.Required(p, strCheckinDate, "Check in Date");
+                
             });
             ValidateCheckoutDate = new RelayCommand<TextBlock>((p) => { return true; }, (p) =>
             {
                 isCheckoutDateCorrect = Validate.Instance.Required(p, strCheckoutDate, "Check out Date");
+              
             });
             //// Set up
             CheckinDateSetUp = new RelayCommand<CalendarDateRange>((p) => { return true; }, (p) =>
@@ -115,7 +120,12 @@ namespace InternationalVillage_Customer.ViewModel
                 p.End = (checkinDate.AddDays(-1));
 
             });
-         
+
+            CheckinDateChanged = new RelayCommand<DatePicker>((p) => { return true; }, (p) =>
+            {
+                checkinDate = Validate.Instance.DateChanged(p);
+                strCheckinDate = checkinDate.ToString();
+            });
             CheckoutDateChanged = new RelayCommand<DatePicker>((p) => { return true; }, (p) =>
             {
                 checkoutDate = Validate.Instance.DateChanged(p);
@@ -126,6 +136,7 @@ namespace InternationalVillage_Customer.ViewModel
             {
                 p.SelectedIndex = BookingTempStore.Instance.IndexTypeOfService;
                 typeofService = Validate.Instance.SelecttionChanged(p);
+                
             });
 
             TypeOfServiceChanged = new RelayCommand<ComboBox>((p) => { return true; }, (p) =>
@@ -135,7 +146,7 @@ namespace InternationalVillage_Customer.ViewModel
             ValidateTypeOfService = new RelayCommand<TextBlock>((p) => { return true; }, (p) =>
             {
                 isTypeOfServiceCorrect = Validate.Instance.Required(p, typeofService, "Type of Service");
-
+               
 
             });
 
@@ -149,6 +160,48 @@ namespace InternationalVillage_Customer.ViewModel
                
                     isNumberServiceCorrect = Validate.Instance.NumberRange(p, numberService, "Total number of service", 0, 150);
                 
+            });
+
+            Order = new RelayCommand<Button>((p) => {
+                return isFullNameCorrect && isNumberPeopleCorrect && isCheckinDateCorrect && isCheckoutDateCorrect
+                     && isNumberServiceCorrect && isTypeOfServiceCorrect;
+            }, (p) =>
+            {
+                int insertBooking = 0;
+                if (typeofService.Equals("Pool"))
+                {
+                    insertBooking = BookingTempStore.Instance.InsertService(AccountStore.Instance.IdUser, "S01", checkinDate, checkoutDate, DateTime.Now, Int32.Parse(numberService));
+                }
+                else if (typeofService.Equals("Gym"))
+                {
+                    insertBooking = BookingTempStore.Instance.InsertService(AccountStore.Instance.IdUser, "S02", checkinDate, checkoutDate, DateTime.Now,Int32.Parse(numberService));
+                }
+                else if (typeofService.Equals("Restaurant"))
+                {
+                    insertBooking = BookingTempStore.Instance.InsertService(AccountStore.Instance.IdUser, "S03", checkinDate, checkoutDate, DateTime.Now, Int32.Parse(numberService));
+                }
+                else if (typeofService.Equals("Tennis"))
+                {
+                    insertBooking = BookingTempStore.Instance.InsertService(AccountStore.Instance.IdUser, "S04", checkinDate, checkoutDate, DateTime.Now, Int32.Parse(numberService));
+                }
+                else if (typeofService.Equals("Golf"))
+                {
+                    insertBooking = BookingTempStore.Instance.InsertService(AccountStore.Instance.IdUser, "S05", checkinDate, checkoutDate, DateTime.Now, Int32.Parse(numberService));
+                }
+                else if (typeofService.Equals("Bar"))
+                {
+                    insertBooking = BookingTempStore.Instance.InsertService(AccountStore.Instance.IdUser, "S06", checkinDate, checkoutDate, DateTime.Now, Int32.Parse(numberService));
+                }
+
+                if (insertBooking > 0)
+                {
+                    MessageBox.Show("Success");
+                }
+                else
+                {
+                    MessageBox.Show("Error");
+                }
+
             });
         }
     }
