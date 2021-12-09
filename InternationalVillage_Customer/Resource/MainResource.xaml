@@ -16,4 +16,5 @@
     <viewmodel:BillPageViewModel x:Key="BillPageVM"></viewmodel:BillPageViewModel>
     <viewmodel:BookingServicePageViewModel x:Key="BookingServicePageVM"></viewmodel:BookingServicePageViewModel>
     <viewmodel:BillInforViewModel x:Key="BillInforVM"></viewmodel:BillInforViewModel>
+    <viewmodel:BookingDetailViewModel x:Key="BookingDetailVM"></viewmodel:BookingDetailViewModel>
 </ResourceDictionary>

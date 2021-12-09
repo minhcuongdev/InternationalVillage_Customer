@@ -101,6 +101,9 @@
             x:Name="FullName"
             IsEnabled="True" Margin="50,0,0,0" HorizontalAlignment="Left"   >
                 <i:Interaction.Triggers>
+                    <i:EventTrigger EventName="Loaded">
+                        <i:InvokeCommandAction Command="{Binding FullNameLoaded}" CommandParameter="{Binding ElementName=FullName}"/>
+                    </i:EventTrigger>
                     <i:EventTrigger EventName="TextChanged">
                         <i:InvokeCommandAction Command="{Binding FullNameChanged}" CommandParameter="{Binding ElementName=FullName}"/>
                     </i:EventTrigger>
@@ -251,7 +254,7 @@
             materialDesign:ButtonAssist.CornerRadius="20"            
             IsEnabled="True" Margin="50,25,0,0" HorizontalAlignment="Left" Width="600" VerticalAlignment="Top"
              Command="{Binding Order}"
-             CommandParameter="{Binding ElementName=Order}" >
+             CommandParameter="{Binding ElementName=ServiceFormVM}" >
                 <TextBlock Text="ORDER" />
             </Button>
 

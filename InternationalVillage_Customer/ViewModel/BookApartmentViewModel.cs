@@ -29,6 +29,7 @@ namespace InternationalVillage_Customer.ViewModel
         public ICommand CheckoutDateChanged { get; set; }
         public ICommand NumberApartmentChanged { get; set; }
         public ICommand ValidateNumberApartment { get; set; }
+        public ICommand FullNameLoaded { get; set; }
 
         public ICommand TypeOfApartmentLoaded { get; set; }
 
@@ -37,7 +38,7 @@ namespace InternationalVillage_Customer.ViewModel
         //Validate data
         private string fullname = "";
         public string Fullname { get => fullname; set => fullname = value; }
-        bool isFullNameCorrect = false;
+        bool isFullNameCorrect = true;
 
         private string numberPeople = "";
         public string NumberPeople { get => numberPeople; set => numberPeople = value; }
@@ -74,6 +75,13 @@ namespace InternationalVillage_Customer.ViewModel
             });
 
             // Validate Data
+            FullNameLoaded = new RelayCommand<TextBox>((p) => { return true; }, (p) =>
+            {
+                p.Text = AccountStore.Instance.Name;
+                fullname = p.Text;
+                fullname = Validate.Instance.TextChanged(p, 5);
+
+            });
             FullNameChanged = new RelayCommand<TextBox>((p) => { return true; }, (p) =>
             {
                 fullname = Validate.Instance.TextChanged(p, 5);
@@ -151,7 +159,7 @@ namespace InternationalVillage_Customer.ViewModel
             {
                 isNumberApartmentCorrect = Validate.Instance.NumberRange(p, numberApartment, "Total number of apartment", 0, 72);
             });
-            Book = new RelayCommand<Button>((p) => { return isFullNameCorrect && isNumberPeopleCorrect && isCheckinDateCorrect && isCheckoutDateCorrect 
+            Book = new RelayCommand<Page>((p) => { return isFullNameCorrect && isNumberPeopleCorrect && isCheckinDateCorrect && isCheckoutDateCorrect 
                                                             && isNumberApartmentCorrect && isTypeOfApartmentCorrect; 
             }, (p) =>
             {
@@ -160,7 +168,7 @@ namespace InternationalVillage_Customer.ViewModel
                {
                     insertBooking = BookingTempStore.Instance.InsertBooking(AccountStore.Instance.IdUser, "3A", checkinDate, checkoutDate, Int32.Parse(numberApartment), "No Accept", DateTime.Now);
                }
-               else if (typeofApartment.Equals("High Standard(Type 3B)"))
+               else if (typeofApartment.Equals("High Standard (Type 3B)"))
                {
                     insertBooking = BookingTempStore.Instance.InsertBooking(AccountStore.Instance.IdUser, "3B", checkinDate, checkoutDate, Int32.Parse(numberApartment), "No Accept", DateTime.Now);
                }
@@ -172,6 +180,7 @@ namespace InternationalVillage_Customer.ViewModel
                if (insertBooking > 0 )
                {
                     MessageBox.Show("Success");
+                    p.NavigationService.Navigate(new Uri("/Pages/HomePage.xaml", UriKind.RelativeOrAbsolute));
                }
                else 
                {
