@@ -7,6 +7,8 @@ using System.Windows.Controls;
 using System.Windows.Input;
 
 using InternationalVillage_Customer.Component;
+using InternationalVillage_Customer.Model;
+using InternationalVillage_Customer.Store;
 
 namespace InternationalVillage_Customer.ViewModel
 {
@@ -18,11 +20,17 @@ namespace InternationalVillage_Customer.ViewModel
         {
             LoadNotification = new RelayCommand<StackPanel>((p) => { return true; }, (p) =>
             {
-                for (int i = 0; i < 20; i++)
+                List<BookingApartmentTemp> list = BookingTempStore.Instance.GetMyBooking();
+                foreach(BookingApartmentTemp b in list)
                 {
-                    BookingInfoUC BookingInfoUC = new BookingInfoUC();                   
-                    p.Children.Add(BookingInfoUC);
+                    BookingInfoUC booking = new BookingInfoUC();
+                    booking.Type.Text = b.IdApartment;
+                    booking.CheckIn.Text = b.CheckInDate.ToString("dd/MM/yyyy");
+                    booking.CheckOut.Text = b.CheckOutDate.ToString("dd/MM/yyyy");
+                    booking.State.Text = "Approved";
+                    p.Children.Add(booking);
                 }
+                
             });
         }
     }

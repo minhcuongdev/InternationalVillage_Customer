@@ -30,13 +30,16 @@ namespace InternationalVillage_Customer.ViewModel
         public ICommand NumberServiceChanged { get; set; }
         public ICommand ValidateNumberService { get; set; }
         public ICommand TypeOfServiceLoaded { get; set; }
+
+        public ICommand FullNameLoaded { get; set; }
+
         public ICommand Order { get; set; }
 
 
         //Validate data
-        private string fullname = "";
+        private string fullname = AccountStore.Instance.Name;
         public string Fullname { get => fullname; set => fullname = value; }
-        bool isFullNameCorrect = false;
+        bool isFullNameCorrect = true;
 
         private string numberPeople = "";
         public string NumberPeople { get => numberPeople; set => numberPeople = value; }
@@ -74,6 +77,12 @@ namespace InternationalVillage_Customer.ViewModel
             });
 
             // Validate Data
+            FullNameLoaded = new RelayCommand<TextBox>((p) => { return true; }, (p) =>
+            {
+                p.Text = fullname;
+                fullname = Validate.Instance.TextChanged(p, 5);
+
+            });
             FullNameChanged = new RelayCommand<TextBox>((p) => { return true; }, (p) =>
             {
                 fullname = Validate.Instance.TextChanged(p, 5);
@@ -157,12 +166,11 @@ namespace InternationalVillage_Customer.ViewModel
             });
             ValidateNumberService = new RelayCommand<TextBlock>((p) => { return true; }, (p) =>
             {
-               
-                    isNumberServiceCorrect = Validate.Instance.NumberRange(p, numberService, "Total number of service", 0, 150);
+                isNumberServiceCorrect = Validate.Instance.NumberRange(p, numberService, "Total number of service", 0, 150);
                 
             });
 
-            Order = new RelayCommand<Button>((p) => {
+            Order = new RelayCommand<Page>((p) => {
                 return isFullNameCorrect && isNumberPeopleCorrect && isCheckinDateCorrect && isCheckoutDateCorrect
                      && isNumberServiceCorrect && isTypeOfServiceCorrect;
             }, (p) =>
@@ -170,32 +178,33 @@ namespace InternationalVillage_Customer.ViewModel
                 int insertBooking = 0;
                 if (typeofService.Equals("Pool"))
                 {
-                    insertBooking = BookingTempStore.Instance.InsertService(AccountStore.Instance.IdUser, "S01", checkinDate, checkoutDate, DateTime.Now, Int32.Parse(numberService));
+                    insertBooking = BookingTempStore.Instance.InsertService(AccountStore.Instance.IdUser, "S01", checkinDate, checkoutDate, DateTime.Now, Int32.Parse(numberService),"3B01",int.Parse(numberPeople),0);
                 }
                 else if (typeofService.Equals("Gym"))
                 {
-                    insertBooking = BookingTempStore.Instance.InsertService(AccountStore.Instance.IdUser, "S02", checkinDate, checkoutDate, DateTime.Now,Int32.Parse(numberService));
+                    insertBooking = BookingTempStore.Instance.InsertService(AccountStore.Instance.IdUser, "S02", checkinDate, checkoutDate, DateTime.Now,Int32.Parse(numberService), "3B01", int.Parse(numberPeople),9);
                 }
                 else if (typeofService.Equals("Restaurant"))
                 {
-                    insertBooking = BookingTempStore.Instance.InsertService(AccountStore.Instance.IdUser, "S03", checkinDate, checkoutDate, DateTime.Now, Int32.Parse(numberService));
+                    insertBooking = BookingTempStore.Instance.InsertService(AccountStore.Instance.IdUser, "S03", checkinDate, checkoutDate, DateTime.Now, Int32.Parse(numberService), "3B01", int.Parse(numberPeople),20);
                 }
                 else if (typeofService.Equals("Tennis"))
                 {
-                    insertBooking = BookingTempStore.Instance.InsertService(AccountStore.Instance.IdUser, "S04", checkinDate, checkoutDate, DateTime.Now, Int32.Parse(numberService));
+                    insertBooking = BookingTempStore.Instance.InsertService(AccountStore.Instance.IdUser, "S04", checkinDate, checkoutDate, DateTime.Now, Int32.Parse(numberService),"3B01",int.Parse(numberPeople),13);
                 }
                 else if (typeofService.Equals("Golf"))
                 {
-                    insertBooking = BookingTempStore.Instance.InsertService(AccountStore.Instance.IdUser, "S05", checkinDate, checkoutDate, DateTime.Now, Int32.Parse(numberService));
+                    insertBooking = BookingTempStore.Instance.InsertService(AccountStore.Instance.IdUser, "S05", checkinDate, checkoutDate, DateTime.Now, Int32.Parse(numberService), "3B01", int.Parse(numberPeople),22);
                 }
                 else if (typeofService.Equals("Bar"))
                 {
-                    insertBooking = BookingTempStore.Instance.InsertService(AccountStore.Instance.IdUser, "S06", checkinDate, checkoutDate, DateTime.Now, Int32.Parse(numberService));
+                    insertBooking = BookingTempStore.Instance.InsertService(AccountStore.Instance.IdUser, "S06", checkinDate, checkoutDate, DateTime.Now, Int32.Parse(numberService), "3B01", int.Parse(numberPeople),22);
                 }
 
                 if (insertBooking > 0)
                 {
                     MessageBox.Show("Success");
+                    p.NavigationService.Navigate(new Uri("Pages/BookingServicePage.xaml", UriKind.RelativeOrAbsolute));
                 }
                 else
                 {

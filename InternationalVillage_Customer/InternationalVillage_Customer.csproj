@@ -159,6 +159,8 @@
     <Compile Include="ViewModel\BillInfoViewModel.cs" />
     <Compile Include="ViewModel\BillPageViewModel.cs" />
     <Compile Include="ViewModel\BookApartmentViewModel.cs" />
+    <Compile Include="ViewModel\BookingDetailViewModel.cs" />
+    <Compile Include="ViewModel\BookingInfoUCViewModel.cs" />
     <Compile Include="ViewModel\BookingPageViewModel.cs" />
     <Compile Include="ViewModel\BookingServicePageViewModel.cs" />
     <Compile Include="ViewModel\BookServiceViewModel.cs" />

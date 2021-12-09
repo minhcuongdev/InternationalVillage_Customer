@@ -27,6 +27,26 @@ namespace InternationalVillage_Customer.Store
         private int indexTypeOfService = 0;
         public int IndexTypeOfService { get => indexTypeOfService; set => indexTypeOfService = value; }
 
+        public List<BookingApartmentTemp> bookingApartmentTemps = new List<BookingApartmentTemp>();
+        public BookingApartmentTemp MyBookingSelected = null;
+
+        public List<BookingApartmentTemp> GetMyBooking()
+        {
+            List<BookingApartmentTemp> list = new List<BookingApartmentTemp>();
+
+            string query = "select b.*,c.FullName,a.TypeOfApartment from BookingApartmentTable as b, Customer as c,Apartment a where b.Id_Customer = c.Id_Customer and b.Id_Apartment = a.Id_Apartment and b.Id_Customer = '" + AccountStore.Instance.IdUser + "'";
+            DataTable dt = DataProvider.Instance.ExecuteQuery(query);
+            foreach(DataRow r in dt.Rows)
+            {
+                BookingApartmentTemp b = new BookingApartmentTemp(r);
+                list.Add(b);
+            }
+
+            bookingApartmentTemps = list;
+
+            return list;
+        }
+
         public int InsertBooking(string id_Cus, string id_Apart, DateTime checkin, DateTime checkout, int quantity, string state, DateTime time)
         {
             
@@ -35,10 +55,10 @@ namespace InternationalVillage_Customer.Store
             return DataProvider.Instance.ExecuteNonQuery(query);
         }
 
-        public int InsertService(string id_Cus, string id_Service, DateTime checkin, DateTime checkout, DateTime time,int quantity)
+        public int InsertService(string id_Cus, string id_Service, DateTime checkin, DateTime checkout, DateTime time,int quantity,string idApartment,int numberPeople,int unitPrice)
         {
-            string query = string.Format("insert into OderingServiceTable values ('{0}','{1}','{2}','{3}','{4}',{5});",
-                                                                         id_Cus, id_Service, checkin.ToString("yyyy-MM-dd H:mm:ss"), checkout.ToString("yyyy-MM-dd H:mm:ss"), time.ToString("yyyy-MM-dd H:mm:ss"), quantity);
+            string query = string.Format("insert into OderingServiceTable values ('{0}','{1}','{2}','{3}','{4}',{5},'{6}','{7}',{8},{9});",
+                                                                         id_Cus, id_Service, checkin.ToString("yyyy-MM-dd H:mm:ss"), checkout.ToString("yyyy-MM-dd H:mm:ss"), time.ToString("yyyy-MM-dd H:mm:ss"), quantity, "No Accept",idApartment,numberPeople,unitPrice);
 
             return DataProvider.Instance.ExecuteNonQuery(query);
         }

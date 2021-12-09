@@ -3,10 +3,24 @@
       xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
       xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
       xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
-      xmlns:local="clr-namespace:InternationalVillage_Customer.Pages"
+      xmlns:local="clr-namespace:InternationalVillage_Customer.Pages" xmlns:i="http://schemas.microsoft.com/expression/2010/interactivity"
       mc:Ignorable="d" 
+      
+      DataContext="{StaticResource BookingDetailVM}"
+      
+      x:Name="bookingDetail"
       d:DesignHeight="450" d:DesignWidth="800"
       Title="LuxuryPage">
+    <i:Interaction.Triggers>
+        <i:EventTrigger EventName="Loaded">
+            <i:InvokeCommandAction Command="{Binding LoadFullName}" CommandParameter="{Binding ElementName=fullname}"/>
+            <i:InvokeCommandAction Command="{Binding LoadCheckIn}" CommandParameter="{Binding ElementName=checkin}"/>
+            <i:InvokeCommandAction Command="{Binding LoadCheckOut}" CommandParameter="{Binding ElementName=checkout}"/>
+            <i:InvokeCommandAction Command="{Binding LoadType}" CommandParameter="{Binding ElementName=Type}"/>
+            <i:InvokeCommandAction Command="{Binding LoadRoom}" CommandParameter="{Binding ElementName=Room}"/>
+            <i:InvokeCommandAction Command="{Binding LoadPrice}" CommandParameter="{Binding ElementName=price}"/>
+        </i:EventTrigger>
+    </i:Interaction.Triggers>
 
     <Grid Background="white">
         <Grid.RowDefinitions>
@@ -69,7 +83,7 @@
                         <ColumnDefinition></ColumnDefinition>
                     </Grid.ColumnDefinitions>
                     <TextBlock Grid.Column="0" Text="Full Name" FontSize="14" Foreground="Black" FontWeight="Bold" Margin="35,0,0,0"/>
-                    <TextBlock Grid.Column="1" Text="Le Thanh Tam" FontSize="14" Foreground="Black" />
+                    <TextBlock x:Name="fullname" Grid.Column="1" Text="Le Thanh Tam" FontSize="14" Foreground="Black" />
                 </Grid>
 
 
@@ -80,7 +94,7 @@
 
                     </Grid.ColumnDefinitions>
                     <TextBlock Grid.Column="0" Text="Check_in Date" FontSize="14" Foreground="Black" FontWeight="Bold" Margin="35,0,0,0" VerticalAlignment="Center"/>
-                    <TextBlock Grid.Column="1" Text="20/10/2021" FontSize="14" Foreground="Black" TextWrapping="Wrap" Margin="0,0,2,0"/>
+                    <TextBlock x:Name="checkin" Grid.Column="1" Text="20/10/2021" FontSize="14" Foreground="Black" TextWrapping="Wrap" Margin="0,0,2,0"/>
                 </Grid>
 
                 <Grid Grid.Row="3" Margin="0" HorizontalAlignment="Left" VerticalAlignment="Top">
@@ -90,7 +104,7 @@
 
                     </Grid.ColumnDefinitions>
                     <TextBlock Grid.Column="0" Text="Check_out Date" FontSize="14" Foreground="Black" FontWeight="Bold" Margin="35,0,0,0" VerticalAlignment="Center"/>
-                    <TextBlock Grid.Column="1" Text="23/10/2021" FontSize="14" Foreground="Black" TextWrapping="Wrap" Margin="0,0,2,0"/>
+                    <TextBlock x:Name="checkout" Grid.Column="1" Text="23/10/2021" FontSize="14" Foreground="Black" TextWrapping="Wrap" Margin="0,0,2,0"/>
                 </Grid>
 
                 <Grid Grid.Row="4" >
@@ -99,7 +113,7 @@
                         <ColumnDefinition></ColumnDefinition>
                     </Grid.ColumnDefinitions>
                     <TextBlock Grid.Column="0" FontSize="14" Text="Type of Apartment" Foreground="Black" FontWeight="Bold" Margin="35,0,0,0"/>
-                    <TextBlock Grid.Column="1" FontSize="14" Text="Luxury" Foreground="Black" />
+                    <TextBlock x:Name="Type" Grid.Column="1" FontSize="14" Text="Luxury" Foreground="Black" />
                 </Grid>
 
 
@@ -109,8 +123,8 @@
                         <ColumnDefinition Width="*"></ColumnDefinition>
 
                     </Grid.ColumnDefinitions>
-                    <TextBlock Grid.Column="0" FontSize="14" Text="Quantity" Foreground="Black" FontWeight="Bold" Margin="35,0,0,0" VerticalAlignment="Center"/>
-                    <TextBlock Grid.Column="1" FontSize="14" Text="2" Foreground="Black" TextWrapping="Wrap" Margin="0,0,2,0"/>
+                    <TextBlock Grid.Column="0" FontSize="14" Text="Room Number" Foreground="Black" FontWeight="Bold" Margin="35,0,0,0" VerticalAlignment="Center"/>
+                    <TextBlock x:Name="Room" Grid.Column="1" FontSize="14" Text="2" Foreground="Black" TextWrapping="Wrap" Margin="0,0,2,0"/>
                 </Grid>
 
 
@@ -120,7 +134,7 @@
                         <ColumnDefinition Width="*"></ColumnDefinition>
                     </Grid.ColumnDefinitions>
                     <TextBlock Grid.Column="0" Text="Price" FontSize="14" Foreground="Black" FontWeight="Bold" Margin="35,0,0,0"/>
-                    <TextBlock Grid.Column="1" Text="2,659$" FontSize="14" Foreground="Black"  Margin="0,0,0,0" HorizontalAlignment="Left"  />
+                    <TextBlock x:Name="price" Grid.Column="1" Text="2,659$" FontSize="14" Foreground="Black"  Margin="0,0,0,0" HorizontalAlignment="Left"  />
 
                 </Grid>
 
@@ -157,14 +171,10 @@
                                 </Style.Triggers>
                             </Style>
                         </Grid.Resources>
-                        <Button Background="White" Width="120" FontSize="15" FontWeight="Normal" Margin="-10,0,0,0">
-                            <Hyperlink NavigateUri="ApartmentFormPage.xaml">Book Again</Hyperlink>
-                        </Button>
+                        
                     </Grid>
 
-                    <Grid Grid.Column="1">
-                        <Button Content="Cancel Now" Width="120" FontSize="15" FontWeight="Normal" Margin="0" HorizontalAlignment="Left"/>
-                    </Grid>
+                    
                 </Grid>
 
 

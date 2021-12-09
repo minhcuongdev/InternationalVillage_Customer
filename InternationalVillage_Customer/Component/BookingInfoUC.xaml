@@ -50,7 +50,7 @@
                         <Image Grid.Column="0" Source="flash.png" Height="13" Width="13" VerticalAlignment="Center" HorizontalAlignment="Left"/>
                         <TextBlock Grid.Column="1" Text="Booking Information" FontSize="10" FontWeight="ExtraBold" VerticalAlignment="Center" Foreground="Black" HorizontalAlignment="Left" />
                     </Grid>
-                    <TextBlock Grid.Row="1" Text="Luxury Apartment"  Foreground="Black" FontWeight="Bold"
+                    <TextBlock x:Name="Type" Grid.Row="1" Text="Luxury Apartment"  Foreground="Black" FontWeight="Bold"
                            FontSize="9" VerticalAlignment="Center"  TextWrapping="Wrap"/>
                     <Grid Grid.Row="2">
                         <Grid.ColumnDefinitions>
@@ -71,13 +71,13 @@
                                 <RowDefinition></RowDefinition>
                                 <RowDefinition></RowDefinition>
                             </Grid.RowDefinitions>
-                            <TextBlock Grid.Row="0" Text="21/10/2020" FontSize="9" Foreground="Black" FontWeight="Bold" VerticalAlignment="Top"/>
-                            <TextBlock Grid.Row="1" Text="23/10/2020" FontSize="9" Foreground="Black" FontWeight="Bold" VerticalAlignment="Bottom"/>
+                            <TextBlock x:Name="CheckIn" Grid.Row="0" Text="21/10/2020" FontSize="9" Foreground="Black" FontWeight="Bold" VerticalAlignment="Top"/>
+                            <TextBlock x:Name="CheckOut" Grid.Row="1" Text="23/10/2020" FontSize="9" Foreground="Black" FontWeight="Bold" VerticalAlignment="Bottom"/>
                         </Grid>
 
                         
                     </Grid>
-                    <TextBlock Grid.Row="4" Text="Approved"  Foreground="Black" FontWeight="Bold"
+                    <TextBlock x:Name="State" Grid.Row="4" Text="Approved"  Foreground="Black" FontWeight="Bold"
                            FontSize="9" VerticalAlignment="Center"  TextWrapping="Wrap"/>
                 </Grid>
 
@@ -99,14 +99,10 @@
                             </Style.Triggers>
                         </Style>
                     </Grid.Resources>
-                    <Button Background="White" Width="90" FontSize="9" FontWeight="Normal" Margin="-12,0,10,0" HorizontalAlignment="Right">
-                        <Hyperlink NavigateUri="/Pages/BookingDetailPage.xaml">View details</Hyperlink>
+                    <Button x:Name="View"  Command="{Binding Choose}" CommandParameter="{Binding ElementName=BookingInformationUC}" Background="White" Width="90" FontSize="9" FontWeight="Normal" Margin="-12,0,10,0" HorizontalAlignment="Right" Foreground="#FF1B0505">
+                        View Detail
                     </Button>
                 </Grid>
-            
-               
-                
-
 
             </Grid>
         </materialDesign:Card>
