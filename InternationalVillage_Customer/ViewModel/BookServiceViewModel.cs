@@ -9,6 +9,7 @@ using System.Windows.Input;
 
 using InternationalVillage_Customer.Utilities;
 using InternationalVillage_Customer.Store;
+using InternationalVillage_Customer.Model;
 
 namespace InternationalVillage_Customer.ViewModel
 {
@@ -34,7 +35,8 @@ namespace InternationalVillage_Customer.ViewModel
         public ICommand FullNameLoaded { get; set; }
 
         public ICommand Order { get; set; }
-
+        public ICommand LoadTable { get; set; }
+        public ICommand SelectedTable { get; set; }
 
         //Validate data
         private string fullname = AccountStore.Instance.Name;
@@ -67,7 +69,7 @@ namespace InternationalVillage_Customer.ViewModel
         public string NumberService { get => numberService; set => numberService = value; }
         bool isNumberServiceCorrect = false;
 
-       
+        DetailApartmentBill selectedtale;
 
         public BookServiceViewModel()
         {
@@ -170,35 +172,49 @@ namespace InternationalVillage_Customer.ViewModel
                 
             });
 
+            LoadTable = new RelayCommand<DataGrid>((p) => { return true; }, (p) =>
+            {
+                selectedtale = null;
+                List<DetailApartmentBill> list = DetailBillStore.Instance.GetDetailApartmentBills(AccountStore.Instance.IdUser);
+                p.ItemsSource = list;
+               
+            });
+
+            SelectedTable = new RelayCommand<DataGrid>((p) => { return true; }, (p) =>
+            {
+                selectedtale = p.SelectedItem as DetailApartmentBill;
+                
+
+            });
             Order = new RelayCommand<Page>((p) => {
-                return isFullNameCorrect && isNumberPeopleCorrect && isCheckinDateCorrect && isCheckoutDateCorrect
+                return isFullNameCorrect && isNumberPeopleCorrect && (selectedtale != null)
                      && isNumberServiceCorrect && isTypeOfServiceCorrect;
             }, (p) =>
             {
                 int insertBooking = 0;
                 if (typeofService.Equals("Pool"))
                 {
-                    insertBooking = BookingTempStore.Instance.InsertService(AccountStore.Instance.IdUser, "S01", checkinDate, checkoutDate, DateTime.Now, Int32.Parse(numberService),"3B01",int.Parse(numberPeople),0);
+                    insertBooking = BookingTempStore.Instance.InsertService(AccountStore.Instance.IdUser, "S01", DateTime.Parse(selectedtale.Checkindate), DateTime.Parse(selectedtale.Checkoutdate), DateTime.Now, Int32.Parse(numberService),selectedtale.Id,int.Parse(numberPeople),0);
                 }
                 else if (typeofService.Equals("Gym"))
                 {
-                    insertBooking = BookingTempStore.Instance.InsertService(AccountStore.Instance.IdUser, "S02", checkinDate, checkoutDate, DateTime.Now,Int32.Parse(numberService), "3B01", int.Parse(numberPeople),9);
+                    insertBooking = BookingTempStore.Instance.InsertService(AccountStore.Instance.IdUser, "S02", DateTime.Parse(selectedtale.Checkindate), DateTime.Parse(selectedtale.Checkoutdate), DateTime.Now,Int32.Parse(numberService), selectedtale.Id, int.Parse(numberPeople),9);
                 }
                 else if (typeofService.Equals("Restaurant"))
                 {
-                    insertBooking = BookingTempStore.Instance.InsertService(AccountStore.Instance.IdUser, "S03", checkinDate, checkoutDate, DateTime.Now, Int32.Parse(numberService), "3B01", int.Parse(numberPeople),20);
+                    insertBooking = BookingTempStore.Instance.InsertService(AccountStore.Instance.IdUser, "S03", DateTime.Parse(selectedtale.Checkindate), DateTime.Parse(selectedtale.Checkoutdate), DateTime.Now, Int32.Parse(numberService), selectedtale.Id, int.Parse(numberPeople),20);
                 }
                 else if (typeofService.Equals("Tennis"))
                 {
-                    insertBooking = BookingTempStore.Instance.InsertService(AccountStore.Instance.IdUser, "S04", checkinDate, checkoutDate, DateTime.Now, Int32.Parse(numberService),"3B01",int.Parse(numberPeople),13);
+                    insertBooking = BookingTempStore.Instance.InsertService(AccountStore.Instance.IdUser, "S04", DateTime.Parse(selectedtale.Checkindate), DateTime.Parse(selectedtale.Checkoutdate), DateTime.Now, Int32.Parse(numberService), selectedtale.Id, int.Parse(numberPeople),13);
                 }
                 else if (typeofService.Equals("Golf"))
                 {
-                    insertBooking = BookingTempStore.Instance.InsertService(AccountStore.Instance.IdUser, "S05", checkinDate, checkoutDate, DateTime.Now, Int32.Parse(numberService), "3B01", int.Parse(numberPeople),22);
+                    insertBooking = BookingTempStore.Instance.InsertService(AccountStore.Instance.IdUser, "S05", DateTime.Parse(selectedtale.Checkindate), DateTime.Parse(selectedtale.Checkoutdate), DateTime.Now, Int32.Parse(numberService), selectedtale.Id, int.Parse(numberPeople),22);
                 }
                 else if (typeofService.Equals("Bar"))
                 {
-                    insertBooking = BookingTempStore.Instance.InsertService(AccountStore.Instance.IdUser, "S06", checkinDate, checkoutDate, DateTime.Now, Int32.Parse(numberService), "3B01", int.Parse(numberPeople),22);
+                    insertBooking = BookingTempStore.Instance.InsertService(AccountStore.Instance.IdUser, "S06", DateTime.Parse(selectedtale.Checkindate), DateTime.Parse(selectedtale.Checkoutdate), DateTime.Now, Int32.Parse(numberService), selectedtale.Id, int.Parse(numberPeople),22);
                 }
 
                 if (insertBooking > 0)

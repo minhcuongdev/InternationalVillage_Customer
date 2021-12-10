@@ -15,8 +15,8 @@ namespace InternationalVillage_Customer.Model
             IdBill = id;
             CustomerName = customer;
             ReceptionistName = receptionist;
-            CheckInDate = checkin;
-            CheckOutDate = checkout;
+            CheckInDate = DateTime.Parse(checkin).ToString("dd/MM/yyyy");
+            CheckOutDate = DateTime.Parse(checkout).ToString("dd/MM/yyyy");
             TotalMoney = totalmoney;
             Status = status;
         }
@@ -26,8 +26,8 @@ namespace InternationalVillage_Customer.Model
             IdBill = row["Id_Bill"].ToString(); ;
             CustomerName = AccountStore.Instance.Name;
             ReceptionistName = row["FullName"].ToString(); 
-            CheckInDate = row["CheckInDate"].ToString();
-            CheckOutDate = row["CheckOutDate"].ToString();
+            CheckInDate = DateTime.Parse(row["CheckInDate"].ToString()).ToString("dd/MM/yyyy");
+            CheckOutDate = DateTime.Parse(row["CheckOutDate"].ToString()).ToString("dd/MM/yyyy");
             TotalMoney = row["TotalMoney"].ToString();
             Status = row["Status"].ToString();
         }

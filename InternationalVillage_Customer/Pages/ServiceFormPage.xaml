@@ -29,7 +29,8 @@
             <i:InvokeCommandAction Command="{Binding ClearFocus}" CommandParameter="{Binding ElementName=ServiceFormVM}"/>
         </i:EventTrigger>
         <i:EventTrigger EventName="Loaded">
-            <i:InvokeCommandAction Command="{Binding CheckinDateSetUp}" CommandParameter="{Binding ElementName=CheckinRange}"/>
+           
+            <i:InvokeCommandAction Command="{Binding LoadTable}" CommandParameter="{Binding ElementName=DataGridApartment}"/>
         </i:EventTrigger>
     </i:Interaction.Triggers>
 
@@ -148,45 +149,10 @@
                     <ColumnDefinition></ColumnDefinition>
                 </Grid.ColumnDefinitions>
 
-                <DatePicker Grid.Column="0"
-                x:Name="CheckinDate"  
-                Width="240"
-                materialDesign:HintAssist.Hint="Check-in Date"
-                Style="{StaticResource MaterialDesignFilledDatePicker}" VerticalAlignment="Bottom" HorizontalAlignment="Left" Margin="50,0,0,14" FirstDayOfWeek="Monday"  >
-                    <DatePicker.BlackoutDates>
-                        <CalendarDateRange  x:Name="CheckinRange" />
-                    </DatePicker.BlackoutDates>
-                    <i:Interaction.Triggers>
-                        <i:EventTrigger EventName="SelectedDateChanged">
-                            <i:InvokeCommandAction Command="{Binding CheckinDateChanged}" CommandParameter="{Binding ElementName=CheckinDate}"/>
-                        </i:EventTrigger>
-                        <i:EventTrigger EventName="SelectedDateChanged">
-                            <i:InvokeCommandAction Command="{Binding CheckoutDateSetUp}" CommandParameter="{Binding ElementName=CheckoutRange}"/>
-                        </i:EventTrigger>
-                        <i:EventTrigger EventName="LostKeyboardFocus">
-                            <i:InvokeCommandAction Command="{Binding ValidateCheckinDate}" CommandParameter="{Binding ElementName=CheckinDateError}"/>
-                        </i:EventTrigger>
-                    </i:Interaction.Triggers>
-                </DatePicker>
+                
                 <TextBlock x:Name="CheckinDateError" Grid.Column="0"  FontSize="10" Foreground="Black" Visibility="Visible" VerticalAlignment="Bottom" Margin="50,0,0,0" />
 
-                <DatePicker Grid.Column="1"
-                x:Name="CheckoutDate"
-                Width="240"
-                materialDesign:HintAssist.Hint="Check-out Date"
-                Style="{StaticResource MaterialDesignFilledDatePicker}" VerticalAlignment="Bottom" HorizontalAlignment="Left" Margin="50,0,0,14" >
-                    <DatePicker.BlackoutDates>
-                        <CalendarDateRange x:Name="CheckoutRange" End="{x:Static System:DateTime.Today}" Start="{x:Static System:DateTime.MinValue}" />
-                    </DatePicker.BlackoutDates>
-                    <i:Interaction.Triggers>
-                        <i:EventTrigger EventName="SelectedDateChanged">
-                            <i:InvokeCommandAction Command="{Binding CheckoutDateChanged}" CommandParameter="{Binding ElementName=CheckoutDate}"/>
-                        </i:EventTrigger>
-                        <i:EventTrigger EventName="LostKeyboardFocus">
-                            <i:InvokeCommandAction Command="{Binding ValidateCheckoutDate}" CommandParameter="{Binding ElementName=CheckoutDateError}"/>
-                        </i:EventTrigger>
-                    </i:Interaction.Triggers>
-                </DatePicker>
+                
                 <TextBlock x:Name="CheckoutDateError" Grid.Column="1"  FontSize="10" Foreground="Black" Visibility="Visible" VerticalAlignment="Bottom" Margin="50,0,0,0" />
             </Grid>
 
@@ -270,12 +236,17 @@
         <Grid Grid.Column="1">
             <DataGrid x:Name="DataGridApartment" Grid.Row="1" Margin="30,210,0,0" ColumnWidth="120"  VerticalAlignment="Top" HorizontalAlignment="Left" VerticalScrollBarVisibility="Visible" Height="auto" IsReadOnly="True" AutoGenerateColumns="False">
                 <DataGrid.Columns>
-                    <DataGridTextColumn Header="ID" Binding="{Binding ID}" />
-                    <DataGridTextColumn Header="Check-in" Binding="{Binding CheckIn}" />
-                    <DataGridTextColumn Header="Check-out" Binding="{Binding CheckOut}"/>
-                    
+                    <DataGridTextColumn Header="ID" Binding="{Binding Id}" />
+                    <DataGridTextColumn Header="Check-in" Binding="{Binding Checkindate}" />
+                    <DataGridTextColumn Header="Check-out" Binding="{Binding Checkoutdate}"/>
+
                 </DataGrid.Columns>
-                
+                <i:Interaction.Triggers>
+
+                    <i:EventTrigger EventName="SelectionChanged">
+                        <i:InvokeCommandAction Command="{Binding SelectedTable}" CommandParameter="{Binding ElementName=DataGridApartment}"/>
+                    </i:EventTrigger>
+                </i:Interaction.Triggers>
             </DataGrid>
         </Grid>
 
