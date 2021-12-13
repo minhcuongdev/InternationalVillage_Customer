@@ -76,5 +76,14 @@ namespace InternationalVillage_Customer.Store
             DataTable data = DataProvider.Instance.ExecuteQuery(query);
             return data.Rows.Count > 0;
         }
-    }
+
+        public int CountIncident()
+        {
+            string query = string.Format("select * from Incident");
+            DataTable data = DataProvider.Instance.ExecuteQuery(query);
+            return data.Rows.Count;
+        }
+            
+        }
+    
 }

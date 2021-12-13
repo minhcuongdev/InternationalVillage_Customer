@@ -121,9 +121,9 @@ namespace InternationalVillage_Customer.ViewModel
                 else
                 {
                     int insertReport = 0;
-
+                    string Id_Incicdent = "I"+(BookingTempStore.Instance.CountIncident()+1).ToString();
                     {
-                        insertReport = BookingTempStore.Instance.InsertIncident("I01", AccountStore.Instance.IdUser, "", numberofapartment, typeofincident, description, levelofaffection, "No accepted");
+                        insertReport = BookingTempStore.Instance.InsertIncident(Id_Incicdent, AccountStore.Instance.IdUser, "", numberofapartment, typeofincident, description, levelofaffection, "No accepted");
                     }
 
                     if (insertReport > 0)

@@ -98,6 +98,7 @@
     <Compile Include="Model\ApartmentBill.cs" />
     <Compile Include="Model\Bill.cs" />
     <Compile Include="Model\BookingApartmentTemp.cs" />
+    <Compile Include="Model\DetailApartmentBill.cs" />
     <Compile Include="Model\DetailBill.cs" />
     <Compile Include="Model\DetailBooking.cs" />
     <Compile Include="Model\ServiceBill.cs" />

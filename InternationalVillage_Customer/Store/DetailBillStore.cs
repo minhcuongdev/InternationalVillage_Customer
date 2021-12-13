@@ -4,6 +4,7 @@ using System.Data;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using System.Windows;
 using InternationalVillage_Customer.Model;
 namespace InternationalVillage_Customer.Store
 {
@@ -20,6 +21,7 @@ namespace InternationalVillage_Customer.Store
         string checkout;
         string totalMoney;
         string status;
+        string paydDate;
         List<DetailBooking> listDetailBookings;
 
         public string IdCustomer { get => idCustomer; set => idCustomer = value; }
@@ -31,6 +33,7 @@ namespace InternationalVillage_Customer.Store
         public string TotalMoney { get => totalMoney; set => totalMoney = value; }
         public string Status { get => status; set => status = value; }
         internal List<DetailBooking> ListDetailBookings { get => listDetailBookings; set => listDetailBookings = value; }
+        public string PaydDate { get => paydDate; set => paydDate = value; }
 
         public void FindBill(string idB)
         {
@@ -46,7 +49,8 @@ namespace InternationalVillage_Customer.Store
                 checkout = item["CheckOutDate"].ToString();
                 totalMoney = item["TotalMoney"].ToString();
                 status = item["Status"].ToString();
-
+                if (item["PayDate"] == null) PaydDate = "";
+                else PaydDate = item["PayDate"].ToString();
             }
 
             ListDetailBookings = new List<DetailBooking>();
@@ -66,6 +70,21 @@ namespace InternationalVillage_Customer.Store
                 ListDetailBookings.Add(detailBooking);
             }
 
+        }
+        public List<DetailApartmentBill> GetDetailApartmentBills(string idCustomer)
+        {
+            List<DetailApartmentBill> list = new List<DetailApartmentBill>();
+            string query = "select Id_Apartment, DetailApartmentBill.CheckInDate, DetailApartmentBill.CheckOutDate " +
+                            "from Bill, DetailApartmentBill where Bill.Id_Bill = DetailApartmentBill.Id_Bill and Status = 'Not accepted yet' and Id_Customer = '" + idCustomer + "'";
+;
+            DataTable data = DataProvider.Instance.ExecuteQuery(query);
+            foreach (DataRow item in data.Rows)
+            {
+                DetailApartmentBill detail = new DetailApartmentBill(item["Id_Apartment"].ToString(), DateTime.Parse(item["CheckInDate"].ToString()).ToString("dd/MM/yyyy"), DateTime.Parse(item["CheckOutDate"].ToString()).ToString("dd/MM/yyyy"));
+                list.Add(detail);
+            }
+            
+            return list;
         }
     }
 }

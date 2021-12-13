@@ -29,8 +29,8 @@ namespace InternationalVillage_Customer.Component
         {
             InitializeComponent();
             this.IDBill.Text = id;
-            this.CheckInDate.Text = DateTime.Parse(checkin).ToShortDateString();
-            this.CheckOutDate.Text = DateTime.Parse(checkout).ToShortDateString();
+            this.CheckInDate.Text = DateTime.Parse(checkin).ToString("dd/MM/yyyy");
+            this.CheckOutDate.Text = DateTime.Parse(checkout).ToString("dd/MM/yyyy");
             this.TotalMoney.Text = total + "$";
             
 

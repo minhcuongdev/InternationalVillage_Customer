@@ -142,7 +142,7 @@
                 materialDesign:HintAssist.Hint="Type of Incident"
                 Width="240" HorizontalAlignment="Left" VerticalAlignment="Bottom" Margin="50,0,0,0">
                     <ComboBoxItem
-                  Content="In-room equipment" />
+                  Content="In-room equipment" IsSelected="True"/>
                     <ComboBoxItem
                   Content="Water/Electricity" />
                     <ComboBoxItem
@@ -165,7 +165,7 @@
                 materialDesign:HintAssist.Hint="Level of affection"
                 Width="240" HorizontalAlignment="Left" VerticalAlignment="Bottom" Margin="50,0,0,0">
                     <ComboBoxItem
-                  Content="Low" />
+                  Content="Low" IsSelected="True"/>
                     <ComboBoxItem
                   Content="Medium" />
                     <ComboBoxItem

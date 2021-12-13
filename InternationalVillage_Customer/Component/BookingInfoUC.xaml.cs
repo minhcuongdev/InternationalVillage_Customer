@@ -29,5 +29,10 @@ namespace InternationalVillage_Customer.Component
             InitializeComponent();
             this.DataContext = uc = new BookingInfoUCViewModel();
         }
+
+        private void View_Click(object sender, RoutedEventArgs e)
+        {
+
+        }
     }
 }

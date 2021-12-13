@@ -18,6 +18,7 @@ namespace InternationalVillage_Customer.ViewModel
         public ICommand LoadDate { get; set; }
         public ICommand LoadCheckInDate { get; set; }
         public ICommand LoadCheckOutDate { get; set; }
+        public ICommand LoadPayDate { get; set; }
         public ICommand LoadCustomer { get; set; }
         public ICommand LoadReceptionist { get; set; }
         public ICommand LoadTotalMoney { get; set; }
@@ -59,6 +60,12 @@ namespace InternationalVillage_Customer.ViewModel
             {
                 p.Text = DateTime.Parse(DetailBillStore.Instance.Checkout).ToShortDateString();
 
+
+            });
+            LoadPayDate = new RelayCommand<TextBlock>((p) => { return true; }, (p) =>
+            {
+                if (DetailBillStore.Instance.PaydDate.Equals("")) p.Text = "";
+                else p.Text = DateTime.Parse(DetailBillStore.Instance.PaydDate).ToString("dd/MM/yyyy H:mm:ss");
 
             });
             LoadTotalMoney = new RelayCommand<TextBlock>((p) => { return true; }, (p) =>

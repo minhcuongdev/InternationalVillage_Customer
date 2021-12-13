@@ -20,6 +20,7 @@
             <i:InvokeCommandAction Command="{Binding LoadReceptionist}" CommandParameter="{Binding ElementName=Receptionist}"/>
             <i:InvokeCommandAction Command="{Binding LoadCheckInDate}" CommandParameter="{Binding ElementName=Checkin}"/>
             <i:InvokeCommandAction Command="{Binding LoadCheckOutDate}" CommandParameter="{Binding ElementName=Checkout}"/>
+            <i:InvokeCommandAction Command="{Binding LoadPayDate}" CommandParameter="{Binding ElementName=Date}"/>
             <i:InvokeCommandAction Command="{Binding LoadTotalMoney}" CommandParameter="{Binding ElementName=TotalMoney}"/>
             <i:InvokeCommandAction Command="{Binding LoadStatus}" CommandParameter="{Binding ElementName=Status}"/>
             <i:InvokeCommandAction Command="{Binding LoadPaymentApproach}" CommandParameter="{Binding ElementName=PaymentApproach}"/>
