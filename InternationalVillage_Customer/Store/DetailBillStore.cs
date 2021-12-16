@@ -80,7 +80,7 @@ namespace InternationalVillage_Customer.Store
             DataTable data = DataProvider.Instance.ExecuteQuery(query);
             foreach (DataRow item in data.Rows)
             {
-                DetailApartmentBill detail = new DetailApartmentBill(item["Id_Apartment"].ToString(), DateTime.Parse(item["CheckInDate"].ToString()).ToString("dd/MM/yyyy"), DateTime.Parse(item["CheckOutDate"].ToString()).ToString("dd/MM/yyyy"));
+                DetailApartmentBill detail = new DetailApartmentBill(item["Id_Apartment"].ToString(), DateTime.Parse(item["CheckInDate"].ToString()).ToString("MM/dd/yyyy"), DateTime.Parse(item["CheckOutDate"].ToString()).ToString("MM/dd/yyyy"));
                 list.Add(detail);
             }
             
