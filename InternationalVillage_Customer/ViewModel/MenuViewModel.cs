@@ -25,8 +25,13 @@ namespace InternationalVillage_Customer.ViewModel
         public ICommand OpenBillPage { get; set; }
         public ICommand OpenBookingServicePage { get; set; }
         public ICommand OpenMyBookingPage { get; set; }
+        public ICommand OpenChatPage { get; set; }
+        public ICommand OpenProfilePage { get; set; }
         public ICommand Signout { get; set; }
-        
+
+        public ICommand MouseLeave { get; set; }
+        public ICommand MouseEnter { get; set; }
+
 
 
 
@@ -68,6 +73,15 @@ namespace InternationalVillage_Customer.ViewModel
                 p.Navigate(new System.Uri("Pages/MyBookingPage.xaml", UriKind.RelativeOrAbsolute));
             });
 
+            OpenChatPage = new RelayCommand<Frame>((p) => { return true; }, (p) =>
+            {
+                p.Navigate(new System.Uri("Pages/ChatPage.xaml", UriKind.RelativeOrAbsolute));
+            });
+
+            OpenProfilePage = new RelayCommand<Frame>((p) => { return true; }, (p) =>
+            {
+                p.Navigate(new System.Uri("Pages/EditProfilePage.xaml", UriKind.RelativeOrAbsolute));
+            });
 
             Signout = new RelayCommand<Window>((p) => { return true; }, (p) =>
             {
@@ -79,7 +93,20 @@ namespace InternationalVillage_Customer.ViewModel
 
             });
 
-            
+            MouseEnter = new RelayCommand<Button>((p) => { return true; }, (p) =>
+            {
+                BrushConverter bc = new BrushConverter();
+                p.Background = (Brush)bc.ConvertFrom("#2f9cfa");
+            });
+
+            MouseLeave = new RelayCommand<Button>((p) => { return true; }, (p) =>
+            {
+
+                p.Background = Brushes.Transparent;
+            });
+
+
+
         }
     }
 }

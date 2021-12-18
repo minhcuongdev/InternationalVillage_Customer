@@ -25,7 +25,7 @@
         MinWidth="700" MinHeight="500"
         WindowStartupLocation="CenterScreen" 
         Background="Transparent" AllowsTransparency="True"
-        Title="SignupWindow" Height="640" Width="800" ResizeMode="NoResize">
+        Title="SignupWindow" Height="680" Width="800" ResizeMode="NoResize">
 
     <i:Interaction.Triggers>
         <i:EventTrigger EventName="MouseDown">
