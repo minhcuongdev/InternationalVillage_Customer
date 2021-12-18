@@ -163,6 +163,7 @@ namespace InternationalVillage_Customer.ViewModel
                                                             && isNumberApartmentCorrect && isTypeOfApartmentCorrect; 
             }, (p) =>
             {
+              
                int insertBooking = 0;
                if (typeofApartment.Equals("Luxury (Type 3A)"))
                {

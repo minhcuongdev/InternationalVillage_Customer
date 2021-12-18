@@ -49,7 +49,7 @@
                 </Border.Background>
             </Border>
 
-            <Grid Grid.Column="1" Height="404" VerticalAlignment="Bottom">
+            <Grid Grid.Column="1"  >
                 <Grid.RowDefinitions>
                     <RowDefinition Height="auto"></RowDefinition>
                     <RowDefinition Height="150"></RowDefinition>

@@ -228,11 +228,23 @@
                                     </ListView.View>
 
                                 </ListView>-->
-                                <DataGrid x:Name="BillTable" Height="auto" ColumnWidth="200" IsReadOnly="True" AlternatingRowBackground="AliceBlue" HorizontalAlignment="Center" VerticalAlignment="Top" Width="600" CanUserAddRows="False" AutoGenerateColumns="False">
+                                <DataGrid x:Name="BillTable" Margin="35,0,0,0"  Height="auto"  IsReadOnly="True" AlternatingRowBackground="AliceBlue" HorizontalAlignment="Center" VerticalAlignment="Top"  CanUserAddRows="False" AutoGenerateColumns="False">
+                                    <DataGrid.Resources>
+                                        <Style BasedOn="{StaticResource {x:Type DataGridColumnHeader}}" TargetType="{x:Type DataGridColumnHeader}" >
+                                            <Setter Property="Background" Value="White" />
+                                            <Setter Property="Foreground" Value="Black" />
+                                            <Setter Property="FontWeight" Value="Bold"/>
+                                            
+                                        </Style>
+                                    </DataGrid.Resources>
+
+
+
+
                                     <DataGrid.Columns>
-                                        <DataGridTextColumn Header="A/s" Binding="{Binding Name}" />
-                                        <DataGridTextColumn Header="Quantity" Binding="{Binding Quantity}" />
-                                        <DataGridTextColumn Header="Price" Binding="{Binding Price}" />
+                                        <DataGridTextColumn Width="1*" Header="A/s" Binding="{Binding Name}" />
+                                        <DataGridTextColumn Width="1*" Header="Quantity" Binding="{Binding Quantity}" />
+                                        <DataGridTextColumn Width="1*" Header="Price" Binding="{Binding Price}" />
                                     </DataGrid.Columns>
                                     <i:Interaction.Triggers>
                                         <i:EventTrigger EventName="Loaded">
@@ -269,7 +281,7 @@
                             <TextBlock x:Name="PaymentApproach" Grid.Column="1" Text="Cash" Foreground="Black" FontSize="13" FontWeight="DemiBold" TextWrapping="Wrap" Margin="0,0,2,0"/>
                         </Grid>
 
-                        <Grid Grid.Row="5" Margin="0,0,0,0" VerticalAlignment="Top">
+                        <Grid Grid.Row="5" Margin="0,10,0,0" VerticalAlignment="Top">
                             <Grid.ColumnDefinitions>
                                 <ColumnDefinition Width="169"></ColumnDefinition>
                                 <ColumnDefinition Width="*"></ColumnDefinition>

@@ -22,7 +22,7 @@
       x:Name="ApartmentFormVM"
       
       mc:Ignorable="d" 
-      d:DesignHeight="450" d:DesignWidth="800"
+      d:DesignHeight="550" d:DesignWidth="800"
       Title="ApartmentFormPage">
 
     <i:Interaction.Triggers>
@@ -36,16 +36,10 @@
 
     <Grid Background="White">
         <Grid.RowDefinitions>
-            <RowDefinition Height="40"></RowDefinition>
-            <RowDefinition Height="100"></RowDefinition>
-            <RowDefinition Height="40"></RowDefinition>
-            <RowDefinition Height="30"></RowDefinition>
-            <RowDefinition Height="60"></RowDefinition>
-            <RowDefinition Height="65"></RowDefinition>
-            <RowDefinition Height="65"></RowDefinition>
-            <RowDefinition></RowDefinition>
-
+            <RowDefinition Height="1*"></RowDefinition>
+            <RowDefinition Height="9*"></RowDefinition>
         </Grid.RowDefinitions>
+
         <Grid Grid.Row="0">
             <Grid.Resources>
                 <Style x:Key="{x:Type Hyperlink}" TargetType="{x:Type Hyperlink}">
@@ -65,196 +59,289 @@
                     </Style.Triggers>
                 </Style>
             </Grid.Resources>
-            <TextBlock Foreground="Black" Margin="50,10,0,0" FontWeight="Bold" VerticalAlignment="Bottom">
-                <Hyperlink NavigateUri="BookingPage.xaml">BACK TO HOME</Hyperlink>
+            <TextBlock Foreground="Black" Margin="10,10,0,0" FontWeight="Bold" VerticalAlignment="Top">
+                <Hyperlink NavigateUri="BookingPage.xaml">BACK</Hyperlink>
             </TextBlock>
         </Grid>
 
-        <Grid Grid.Row="1" VerticalAlignment="Stretch"  Margin="0,0,0,-30">
-            <Image  Stretch="Fill" Width="60" Height="60" VerticalAlignment="Center" Source="/Image/sunflower.png" Margin="50,0,0,0" HorizontalAlignment="Left"     />
-        </Grid>
-        <TextBlock Grid.Row="2"
+        <Grid Grid.Row="1">
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition Width="4*"></ColumnDefinition>
+                <ColumnDefinition Width="6*"></ColumnDefinition>
+            </Grid.ColumnDefinitions>
+
+            <Border Grid.Column="0" CornerRadius="15" Margin="10,0,0,10">
+                
+                <Border.Background>
+                    <ImageBrush  Stretch="UniformToFill" ImageSource="/Image/bookingapartment.jpg" />
+                </Border.Background>
+            </Border>
+
+            <Grid Grid.Column="1" >
+                <Grid.RowDefinitions>
+                    <RowDefinition Height="3*"></RowDefinition>
+                    <RowDefinition Height="5*"></RowDefinition>
+                    <RowDefinition Height="2*"></RowDefinition>
+                </Grid.RowDefinitions>
+
+                <Grid Grid.Row="0">
+                    <Grid.RowDefinitions>
+                        <RowDefinition Height="4*"></RowDefinition>
+                        <RowDefinition Height="3*"></RowDefinition>
+                        <RowDefinition Height="3*"></RowDefinition>
+                    </Grid.RowDefinitions>
+                    <Image Grid.Row="0" Stretch="Fill" Width="60" Height="60" VerticalAlignment="Center" Source="/Image/sunflower.png" Margin="50,0,0,0" HorizontalAlignment="Left"     />
+                    <TextBlock Grid.Row="1"
                        Style="{StaticResource MaterialDesignBody1TextBlock}"
                        HorizontalAlignment="Left"  FontSize="25" FontWeight="Bold" Margin="50,0,0,0">
                        BOOK APARTMENT
-        </TextBlock>
+                    </TextBlock>
 
-        <TextBlock Grid.Row="3"
+                    <TextBlock Grid.Row="2"
                        Style="{StaticResource MaterialDesignBody1TextBlock}"
                        HorizontalAlignment="Left" Margin="50,-10,0,0" FontSize="14" >
                        International Village Management System
-        </TextBlock>
+                    </TextBlock>
 
-        <Grid Grid.Row="4" Margin="0">
-            <Grid.ColumnDefinitions>
-                <ColumnDefinition Width="350"></ColumnDefinition>
-                <ColumnDefinition></ColumnDefinition>
-            </Grid.ColumnDefinitions>
 
-            <TextBox Grid.Column="0"
-            Style="{StaticResource MaterialDesignFilledTextBox}"
-            VerticalAlignment="Top"
-            AcceptsReturn="True"
-            TextWrapping="Wrap"
-            MaxWidth="400"
-            materialDesign:HintAssist.Hint="FullName"
-            Width="240"
-            x:Name="FullName"
-            IsEnabled="True" Margin="50,0,0,0" HorizontalAlignment="Left"   >
-                <i:Interaction.Triggers>
-                    <i:EventTrigger EventName="Loaded">
-                        <i:InvokeCommandAction Command="{Binding FullNameLoaded}" CommandParameter="{Binding ElementName=FullName}"/>
-                    </i:EventTrigger>
-                    <i:EventTrigger EventName="TextChanged">
-                        <i:InvokeCommandAction Command="{Binding FullNameChanged}" CommandParameter="{Binding ElementName=FullName}"/>
-                    </i:EventTrigger>
-                    <i:EventTrigger EventName="LostKeyboardFocus">
-                        <i:InvokeCommandAction Command="{Binding ValidateFullName}" CommandParameter="{Binding ElementName=FullNameError}"/>
-                    </i:EventTrigger>
-                </i:Interaction.Triggers>
-            </TextBox>
-            <TextBlock x:Name="FullNameError" Grid.Column="0" Text="Example: VictoryA " FontSize="10" Foreground="Black" Visibility="Visible" VerticalAlignment="Bottom" Margin="50,0,0,0" />
+                </Grid>
 
-            <TextBox Grid.Column="1"
-            Style="{StaticResource MaterialDesignFilledTextBox}"
-            VerticalAlignment="Top"
-            AcceptsReturn="True"
-            TextWrapping="Wrap"
-            MaxWidth="400"
-            materialDesign:HintAssist.Hint="Total number of people"
-            Width="240"
-            x:Name="NumberOfPeople"
-            IsEnabled="True" Margin="50,0,0,0" HorizontalAlignment="Left"   >
-                <i:Interaction.Triggers>
-                    <i:EventTrigger EventName="TextChanged">
-                        <i:InvokeCommandAction Command="{Binding NumberPeopleChanged}" CommandParameter="{Binding ElementName=NumberOfPeople}"/>
-                    </i:EventTrigger>
-                    <i:EventTrigger EventName="LostKeyboardFocus">
-                        <i:InvokeCommandAction Command="{Binding ValidateNumberPeople}" CommandParameter="{Binding ElementName=NumberofPeopleError}"/>
-                    </i:EventTrigger>
-                </i:Interaction.Triggers>
-            </TextBox>
-            <TextBlock x:Name="NumberofPeopleError" Grid.Column="1" FontSize="10" Foreground="Black" Visibility="Visible" VerticalAlignment="Bottom" Margin="50,0,0,0" />
-        </Grid>
+                <Grid Grid.Row="1">
+                    <Grid.RowDefinitions>
+                        <RowDefinition Height="1*"></RowDefinition>
+                        <RowDefinition Height="1*"></RowDefinition>
+                        <RowDefinition Height="1*"></RowDefinition>
+                    </Grid.RowDefinitions>
 
-        <Grid Grid.Row="5" Margin="0">
-            <Grid.ColumnDefinitions>
-                <ColumnDefinition Width="350"></ColumnDefinition>
-                <ColumnDefinition></ColumnDefinition>
-            </Grid.ColumnDefinitions>
+                    <Grid Grid.Row="0" Margin="0">
+                        <Grid.ColumnDefinitions>
+                            <ColumnDefinition></ColumnDefinition>
+                            <ColumnDefinition></ColumnDefinition>
+                        </Grid.ColumnDefinitions>
 
-            <DatePicker Grid.Column="0"
-                x:Name="CheckinDate"  
-                Width="240"
-                materialDesign:HintAssist.Hint="Check-in Date"
-                Style="{StaticResource MaterialDesignFilledDatePicker}" VerticalAlignment="Bottom" HorizontalAlignment="Left" Margin="50,0,0,14" FirstDayOfWeek="Monday"  >
+                        <Grid Grid.Column="0">
+                            <Grid.RowDefinitions>
+                                <RowDefinition></RowDefinition>
+                                <RowDefinition></RowDefinition>
+                            </Grid.RowDefinitions>
+                            <TextBox Grid.Row="0"
+                            Style="{StaticResource MaterialDesignFilledTextBox}"
+                            VerticalAlignment="Stretch"
+                            AcceptsReturn="True"
+                            TextWrapping="Wrap"                           
+                            materialDesign:HintAssist.Hint="FullName"                           
+                            x:Name="FullName"
+                            IsEnabled="True" Margin="50,0,20,0" HorizontalAlignment="Stretch"   >
+                                <i:Interaction.Triggers>
+                                    <i:EventTrigger EventName="Loaded">
+                                        <i:InvokeCommandAction Command="{Binding FullNameLoaded}" CommandParameter="{Binding ElementName=FullName}"/>
+                                    </i:EventTrigger>
+                                    <i:EventTrigger EventName="TextChanged">
+                                        <i:InvokeCommandAction Command="{Binding FullNameChanged}" CommandParameter="{Binding ElementName=FullName}"/>
+                                    </i:EventTrigger>
+                                    <i:EventTrigger EventName="LostKeyboardFocus">
+                                        <i:InvokeCommandAction Command="{Binding ValidateFullName}" CommandParameter="{Binding ElementName=FullNameError}"/>
+                                    </i:EventTrigger>
+                                </i:Interaction.Triggers>
+                            </TextBox>
+
+                            <TextBlock Grid.Row="1" x:Name="FullNameError" Grid.Column="0" Text="" FontSize="14" Foreground="Black" Visibility="Visible" VerticalAlignment="Top" Margin="50,10,0,0" />
+
+                        </Grid>
+
+
+                        <Grid Grid.Column="1">
+                            <Grid.RowDefinitions>
+                                <RowDefinition></RowDefinition>
+                                <RowDefinition></RowDefinition>
+                            </Grid.RowDefinitions>
+
+                            <TextBox Grid.Row="0"
+                            Style="{StaticResource MaterialDesignFilledTextBox}"
+                            VerticalAlignment="Stretch"
+                            AcceptsReturn="True"
+                            TextWrapping="Wrap"                            
+                            materialDesign:HintAssist.Hint="Total number of people"                          
+                            x:Name="NumberOfPeople"
+                            IsEnabled="True" Margin="20,0,50,0" HorizontalAlignment="Stretch"   >
+                                <i:Interaction.Triggers>
+                                    <i:EventTrigger EventName="TextChanged">
+                                        <i:InvokeCommandAction Command="{Binding NumberPeopleChanged}" CommandParameter="{Binding ElementName=NumberOfPeople}"/>
+                                    </i:EventTrigger>
+                                    <i:EventTrigger EventName="LostKeyboardFocus">
+                                        <i:InvokeCommandAction Command="{Binding ValidateNumberPeople}" CommandParameter="{Binding ElementName=NumberofPeopleError}"/>
+                                    </i:EventTrigger>
+                                </i:Interaction.Triggers>
+                            </TextBox>
+
+                            <TextBlock x:Name="NumberofPeopleError" Grid.Row="1" FontSize="14" Foreground="Black" Visibility="Visible" VerticalAlignment="Top" Margin="20,10,0,0" />
+
+                        </Grid>
+
+                        
+                        
+                    </Grid>
+
+                    <Grid Grid.Row="1">
+                        
+                        <Grid.ColumnDefinitions>
+                            <ColumnDefinition></ColumnDefinition>
+                            <ColumnDefinition></ColumnDefinition>
+                        </Grid.ColumnDefinitions>
+
+                        <Grid Grid.Column="0">
+                            <Grid.RowDefinitions>
+                                <RowDefinition></RowDefinition>
+                                <RowDefinition></RowDefinition>
+                            </Grid.RowDefinitions>
+
+                            <DatePicker Grid.Row="0"
+                                x:Name="CheckinDate"                                  
+                                materialDesign:HintAssist.Hint="Check-in Date"
+                                Style="{StaticResource MaterialDesignFilledDatePicker}" VerticalAlignment="Stretch" HorizontalAlignment="Stretch" Margin="50,0,20,0" FirstDayOfWeek="Monday"  >
+
+                                <DatePicker.BlackoutDates>
+                                    <CalendarDateRange  x:Name="CheckinRange" />
+                                </DatePicker.BlackoutDates>
+                                <i:Interaction.Triggers>
+                                    <i:EventTrigger EventName="SelectedDateChanged">
+                                        <i:InvokeCommandAction Command="{Binding CheckinDateChanged}" CommandParameter="{Binding ElementName=CheckinDate}"/>
+                                    </i:EventTrigger>
+                                    <i:EventTrigger EventName="SelectedDateChanged">
+                                        <i:InvokeCommandAction Command="{Binding CheckoutDateSetUp}" CommandParameter="{Binding ElementName=CheckoutRange}"/>
+                                    </i:EventTrigger>
+                                    <i:EventTrigger EventName="LostKeyboardFocus">
+                                        <i:InvokeCommandAction Command="{Binding ValidateCheckinDate}" CommandParameter="{Binding ElementName=CheckinDateError}"/>
+                                    </i:EventTrigger>
+                                </i:Interaction.Triggers>
+                            </DatePicker>
+
+                            <TextBlock x:Name="CheckinDateError" Grid.Row="1"  FontSize="14" Foreground="Black" Visibility="Visible" VerticalAlignment="Top" Margin="50,10,20,0" />
+                        </Grid>
+
+                        <Grid Grid.Column="1">
+                            <Grid.RowDefinitions>
+                                <RowDefinition></RowDefinition>
+                                <RowDefinition></RowDefinition>
+                            </Grid.RowDefinitions>
+
+                            <DatePicker Grid.Row="0"
+                                    x:Name="CheckoutDate"                                
+                                    materialDesign:HintAssist.Hint="Check-out Date"
+                                    Style="{StaticResource MaterialDesignFilledDatePicker}" VerticalAlignment="Stretch" HorizontalAlignment="Stretch" Margin="20,0,50,0" >
+                                <DatePicker.BlackoutDates>
+                                    <CalendarDateRange x:Name="CheckoutRange" End="{x:Static System:DateTime.Today}" Start="{x:Static System:DateTime.MinValue}" />
+                                </DatePicker.BlackoutDates>
+                                <i:Interaction.Triggers>
+                                    <i:EventTrigger EventName="SelectedDateChanged">
+                                        <i:InvokeCommandAction Command="{Binding CheckoutDateChanged}" CommandParameter="{Binding ElementName=CheckoutDate}"/>
+                                    </i:EventTrigger>
+                                    <i:EventTrigger EventName="LostKeyboardFocus">
+                                        <i:InvokeCommandAction Command="{Binding ValidateCheckoutDate}" CommandParameter="{Binding ElementName=CheckoutDateError}"/>
+                                    </i:EventTrigger>
+                                </i:Interaction.Triggers>
+                            </DatePicker>
+
+                            <TextBlock Grid.Row="1" x:Name="CheckoutDateError" FontSize="14" Foreground="Black" Visibility="Visible" VerticalAlignment="Top" Margin="20,10,50,0" />
+                        </Grid>
+                                            
+                    </Grid>
+
+                    <Grid Grid.Row="2">
+                        <Grid.ColumnDefinitions>
+                            <ColumnDefinition></ColumnDefinition>
+                            <ColumnDefinition></ColumnDefinition>
+                        </Grid.ColumnDefinitions>
+
+                        <Grid Grid.Column="0">
+                            <Grid.RowDefinitions>
+                                <RowDefinition></RowDefinition>
+                                <RowDefinition></RowDefinition>
+                            </Grid.RowDefinitions>
+
+                            <ComboBox Grid.Row="0"
+                                    x:Name="TypeOfApartment"
+                                    Style="{StaticResource MaterialDesignFilledComboBox}"
+                                    IsEnabled="True"
+                                    materialDesign:HintAssist.Hint="Type of Apartment" 
+                                    HorizontalAlignment="Stretch" VerticalAlignment="Stretch" Margin="50,0,20,0" >
+
+                                <ComboBoxItem Content="Luxury (Type 3A)" />
+                                <ComboBoxItem Content="High Standard (Type 3B)" />
+                                <ComboBoxItem Content="Standard (Type 2A)" />
+
+                                <i:Interaction.Triggers>
+                                    <i:EventTrigger EventName="Loaded">
+                                        <i:InvokeCommandAction Command="{Binding TypeOfApartmentLoaded}" CommandParameter="{Binding ElementName=TypeOfApartment}"/>
+                                    </i:EventTrigger>
+                                    <i:EventTrigger EventName="SelectionChanged">
+                                        <i:InvokeCommandAction Command="{Binding TypeOfApartmentChanged}" CommandParameter="{Binding ElementName=TypeOfApartment}"/>
+                                    </i:EventTrigger>
+                                    <i:EventTrigger EventName="LostKeyboardFocus">
+                                        <i:InvokeCommandAction Command="{Binding ValidateTypeOfApartment}" CommandParameter="{Binding ElementName=TypeIncidentError}"/>
+                                    </i:EventTrigger>
+                                </i:Interaction.Triggers>
+                            </ComboBox>
+
+                            <TextBlock x:Name="TypeIncidentError" Grid.Row="1"  FontSize="14" Foreground="Black" Visibility="Visible" VerticalAlignment="Top" Margin="50,0,20,0" />
+
+                        </Grid>
+
+                        <Grid Grid.Column="1">
+                            <Grid.RowDefinitions>
+                                <RowDefinition></RowDefinition>
+                                <RowDefinition></RowDefinition>
+                            </Grid.RowDefinitions>
+
+
+                            <TextBox Grid.Row="0"
+                                    Style="{StaticResource MaterialDesignFilledTextBox}"
+                                    VerticalAlignment="Stretch"
+                                    AcceptsReturn="True"
+                                    TextWrapping="Wrap"                                    
+                                    materialDesign:HintAssist.Hint="Total number"                                   
+                                    x:Name="TotalNumberofApartment"
+                                    IsEnabled="True" Margin="20,0,50,0" HorizontalAlignment="Stretch">
+                                <i:Interaction.Triggers>
+                                    <i:EventTrigger EventName="TextChanged">
+                                        <i:InvokeCommandAction Command="{Binding NumberApartmentChanged}" CommandParameter="{Binding ElementName=TotalNumberofApartment}"/>
+                                    </i:EventTrigger>
+                                    <i:EventTrigger EventName="LostKeyboardFocus">
+                                        <i:InvokeCommandAction Command="{Binding ValidateNumberApartment}" CommandParameter="{Binding ElementName=TotalNumberError}"/>
+                                    </i:EventTrigger>
+                                </i:Interaction.Triggers>
+                            </TextBox>
+
+                            <TextBlock x:Name="TotalNumberError" Grid.Row="1"  FontSize="14" Foreground="Black" Visibility="Visible" VerticalAlignment="Top" Margin="20,10,50,0" />
+                        </Grid>
+                        
+                        
+
+
+                        
+                    </Grid>
+                </Grid>
                 
-                <DatePicker.BlackoutDates>
-                    <CalendarDateRange  x:Name="CheckinRange" />
-                </DatePicker.BlackoutDates>
-                <i:Interaction.Triggers>
-                    <i:EventTrigger EventName="SelectedDateChanged">
-                        <i:InvokeCommandAction Command="{Binding CheckinDateChanged}" CommandParameter="{Binding ElementName=CheckinDate}"/>
-                    </i:EventTrigger>
-                    <i:EventTrigger EventName="SelectedDateChanged">
-                        <i:InvokeCommandAction Command="{Binding CheckoutDateSetUp}" CommandParameter="{Binding ElementName=CheckoutRange}"/>
-                    </i:EventTrigger>
-                    <i:EventTrigger EventName="LostKeyboardFocus">
-                        <i:InvokeCommandAction Command="{Binding ValidateCheckinDate}" CommandParameter="{Binding ElementName=CheckinDateError}"/>
-                    </i:EventTrigger>
-                </i:Interaction.Triggers>
-            </DatePicker>
-            <TextBlock x:Name="CheckinDateError" Grid.Column="0"  FontSize="10" Foreground="Black" Visibility="Visible" VerticalAlignment="Bottom" Margin="50,0,0,0" />
 
-            <DatePicker Grid.Column="1"
-                x:Name="CheckoutDate"
-                Width="240"
-                materialDesign:HintAssist.Hint="Check-out Date"
-                Style="{StaticResource MaterialDesignFilledDatePicker}" VerticalAlignment="Bottom" HorizontalAlignment="Left" Margin="50,0,0,14" >
-                <DatePicker.BlackoutDates>
-                    <CalendarDateRange x:Name="CheckoutRange" End="{x:Static System:DateTime.Today}" Start="{x:Static System:DateTime.MinValue}" />
-                </DatePicker.BlackoutDates>
-                <i:Interaction.Triggers>
-                    <i:EventTrigger EventName="SelectedDateChanged">
-                        <i:InvokeCommandAction Command="{Binding CheckoutDateChanged}" CommandParameter="{Binding ElementName=CheckoutDate}"/>
-                    </i:EventTrigger>
-                    <i:EventTrigger EventName="LostKeyboardFocus">
-                        <i:InvokeCommandAction Command="{Binding ValidateCheckoutDate}" CommandParameter="{Binding ElementName=CheckoutDateError}"/>
-                    </i:EventTrigger>
-                </i:Interaction.Triggers>
-            </DatePicker>
-            <TextBlock x:Name="CheckoutDateError" Grid.Column="1"  FontSize="10" Foreground="Black" Visibility="Visible" VerticalAlignment="Bottom" Margin="50,0,0,0" />
+                <Grid Grid.Row="2" >
+                    <Button
+                        x:Name="Book"
+                        Style="{StaticResource MaterialDesignRaisedDarkButton}"
+                        materialDesign:ButtonAssist.CornerRadius="20"           
+                        IsEnabled="True" Margin="0,20,0,0" HorizontalAlignment="Center" Width="300" Height="45"  VerticalAlignment="Top" Content="BOOK"
+                        Command="{Binding Book}"
+                        CommandParameter="{Binding ElementName=ApartmentFormVM}" >
+
+                    </Button>
+
+                </Grid>
+            </Grid>
+        </Grid>
+            
+            
         
-        </Grid>
-
-        <Grid Grid.Row="6" Margin="0">
-            <Grid.ColumnDefinitions>
-                <ColumnDefinition Width="350"></ColumnDefinition>
-                <ColumnDefinition></ColumnDefinition>
-            </Grid.ColumnDefinitions>
-
-            <ComboBox Grid.Column="0"
-            x:Name="TypeOfApartment"
-            Style="{StaticResource MaterialDesignFilledComboBox}"
-            IsEnabled="True"
-            materialDesign:HintAssist.Hint="Type of Apartment"
-            Width="240" HorizontalAlignment="Left" VerticalAlignment="Bottom" Margin="50,0,0,14"
-            >
-                
-                <ComboBoxItem Content="Luxury (Type 3A)" />
-                <ComboBoxItem Content="High Standard (Type 3B)" />
-                <ComboBoxItem Content="Standard (Type 2A)" />
-             
-                <i:Interaction.Triggers>
-                    <i:EventTrigger EventName="Loaded">
-                        <i:InvokeCommandAction Command="{Binding TypeOfApartmentLoaded}" CommandParameter="{Binding ElementName=TypeOfApartment}"/>
-                    </i:EventTrigger>
-                    <i:EventTrigger EventName="SelectionChanged">
-                        <i:InvokeCommandAction Command="{Binding TypeOfApartmentChanged}" CommandParameter="{Binding ElementName=TypeOfApartment}"/>
-                    </i:EventTrigger>
-                    <i:EventTrigger EventName="LostKeyboardFocus">
-                        <i:InvokeCommandAction Command="{Binding ValidateTypeOfApartment}" CommandParameter="{Binding ElementName=TypeIncidentError}"/>
-                    </i:EventTrigger>
-                </i:Interaction.Triggers>
-            </ComboBox>
-            <TextBlock x:Name="TypeIncidentError" Grid.Column="0"  FontSize="10" Foreground="Black" Visibility="Visible" VerticalAlignment="Bottom" Margin="50,0,0,0" />
-
-
-            <TextBox Grid.Column="1"
-            Style="{StaticResource MaterialDesignFilledTextBox}"
-            VerticalAlignment="Bottom"
-            AcceptsReturn="True"
-            TextWrapping="Wrap"
-            MaxWidth="400"
-            materialDesign:HintAssist.Hint="Total number"
-            Width="240"
-            x:Name="TotalNumberofApartment"
-            IsEnabled="True" Margin="50,0,0,14" HorizontalAlignment="Left" >
-                <i:Interaction.Triggers>
-                    <i:EventTrigger EventName="TextChanged">
-                        <i:InvokeCommandAction Command="{Binding NumberApartmentChanged}" CommandParameter="{Binding ElementName=TotalNumberofApartment}"/>
-                    </i:EventTrigger>
-                    <i:EventTrigger EventName="LostKeyboardFocus">
-                        <i:InvokeCommandAction Command="{Binding ValidateNumberApartment}" CommandParameter="{Binding ElementName=TotalNumberError}"/>
-                    </i:EventTrigger>
-                </i:Interaction.Triggers>
-            </TextBox>
-            <TextBlock x:Name="TotalNumberError" Grid.Column="1"  FontSize="10" Foreground="Black" Visibility="Visible" VerticalAlignment="Bottom" Margin="50,0,0,0" />
-        </Grid>
-
-        <Grid Grid.Row="7" >
-            <Button
-            x:Name="Book"
-            Style="{StaticResource MaterialDesignRaisedDarkButton}"
-            materialDesign:ButtonAssist.CornerRadius="20"           
-            IsEnabled="True" Margin="50,25,0,0" HorizontalAlignment="Left" Width="600" VerticalAlignment="Top"
-             Command="{Binding Book}"
-             CommandParameter="{Binding ElementName=ApartmentFormVM}" >
-                
-                <TextBlock Text="BOOK" />
-            </Button>
-
-        </Grid>
+        
+        
 
 
 
