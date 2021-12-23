@@ -42,11 +42,11 @@ namespace InternationalVillage_Customer.ViewModel
 
         private string levelofaffection = "";
         public string LevelOfAffection { get => levelofaffection; set => levelofaffection = value; }
-        bool isLevelOfAffectionCorrect = false;
+        bool isLevelOfAffectionCorrect = true;
 
         private string description = "";
         public string Description { get => description; set => description = value; }
-        bool isDescriptionCorrect = false;
+        bool isDescriptionCorrect = true;
 
         public ReportIncidentViewModel()
         {

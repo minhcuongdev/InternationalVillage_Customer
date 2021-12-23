@@ -12,7 +12,7 @@
         xmlns:materialDesign="http://materialdesigninxaml.net/winfx/xaml/themes"
         TextElement.Foreground="{DynamicResource MaterialDesignBody}"
         TextElement.FontWeight="Regular"
-        TextElement.FontSize="13"
+        TextElement.FontSize="14"
         TextOptions.TextFormattingMode="Ideal"
         TextOptions.TextRenderingMode="Auto"
         FontFamily="{DynamicResource MaterialDesignFont}"
@@ -66,13 +66,13 @@
                     <RowDefinition></RowDefinition>
                 </Grid.RowDefinitions>
 
-                <StackPanel Grid.Row="0" HorizontalAlignment="Left" Margin="0,-70,0,0.333" Width="103">
-                    <materialDesign:PackIcon Kind="ExitToApp"
-                                             VerticalAlignment="Center" Margin="8,5,10,0">
+                <StackPanel Grid.Row="0" HorizontalAlignment="Left" Margin="0,-60,0,0.333" Width="103">
+                    <materialDesign:PackIcon Kind="ExitToApp" Cursor="Hand"
+                                             VerticalAlignment="Center" Margin="10,5,10,0">
 
                     </materialDesign:PackIcon>
                     <Label Style="{StaticResource MaterialDesignLabel}"
-                           Content="Exit" Margin="0,-20,45,0" HorizontalAlignment="Right">
+                           Content="Exit" Margin="0,-20,45,0" Cursor="Hand" HorizontalAlignment="Right">
                         <i:Interaction.Triggers>
                             <i:EventTrigger EventName="MouseDown">
                                 <i:InvokeCommandAction Command="{Binding CloseLoginWindow}" CommandParameter="{Binding ElementName=LoginWD}"/>
@@ -87,7 +87,7 @@
 
                 <TextBlock Grid.Row="2"
                            Style="{StaticResource MaterialDesignBody1TextBlock}"
-                           HorizontalAlignment="Center" Margin="0,-10,0,0" FontSize="20" FontWeight="Bold"
+                           HorizontalAlignment="Center" Margin="0,10,0,0" FontSize="25" FontWeight="Bold"
                            >
                  Sunflower Internation Village
                 </TextBlock>
@@ -142,7 +142,7 @@
                         
 
                         <Grid Grid.Column="1" HorizontalAlignment="Right">
-                            <Label Style="{StaticResource MaterialDesignLabel}" Margin="0,0,-10.667,0.333" FontSize="13" FontWeight="Bold"
+                            <Label Style="{StaticResource MaterialDesignLabel}" Margin="0,0,-10.667,0.333" FontSize="14" FontWeight="Bold"
                                        Content="? Forgot password" HorizontalAlignment="Right" Padding="0,4,7,4" FlowDirection="RightToLeft" Width="140"
                                        Foreground="#176ec6"
                                        />
@@ -155,6 +155,7 @@
                 <StackPanel Grid.Row="6" Orientation="Horizontal" HorizontalAlignment="Left" Margin="0,20,0,0">
                     <Button Style="{StaticResource MaterialDesignRaisedButton}"
                             materialDesign:ButtonAssist.CornerRadius="20"
+                            FontSize="14"
                             Height="35"
                             Width="250"
                             Margin="87,0,0,0"
@@ -174,7 +175,7 @@
                             <ColumnDefinition></ColumnDefinition>
                         </Grid.ColumnDefinitions>
                         <Grid Grid.Column="0">
-                            <TextBlock Style="{StaticResource MaterialDesignBody1TextBlock}" Margin="105,18,0,0" FontSize="12" FontWeight="Bold"
+                            <TextBlock Style="{StaticResource MaterialDesignBody1TextBlock}" Margin="105,18,0,0" FontSize="14" FontWeight="Bold"
                                        Text="?Not registered yet" HorizontalAlignment="Center" Padding="25,4,0,4" FlowDirection="RightToLeft" Width="126"
                                        Foreground="#000000">
 
@@ -182,7 +183,7 @@
                         </Grid>
 
                         <Grid Grid.Column="1">
-                            <TextBlock Style="{StaticResource MaterialDesignBody1TextBlock}" Margin="-19,18,0,0" FontSize="12" FontWeight="Bold"
+                            <TextBlock Style="{StaticResource MaterialDesignBody1TextBlock}" Margin="0,18,0,0" FontSize="14" FontWeight="Bold"
                                        Text="Creat an account" HorizontalAlignment="Left" Padding="32,4,0,4" FlowDirection="RightToLeft" Width="100"
                                        TextAlignment="Center" Foreground="#176ec6" Cursor="Hand">
                                 <i:Interaction.Triggers>

@@ -83,7 +83,21 @@ namespace InternationalVillage_Customer.Store
             DataTable data = DataProvider.Instance.ExecuteQuery(query);
             return data.Rows.Count;
         }
-            
+
+        public int GetAvailableApartment(string typeOfApartment, DateTime CheckIn,DateTime CheckOut)
+        {
+            int quantity = 0;
+            string query = string.Format("select * from Apartment where Id_Apartment not in (SELECT Id_Apartment FROM DetailApartmentBill where  ( CheckInDate <= '{1}' and CheckOutDate >= '{1}') or (CheckInDate <= '{0}' and CheckOutDate >= '{0}') or (CheckInDate >= '{0}' and CheckOutDate <= '{1}')) and Status != 'incident' and TypeOfApartment = '{2}';; ", CheckIn.ToString("yyyy-MM-dd H:mm:ss"), CheckOut.ToString("yyyy-MM-dd H:mm:ss"), typeOfApartment);
+            DataTable dt = DataProvider.Instance.ExecuteQuery(query);
+
+            foreach (DataRow row in dt.Rows)
+            {
+                quantity++;
+            }
+
+            return quantity;
         }
+
+    }
     
 }

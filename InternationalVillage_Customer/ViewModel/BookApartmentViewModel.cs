@@ -9,6 +9,7 @@ using System.Windows.Input;
 
 using InternationalVillage_Customer.Utilities;
 using InternationalVillage_Customer.Store;
+using System.Threading;
 
 namespace InternationalVillage_Customer.ViewModel
 {
@@ -34,6 +35,10 @@ namespace InternationalVillage_Customer.ViewModel
         public ICommand TypeOfApartmentLoaded { get; set; }
 
         public ICommand Book { get; set; }
+
+        public ICommand RenderAvailableApartment { get; set; }
+
+        int numberOfAvailableApartment = 0;
 
         //Validate data
         private string fullname = "";
@@ -109,7 +114,6 @@ namespace InternationalVillage_Customer.ViewModel
             ValidateCheckoutDate = new RelayCommand<TextBlock>((p) => { return true; }, (p) =>
             {
                 isCheckoutDateCorrect = Validate.Instance.Required(p, strCheckoutDate, "Check out Date");
-                
             });
             //// Set up
             CheckinDateSetUp = new RelayCommand<CalendarDateRange>((p) => { return true; }, (p) =>
@@ -157,8 +161,21 @@ namespace InternationalVillage_Customer.ViewModel
             });
             ValidateNumberApartment = new RelayCommand<TextBlock>((p) => { return true; }, (p) =>
             {
-                isNumberApartmentCorrect = Validate.Instance.NumberRange(p, numberApartment, "Total number of apartment", 0, 72);
+                isNumberApartmentCorrect = Validate.Instance.NumberRange(p, numberApartment, "Total number of apartment", 0, numberOfAvailableApartment);
             });
+
+            RenderAvailableApartment = new RelayCommand<TextBlock>((p) => { return true; }, async (p) =>
+            {
+                await Task.Delay(500);
+                if (isTypeOfApartmentCorrect && isCheckinDateCorrect && isCheckoutDateCorrect)
+                {
+                    ChangeTypeOfApartmnent change = new ChangeTypeOfApartmnent();
+                    numberOfAvailableApartment = BookingTempStore.Instance.GetAvailableApartment(change.ChangeType(typeofApartment), checkinDate, CheckinDate);
+                    p.Text = numberOfAvailableApartment.ToString();
+
+                }
+            });
+
             Book = new RelayCommand<Page>((p) => { return isFullNameCorrect && isNumberPeopleCorrect && isCheckinDateCorrect && isCheckoutDateCorrect 
                                                             && isNumberApartmentCorrect && isTypeOfApartmentCorrect; 
             }, (p) =>

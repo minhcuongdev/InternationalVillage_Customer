@@ -79,9 +79,9 @@
 
             <Grid Grid.Column="1" >
                 <Grid.RowDefinitions>
-                    <RowDefinition Height="3*"></RowDefinition>
-                    <RowDefinition Height="5*"></RowDefinition>
-                    <RowDefinition Height="2*"></RowDefinition>
+                    <RowDefinition Height="2.5*"></RowDefinition>
+                    <RowDefinition Height="6*"></RowDefinition>
+                    <RowDefinition Height="1.5*"></RowDefinition>
                 </Grid.RowDefinitions>
 
                 <Grid Grid.Row="0">
@@ -110,6 +110,7 @@
                     <Grid.RowDefinitions>
                         <RowDefinition Height="1*"></RowDefinition>
                         <RowDefinition Height="1*"></RowDefinition>
+                        <RowDefinition Height="0.5*"></RowDefinition>
                         <RowDefinition Height="1*"></RowDefinition>
                     </Grid.RowDefinitions>
 
@@ -128,7 +129,8 @@
                             Style="{StaticResource MaterialDesignFilledTextBox}"
                             VerticalAlignment="Stretch"
                             AcceptsReturn="True"
-                            TextWrapping="Wrap"                           
+                            TextWrapping="Wrap"   
+                            FontSize="14"
                             materialDesign:HintAssist.Hint="FullName"                           
                             x:Name="FullName"
                             IsEnabled="True" Margin="50,0,20,0" HorizontalAlignment="Stretch"   >
@@ -160,7 +162,8 @@
                             Style="{StaticResource MaterialDesignFilledTextBox}"
                             VerticalAlignment="Stretch"
                             AcceptsReturn="True"
-                            TextWrapping="Wrap"                            
+                            TextWrapping="Wrap"    
+                            FontSize="14"
                             materialDesign:HintAssist.Hint="Total number of people"                          
                             x:Name="NumberOfPeople"
                             IsEnabled="True" Margin="20,0,50,0" HorizontalAlignment="Stretch"   >
@@ -173,13 +176,8 @@
                                     </i:EventTrigger>
                                 </i:Interaction.Triggers>
                             </TextBox>
-
                             <TextBlock x:Name="NumberofPeopleError" Grid.Row="1" FontSize="14" Foreground="Black" Visibility="Visible" VerticalAlignment="Top" Margin="20,10,0,0" />
-
                         </Grid>
-
-                        
-                        
                     </Grid>
 
                     <Grid Grid.Row="1">
@@ -196,7 +194,8 @@
                             </Grid.RowDefinitions>
 
                             <DatePicker Grid.Row="0"
-                                x:Name="CheckinDate"                                  
+                                x:Name="CheckinDate"
+                                FontSize="14"
                                 materialDesign:HintAssist.Hint="Check-in Date"
                                 Style="{StaticResource MaterialDesignFilledDatePicker}" VerticalAlignment="Stretch" HorizontalAlignment="Stretch" Margin="50,0,20,0" FirstDayOfWeek="Monday"  >
 
@@ -209,6 +208,9 @@
                                     </i:EventTrigger>
                                     <i:EventTrigger EventName="SelectedDateChanged">
                                         <i:InvokeCommandAction Command="{Binding CheckoutDateSetUp}" CommandParameter="{Binding ElementName=CheckoutRange}"/>
+                                    </i:EventTrigger>
+                                    <i:EventTrigger EventName="SelectedDateChanged">
+                                        <i:InvokeCommandAction Command="{Binding RenderAvailableApartment}" CommandParameter="{Binding ElementName=NumberOfAvailableApartment}"/>
                                     </i:EventTrigger>
                                     <i:EventTrigger EventName="LostKeyboardFocus">
                                         <i:InvokeCommandAction Command="{Binding ValidateCheckinDate}" CommandParameter="{Binding ElementName=CheckinDateError}"/>
@@ -226,7 +228,8 @@
                             </Grid.RowDefinitions>
 
                             <DatePicker Grid.Row="0"
-                                    x:Name="CheckoutDate"                                
+                                    x:Name="CheckoutDate"
+                                    FontSize="14"
                                     materialDesign:HintAssist.Hint="Check-out Date"
                                     Style="{StaticResource MaterialDesignFilledDatePicker}" VerticalAlignment="Stretch" HorizontalAlignment="Stretch" Margin="20,0,50,0" >
                                 <DatePicker.BlackoutDates>
@@ -235,6 +238,7 @@
                                 <i:Interaction.Triggers>
                                     <i:EventTrigger EventName="SelectedDateChanged">
                                         <i:InvokeCommandAction Command="{Binding CheckoutDateChanged}" CommandParameter="{Binding ElementName=CheckoutDate}"/>
+                                        <i:InvokeCommandAction Command="{Binding RenderAvailableApartment}" CommandParameter="{Binding ElementName=NumberOfAvailableApartment}"/>
                                     </i:EventTrigger>
                                     <i:EventTrigger EventName="LostKeyboardFocus">
                                         <i:InvokeCommandAction Command="{Binding ValidateCheckoutDate}" CommandParameter="{Binding ElementName=CheckoutDateError}"/>
@@ -247,7 +251,16 @@
                                             
                     </Grid>
 
-                    <Grid Grid.Row="2">
+                    <Grid Grid.Row="2" Margin="0,0,0,0">
+                        <Grid.ColumnDefinitions>
+                            <ColumnDefinition Width="auto"></ColumnDefinition>
+                            <ColumnDefinition></ColumnDefinition>
+                        </Grid.ColumnDefinitions>
+                        <TextBlock Foreground="#FF1976D2" FontWeight="Bold" Grid.Column="0" Width="150" Margin="50 0 0 0" VerticalAlignment="Top" FontSize="14">Available Apartment:</TextBlock>
+                        <TextBlock x:Name="NumberOfAvailableApartment" Foreground="#FF1976D2" FontWeight="Bold" Grid.Column="2" HorizontalAlignment="Left" VerticalAlignment="Top" FontSize="14">0</TextBlock>
+                    </Grid>
+
+                    <Grid Grid.Row="3">
                         <Grid.ColumnDefinitions>
                             <ColumnDefinition></ColumnDefinition>
                             <ColumnDefinition></ColumnDefinition>
@@ -263,6 +276,7 @@
                                     x:Name="TypeOfApartment"
                                     Style="{StaticResource MaterialDesignFilledComboBox}"
                                     IsEnabled="True"
+                                    FontSize="14"
                                     materialDesign:HintAssist.Hint="Type of Apartment" 
                                     HorizontalAlignment="Stretch" VerticalAlignment="Stretch" Margin="50,0,20,0" >
 
@@ -276,6 +290,9 @@
                                     </i:EventTrigger>
                                     <i:EventTrigger EventName="SelectionChanged">
                                         <i:InvokeCommandAction Command="{Binding TypeOfApartmentChanged}" CommandParameter="{Binding ElementName=TypeOfApartment}"/>
+                                    </i:EventTrigger>
+                                    <i:EventTrigger EventName="SelectionChanged">
+                                        <i:InvokeCommandAction Command="{Binding RenderAvailableApartment}" CommandParameter="{Binding ElementName=NumberOfAvailableApartment}"/>
                                     </i:EventTrigger>
                                     <i:EventTrigger EventName="LostKeyboardFocus">
                                         <i:InvokeCommandAction Command="{Binding ValidateTypeOfApartment}" CommandParameter="{Binding ElementName=TypeIncidentError}"/>
@@ -298,7 +315,8 @@
                                     Style="{StaticResource MaterialDesignFilledTextBox}"
                                     VerticalAlignment="Stretch"
                                     AcceptsReturn="True"
-                                    TextWrapping="Wrap"                                    
+                                    TextWrapping="Wrap"
+                                     FontSize="14"
                                     materialDesign:HintAssist.Hint="Total number"                                   
                                     x:Name="TotalNumberofApartment"
                                     IsEnabled="True" Margin="20,0,50,0" HorizontalAlignment="Stretch">
@@ -312,7 +330,7 @@
                                 </i:Interaction.Triggers>
                             </TextBox>
 
-                            <TextBlock x:Name="TotalNumberError" Grid.Row="1"  FontSize="14" Foreground="Black" Visibility="Visible" VerticalAlignment="Top" Margin="20,10,50,0" />
+                            <TextBlock TextWrapping="WrapWithOverflow" x:Name="TotalNumberError" Grid.Row="1"  FontSize="14" Foreground="Black" Visibility="Visible" VerticalAlignment="Top" Margin="20,10,50,0" />
                         </Grid>
                         
                         
@@ -328,7 +346,7 @@
                         x:Name="Book"
                         Style="{StaticResource MaterialDesignRaisedDarkButton}"
                         materialDesign:ButtonAssist.CornerRadius="20"           
-                        IsEnabled="True" Margin="0,20,0,0" HorizontalAlignment="Center" Width="300" Height="45"  VerticalAlignment="Top" Content="BOOK"
+                        IsEnabled="True" Margin="0,0,0,0" HorizontalAlignment="Center" Width="300" Height="45"  VerticalAlignment="Center" Content="BOOK"
                         Command="{Binding Book}"
                         CommandParameter="{Binding ElementName=ApartmentFormVM}" >
 

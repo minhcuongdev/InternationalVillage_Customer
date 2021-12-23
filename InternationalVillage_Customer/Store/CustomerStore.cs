@@ -25,7 +25,7 @@ namespace InternationalVillage_Customer.Store
 
         public string CreateIDCustomer()
         {
-            string query = string.Format("select * from Account;");
+            string query = string.Format("select * from Customer;");
             DataTable dt = DataProvider.Instance.ExecuteQuery(query);
             int count = dt.Rows.Count;
 
