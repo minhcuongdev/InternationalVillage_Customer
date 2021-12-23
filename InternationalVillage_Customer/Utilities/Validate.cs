@@ -46,7 +46,8 @@ namespace InternationalVillage_Customer.Utilities
 
         public string SelecttionChanged(ComboBox p)
         {
-            string data = p.Text.Trim();
+            ComboBoxItem typeItem = (ComboBoxItem)p.SelectedItem;
+            string data = typeItem.Content.ToString();
             if (data.Length > 0)
             {
                 p.BorderBrush = System.Windows.Media.Brushes.Green;

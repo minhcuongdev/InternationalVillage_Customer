@@ -27,6 +27,7 @@ namespace InternationalVillage_Customer.Model
             Role = row["Role"].ToString();
             IdUser = row["Id_User"].ToString();
             FullName = row["FullName"].ToString();
+            Avatar = row["Avartar"].ToString();
         }
 
         private string idAccount;
@@ -35,6 +36,7 @@ namespace InternationalVillage_Customer.Model
         private string role;
         private string idUser;
         private string fullName;
+        private string avatar;
 
         public string IdAccount { get => idAccount; set => idAccount = value; }
         public string UserName { get => userName; set => userName = value; }
@@ -42,5 +44,6 @@ namespace InternationalVillage_Customer.Model
         public string Role { get => role; set => role = value; }
         public string IdUser { get => idUser; set => idUser = value; }
         public string FullName { get => fullName; set => fullName = value; }
+        public string Avatar { get => avatar; set => avatar = value; }
     }
 }

@@ -21,9 +21,12 @@ namespace InternationalVillage_Customer.Store
         string role = "";
         string idUser = "";
         string name = "";
+        string avatar = "";
         public string Role { get { return role; } }
         public string IdUser { get { return idUser; } }
         public string Name { get => name; set => name = value; }
+        public string Avatar { get => avatar; set => avatar = value; }
+
         public bool Authentication(string username, string password)
         {
             string query = "select* from Account where Username = '" + username + "' and Password = '" + password + "'";
@@ -58,6 +61,7 @@ namespace InternationalVillage_Customer.Store
                 role = account.Role;
                 idUser = account.IdUser;
                 name = account.FullName;
+                avatar = account.Avatar;
                 return account;
             }
             return null;
