@@ -25,7 +25,7 @@
             <RowDefinition Height="50"></RowDefinition>
             <RowDefinition></RowDefinition>
         </Grid.RowDefinitions>
-        <TextBlock Grid.Row="0" Text="MY BILL" FontSize="30" FontWeight="Bold" VerticalAlignment="Center" Margin="40,10,0,0" ></TextBlock>
+        <TextBlock Grid.Row="0" Text="MY BILL" Foreground="#1261a0"  FontSize="30" FontWeight="Bold" VerticalAlignment="Center" Margin="40,10,0,0" ></TextBlock>
         <TextBlock Grid.Row="1" Text="Bill information will be displayed here" FontSize="15" Margin="40,-10,0,0" ></TextBlock>
         <ScrollViewer Grid.Row="2" Margin="40,0" Height="auto"  HorizontalScrollBarVisibility="Visible"  ScrollViewer.VerticalScrollBarVisibility="Auto">
             <StackPanel x:Name="ListBillForm" Margin="0,0,100,0" >

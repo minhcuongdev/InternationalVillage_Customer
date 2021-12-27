@@ -10,7 +10,7 @@
       DataContext="{StaticResource BillPageVM}"
       
       x:Name="BillPage"
-      d:DesignHeight="450" d:DesignWidth="800"
+      d:DesignHeight="500" d:DesignWidth="800"
       Title="CheckoutPage">
     <i:Interaction.Triggers>
         <i:EventTrigger EventName="Loaded">
@@ -30,8 +30,8 @@
     <Grid Background="white">
         <Grid>
             <Grid.RowDefinitions>
-                <RowDefinition Height="30"></RowDefinition>
-                <RowDefinition></RowDefinition>
+                <RowDefinition Height="1*"></RowDefinition>
+                <RowDefinition Height="9*"></RowDefinition>
             </Grid.RowDefinitions>
 
             <Grid Grid.Row="0">
@@ -53,7 +53,7 @@
                         </Style.Triggers>
                     </Style>
                 </Grid.Resources>
-                <TextBlock Foreground="Black" Margin="10,10,0,0" FontWeight="Bold">
+                <TextBlock Foreground="Black" Margin="20,0,0,0" FontSize="15" VerticalAlignment="Center" FontWeight="Bold">
                 <Hyperlink NavigateUri="MyBillPage.xaml">BACK</Hyperlink>
                 </TextBlock>
             </Grid>
@@ -79,7 +79,7 @@
                             <RowDefinition></RowDefinition>
                             <RowDefinition></RowDefinition>
                         </Grid.RowDefinitions>
-                        <TextBlock Grid.Row="0" Text="THANK YOU FOR YOUR COMING" FontSize="25" FontWeight="Bold" VerticalAlignment="Top" Margin="35,0,0,0"/>
+                        <TextBlock Grid.Row="0" Text="THANK YOU FOR YOUR COMING" FontSize="25" Foreground="#1261a0" FontWeight="Bold" VerticalAlignment="Top" Margin="35,0,0,0"/>
 
                         <Grid Grid.Row="1">
                             <Grid.RowDefinitions>
@@ -228,7 +228,7 @@
                                     </ListView.View>
 
                                 </ListView>-->
-                                <DataGrid x:Name="BillTable" Margin="35,0,0,0"  Height="auto"  IsReadOnly="True" AlternatingRowBackground="AliceBlue" HorizontalAlignment="Center" VerticalAlignment="Top"  CanUserAddRows="False" AutoGenerateColumns="False">
+                                <DataGrid x:Name="BillTable" Margin="35,0,0,0" FontSize="15" Height="auto"  IsReadOnly="True" AlternatingRowBackground="AliceBlue" HorizontalAlignment="Center" VerticalAlignment="Top"  CanUserAddRows="False" AutoGenerateColumns="False">
                                     <DataGrid.Resources>
                                         <Style BasedOn="{StaticResource {x:Type DataGridColumnHeader}}" TargetType="{x:Type DataGridColumnHeader}" >
                                             <Setter Property="Background" Value="White" />

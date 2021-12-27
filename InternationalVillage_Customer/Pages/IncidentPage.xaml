@@ -19,7 +19,7 @@
       x:Name="IncidentFormVM"
         
       mc:Ignorable="d" 
-      d:DesignHeight="450" d:DesignWidth="800"
+      d:DesignHeight="550" d:DesignWidth="800"
       Title="IncidentPage">
 
     <Grid>
@@ -30,43 +30,15 @@
         </i:Interaction.Triggers>
 
         <Grid Background="White">
-            <Grid.RowDefinitions>
-                <RowDefinition Height="1*"></RowDefinition>
-                <RowDefinition Height="9*"></RowDefinition>
-            </Grid.RowDefinitions>
 
-            <Grid Grid.Row="0">
-                <Grid.Resources>
-                    <Style x:Key="{x:Type Hyperlink}" TargetType="{x:Type Hyperlink}">
-                        <Setter Property="Foreground" Value="black" />
-
-                        <Setter Property="TextDecorations" Value="None" />
-                        <Style.Triggers>
-                            <Trigger Property="IsMouseOver" Value="True">
-                                <Setter Property="Foreground" Value="#2f9cfa" />
-                            </Trigger>
-                            <Trigger Property="IsEnabled" Value="False">
-                                <Setter Property="Foreground" Value="{DynamicResource {x:Static SystemColors.GrayTextBrushKey}}" />
-                            </Trigger>
-                            <Trigger Property="IsEnabled" Value="True">
-                                <Setter Property="Cursor" Value="Hand" />
-                            </Trigger>
-                        </Style.Triggers>
-                    </Style>
-                </Grid.Resources>
-                <TextBlock Foreground="Black" Margin="10,0,0,0" FontWeight="Bold" VerticalAlignment="Center">
-                    <Hyperlink NavigateUri="HomePage.xaml">BACK TO HOME</Hyperlink>
-                </TextBlock>
-            </Grid>
-
-            <Grid Grid.Row="1">
+            <Grid >
                 <Grid.ColumnDefinitions>
                     <ColumnDefinition Width="3*"></ColumnDefinition>
                     <ColumnDefinition Width="7*"></ColumnDefinition>
                 </Grid.ColumnDefinitions>
 
                 <Grid Grid.Column="0">
-                    <Border Grid.Column="0" CornerRadius="15" Margin="10,0,0,10">
+                    <Border Grid.Column="0" CornerRadius="15" Margin="10,10,0,10">
                         <Border.Background>
                             <ImageBrush  Stretch="UniformToFill" ImageSource="/Image/Luxury.jpg" />
                         </Border.Background>
@@ -75,30 +47,30 @@
 
                 <Grid Grid.Column="1">
                     <Grid.RowDefinitions>
-                        <RowDefinition Height="3*"></RowDefinition>
-                        <RowDefinition Height="6*"></RowDefinition>
+                        <RowDefinition Height="3.5*"></RowDefinition>
+                        <RowDefinition Height="5.5*"></RowDefinition>
                         <RowDefinition Height="1*"></RowDefinition>
                     </Grid.RowDefinitions>
 
                     <Grid Grid.Row="0">
                         <Grid.RowDefinitions>
-                            <RowDefinition></RowDefinition>
-                            <RowDefinition></RowDefinition>
-                            <RowDefinition></RowDefinition>
+                            <RowDefinition Height="4*"></RowDefinition>
+                            <RowDefinition Height="2*"></RowDefinition>
+                            <RowDefinition Height="3*"></RowDefinition>
                         </Grid.RowDefinitions>
 
                         <Grid Grid.Row="0" VerticalAlignment="Stretch"  Margin="0,0,0,0">
-                            <Image  Stretch="Fill" Width="60" Height="60" VerticalAlignment="Center" Source="/Image/sunflower.png" Margin="50,0,0,0" HorizontalAlignment="Left"     />
+                            <Image  Stretch="UniformToFill" Width="60" Height="60" VerticalAlignment="Center" Source="/Image/sunflower.png" Margin="50,10,0,0" HorizontalAlignment="Left"     />
                         </Grid>
                         <TextBlock Grid.Row="1"
                             Style="{StaticResource MaterialDesignBody1TextBlock}"
-                            HorizontalAlignment="Left" VerticalAlignment="Center"  FontSize="25" FontWeight="Bold" Margin="50,0,0,0">
+                            HorizontalAlignment="Left" VerticalAlignment="Center" Foreground="#1261a0" FontSize="25" FontWeight="Bold" Margin="50,0,0,0">
                             REPORT INCIDENTS
                         </TextBlock>
 
                         <TextBlock Grid.Row="2"
                             Style="{StaticResource MaterialDesignBody1TextBlock}"
-                            HorizontalAlignment="Left" VerticalAlignment="Center" Margin="50,0,50,10" FontSize="14" TextWrapping="WrapWithOverflow" >
+                            HorizontalAlignment="Left" VerticalAlignment="Top" Margin="50,0,30,10" FontSize="14" TextWrapping="WrapWithOverflow" >
                                 We are very sorry for this inconvenience. Please fill out this form so that we can support immediately.
                         </TextBlock>
 
@@ -106,9 +78,9 @@
 
                     <Grid Grid.Row="1">
                         <Grid.RowDefinitions>
-                            <RowDefinition Height="1*"></RowDefinition>
-                            <RowDefinition Height="*"></RowDefinition>
-                            <RowDefinition Height="*"></RowDefinition>
+                            <RowDefinition Height="3*"></RowDefinition>
+                            <RowDefinition Height="3*"></RowDefinition>
+                            <RowDefinition Height="4*"></RowDefinition>
                         </Grid.RowDefinitions>
 
                         <Grid Grid.Row="0">
@@ -141,7 +113,7 @@
                                         </i:EventTrigger>
                                     </i:Interaction.Triggers>
                                 </TextBox>
-                                <TextBlock x:Name="FullNameError" Grid.Row="1" Text="Example: VictoryA " FontSize="14" Foreground="Black" Visibility="Visible" VerticalAlignment="Center" Margin="50,0,0,0" />
+                                <TextBlock x:Name="FullNameError" Grid.Row="1" Text="Example: VictoryA " FontSize="14" Foreground="Black" Visibility="Visible" VerticalAlignment="Center" Margin="50,0,25,0" />
                             </Grid>
 
                             <Grid Grid.Column="1">
@@ -206,7 +178,7 @@
                                         </i:EventTrigger>
                                     </i:Interaction.Triggers>
                                 </ComboBox>
-                                <TextBlock x:Name="TypeIncidentError" Grid.Row="1"  FontSize="14" Foreground="Black" Visibility="Visible" VerticalAlignment="Center" Margin="50,0,0,0" />
+                                <TextBlock x:Name="TypeIncidentError" Grid.Row="1"  FontSize="14" Foreground="Black" Visibility="Visible" VerticalAlignment="Center" Margin="50,0,25,0" />
 
                             </Grid>
 
@@ -279,8 +251,7 @@
                         <Button
                             x:Name="Report"
                             Style="{StaticResource MaterialDesignRaisedDarkButton}"
-                            materialDesign:ButtonAssist.CornerRadius="20"
-                            ToolTip="MaterialDesignRaisedDarkButton with Round Corners"
+                            materialDesign:ButtonAssist.CornerRadius="20" Height="40" FontSize="15"                        
                             IsEnabled="True" Margin="50,0,50,0" HorizontalAlignment="Stretch"  VerticalAlignment="Center"
                             Command="{Binding Report}"
                             CommandParameter="{Binding ElementName=Report}" >

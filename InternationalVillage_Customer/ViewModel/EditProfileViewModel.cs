@@ -5,6 +5,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using System.Windows;
 using System.Windows.Controls;
 using System.Windows.Input;
 using System.Windows.Media;
@@ -16,6 +17,7 @@ namespace InternationalVillage_Customer.ViewModel
     {
         public ICommand LoadProfile { get; set; }
         public ICommand SelectPicture { get; set; }
+        public ICommand OpenChangePassword { get; set; }
 
         public EditProfileViewModel()
         {
@@ -42,6 +44,12 @@ namespace InternationalVillage_Customer.ViewModel
                     p.ImageSource = bitmap;
                 }
 
+            });
+
+            OpenChangePassword = new RelayCommand<Page>((p) => { return true; }, (p) =>
+            {
+                ChangePasswordWindow FChangePass = new ChangePasswordWindow();
+                FChangePass.ShowDialog();
             });
         }
     }
