@@ -92,14 +92,14 @@
                  Sunflower Internation Village
                 </TextBlock>
 
-                <StackPanel Orientation="Horizontal" Grid.Row="3" HorizontalAlignment="Left" Margin="90,20,0,0">
+                <StackPanel Orientation="Horizontal" Grid.Row="3" HorizontalAlignment="Center" Margin="0,20,0,0">
                     <materialDesign:PackIcon 
                          Kind="AccountCircleOutline" 
                          VerticalAlignment="Center" Margin="0,5,10,0">
                     </materialDesign:PackIcon>
                     <TextBox 
                           x:Name="Username"
-                          materialDesign:HintAssist.Hint="UserName" Margin="0" VerticalAlignment="Top" 
+                          materialDesign:HintAssist.Hint="UserName" Margin="0" VerticalAlignment="Top" HorizontalAlignment="Center"
                           Style="{StaticResource MaterialDesignFloatingHintTextBox}"
                           Width="200" >
                         <i:Interaction.Triggers>
@@ -111,7 +111,7 @@
                     </TextBox>
                 </StackPanel>
 
-                <StackPanel Orientation="Horizontal" Grid.Row="4" Margin="90,20,0,0" HorizontalAlignment="Left">
+                <StackPanel Orientation="Horizontal" Grid.Row="4" Margin="0,20,0,0" HorizontalAlignment="Center">
                     <materialDesign:PackIcon Kind="Key"
                                              Margin="0,5,10,0"
                                              Foreground="{Binding ElementName=PasswordBox, Path=BorderBrush}" VerticalAlignment="Center">
@@ -135,15 +135,14 @@
                 <StackPanel Grid.Row="5" Orientation="Horizontal" HorizontalAlignment="Left" Margin="90,20,0,0">
                     <Grid>
                         <Grid.ColumnDefinitions>
-                            
                             <ColumnDefinition Width="230"></ColumnDefinition>
                         </Grid.ColumnDefinitions>
 
                         
 
                         <Grid Grid.Column="1" HorizontalAlignment="Right">
-                            <Label Style="{StaticResource MaterialDesignLabel}" Margin="0,0,-10.667,0.333" FontSize="14" FontWeight="Bold"
-                                       Content="? Forgot password" HorizontalAlignment="Right" Padding="0,4,7,4" FlowDirection="RightToLeft" Width="140"
+                            <Label Style="{StaticResource MaterialDesignLabel}" FontSize="14" FontWeight="Bold"
+                                       Content="? Forgot password" HorizontalAlignment="Right" FlowDirection="RightToLeft" Width="140"
                                        Foreground="#176ec6"
                                        />
                         </Grid>
@@ -152,22 +151,22 @@
 
                 </StackPanel>
 
-                <StackPanel Grid.Row="6" Orientation="Horizontal" HorizontalAlignment="Left" Margin="0,20,0,0">
+                <StackPanel Grid.Row="6" Orientation="Horizontal" HorizontalAlignment="Center" Margin="0,20,0,0">
                     <Button Style="{StaticResource MaterialDesignRaisedButton}"
                             materialDesign:ButtonAssist.CornerRadius="20"
                             FontSize="14"
-                            Height="35"
+                            Height="40"
                             Width="250"
-                            Margin="87,0,0,0"
+                            Margin="0,0,0,0"
                             Content="Sign in"
                             IsEnabled="True"
                             Command="{Binding SignIn}"
-                            CommandParameter="{Binding ElementName=LoginWD}" HorizontalAlignment="Left"
+                            CommandParameter="{Binding ElementName=LoginWD}" HorizontalAlignment="Center"
                             >
                     </Button>
                 </StackPanel>
 
-                <StackPanel Grid.Row="7" Orientation="Horizontal" HorizontalAlignment="Left">
+                <StackPanel Grid.Row="7" Orientation="Horizontal" HorizontalAlignment="Center">
                     <Grid>
                         <Grid.ColumnDefinitions>
                             <ColumnDefinition></ColumnDefinition>
@@ -175,16 +174,16 @@
                             <ColumnDefinition></ColumnDefinition>
                         </Grid.ColumnDefinitions>
                         <Grid Grid.Column="0">
-                            <TextBlock Style="{StaticResource MaterialDesignBody1TextBlock}" Margin="105,18,0,0" FontSize="14" FontWeight="Bold"
-                                       Text="?Not registered yet" HorizontalAlignment="Center" Padding="25,4,0,4" FlowDirection="RightToLeft" Width="126"
+                            <TextBlock Style="{StaticResource MaterialDesignBody1TextBlock}" Margin="0,10,0,0" FontSize="14" FontWeight="Bold"
+                                       Text="?Not registered yet" HorizontalAlignment="Center" FlowDirection="RightToLeft" 
                                        Foreground="#000000">
 
                             </TextBlock>
                         </Grid>
 
                         <Grid Grid.Column="1">
-                            <TextBlock Style="{StaticResource MaterialDesignBody1TextBlock}" Margin="0,18,0,0" FontSize="14" FontWeight="Bold"
-                                       Text="Creat an account" HorizontalAlignment="Left" Padding="32,4,0,4" FlowDirection="RightToLeft" Width="100"
+                            <TextBlock Style="{StaticResource MaterialDesignBody1TextBlock}" Margin="3,10,0,0" FontSize="14" FontWeight="Bold"
+                                       Text="Creat an account" HorizontalAlignment="Center" FlowDirection="RightToLeft" 
                                        TextAlignment="Center" Foreground="#176ec6" Cursor="Hand">
                                 <i:Interaction.Triggers>
                                     <i:EventTrigger EventName="MouseDown">

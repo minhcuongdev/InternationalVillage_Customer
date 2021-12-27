@@ -19,7 +19,7 @@
                        
              x:Name="BillInfor"
              mc:Ignorable="d" 
-             d:DesignHeight="100" d:DesignWidth="350" Margin="0,0,0,15">
+             d:DesignHeight="130" d:DesignWidth="450" Margin="0,0,0,15">
     <i:Interaction.Triggers>
         <i:EventTrigger EventName="Loaded">
             <i:InvokeCommandAction Command="{Binding LoadIDBill}" CommandParameter="{Binding ElementName=IDBill}"/>
@@ -31,9 +31,9 @@
         <materialDesign:Card materialDesign:ShadowAssist.ShadowDepth="Depth2">
             <Grid>
                 <Grid.ColumnDefinitions>
-                    <ColumnDefinition Width="90"></ColumnDefinition>
-                    <ColumnDefinition Width="170"></ColumnDefinition>
-                    <ColumnDefinition></ColumnDefinition>
+                    <ColumnDefinition Width="140"></ColumnDefinition>
+                    <ColumnDefinition Width="5*"></ColumnDefinition>
+                    <ColumnDefinition Width="2*"></ColumnDefinition>
                 </Grid.ColumnDefinitions>
 
                 <Grid Grid.Column="0">
@@ -52,11 +52,11 @@
                             <ColumnDefinition Width="15"></ColumnDefinition>
                             <ColumnDefinition></ColumnDefinition>
                         </Grid.ColumnDefinitions>
-                        <Image Grid.Column="0" Source="flash.png" Height="13" Width="13" VerticalAlignment="Center" HorizontalAlignment="Left"/>
-                        <TextBlock Grid.Column="1" Text="Bill Information" FontSize="10" FontWeight="ExtraBold" VerticalAlignment="Center" Foreground="Black" HorizontalAlignment="Left" />
+                        <Image Grid.Column="0" Source="/Image/flash.png" Height="13" Width="13" VerticalAlignment="Center" HorizontalAlignment="Left"/>
+                        <TextBlock Grid.Column="1" Text="Bill Information" FontSize="16" FontWeight="ExtraBold" VerticalAlignment="Center" Foreground="Black" HorizontalAlignment="Left" />
                     </Grid>
                     <TextBlock x:Name="IDBill" Grid.Row="1" Text="ID Bill"  Foreground="Black" FontWeight="Bold"
-                           FontSize="9" VerticalAlignment="Center"  TextWrapping="Wrap"/>
+                           FontSize="14" VerticalAlignment="Center"  TextWrapping="Wrap"/>
                     <Grid Grid.Row="2">
                         <Grid.ColumnDefinitions>
                             <ColumnDefinition></ColumnDefinition>
@@ -67,8 +67,8 @@
                                 <RowDefinition></RowDefinition>
                                 <RowDefinition></RowDefinition>
                             </Grid.RowDefinitions>
-                            <TextBlock Grid.Row="0" Text="Check_in Date" FontSize="9" Foreground="gray" VerticalAlignment="Top"/>
-                            <TextBlock Grid.Row="1" Text="Check_in Date" FontSize="9" Foreground="gray" VerticalAlignment="Bottom"/>
+                            <TextBlock Grid.Row="0" Text="Check_in Date" FontSize="14" Foreground="gray" VerticalAlignment="Center"/>
+                            <TextBlock Grid.Row="1" Text="Check_in Date" FontSize="14" Foreground="gray" VerticalAlignment="Center"/>
                         </Grid>
 
                         <Grid Grid.Column="1">
@@ -76,21 +76,20 @@
                                 <RowDefinition></RowDefinition>
                                 <RowDefinition></RowDefinition>
                             </Grid.RowDefinitions>
-                            <TextBlock x:Name="CheckInDate" Grid.Row="0" Text="21/10/2020" FontSize="9" Foreground="Black" FontWeight="Bold" VerticalAlignment="Top"/>
-                            <TextBlock x:Name="CheckOutDate" Grid.Row="1" Text="23/10/2020" FontSize="9" Foreground="Black" FontWeight="Bold" VerticalAlignment="Bottom"/>
+                            <TextBlock x:Name="CheckInDate" Grid.Row="0" Text="21/10/2020" FontSize="14" Foreground="Black" FontWeight="Bold" VerticalAlignment="Center"/>
+                            <TextBlock x:Name="CheckOutDate" Grid.Row="1" Text="23/10/2020" FontSize="14" Foreground="Black" FontWeight="Bold" VerticalAlignment="Center"/>
                         </Grid>
 
 
                     </Grid>
                     <TextBlock x:Name="TotalMoney" Grid.Row="4" Text="2,650$"  Foreground="Black" FontWeight="Bold"
-                           FontSize="10" VerticalAlignment="Center"  TextWrapping="Wrap"/>
+                           FontSize="14" VerticalAlignment="Center"  TextWrapping="Wrap"/>
                 </Grid>
 
                 <Grid Grid.Column="2">
                     <Grid.Resources>
                         <Style x:Key="{x:Type Hyperlink}" TargetType="{x:Type Hyperlink}">
                             <Setter Property="Foreground" Value="#2f9cfa" />
-                            <Setter Property="TextDecorations" Value="Underline" />
                             <Style.Triggers>
                                 <Trigger Property="IsMouseOver" Value="True">
                                     <Setter Property="FontWeight" Value="Bold" />
@@ -104,7 +103,7 @@
                             </Style.Triggers>
                         </Style>
                     </Grid.Resources>
-                    <Button x:Name="ViewDetailBill" Background="White" Width="90" FontSize="9" FontWeight="Normal" Margin="-12,0,10,0" HorizontalAlignment="Right" Command="{Binding ViewDetailBill}" CommandParameter="{Binding ElementName=ViewDetailBill}" Click="ViewDetailBill_Click" >
+                    <Button x:Name="ViewDetailBill" Background="White" Width="140" FontSize="15" FontWeight="Bold" Margin="0,0,20,0" HorizontalAlignment="Right" Command="{Binding ViewDetailBill}" CommandParameter="{Binding ElementName=ViewDetailBill}" Click="ViewDetailBill_Click" >
                         <i:Interaction.Triggers>
                             <i:EventTrigger EventName="Click">
                                 <i:InvokeCommandAction Command="{Binding ViewDetailBill}" CommandParameter="{Binding ElementName=ViewDetailBill}"/>

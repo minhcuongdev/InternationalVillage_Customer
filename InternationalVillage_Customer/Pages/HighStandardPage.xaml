@@ -10,8 +10,8 @@
 
     <Grid Background="white">
         <Grid.RowDefinitions>
-            <RowDefinition Height="auto"></RowDefinition>
-            <RowDefinition></RowDefinition>
+            <RowDefinition Height="1*"></RowDefinition>
+            <RowDefinition Height="9*"></RowDefinition>
         </Grid.RowDefinitions>
         <Grid Grid.Row="0">
             <Grid.Resources>
@@ -32,12 +32,12 @@
                     </Style.Triggers>
                 </Style>
             </Grid.Resources>
-            <TextBlock Foreground="Black" Margin="10,10,0,0" FontWeight="Bold">
+            <TextBlock Foreground="Black" Margin="20,0,0,0" FontSize="15" VerticalAlignment="Center" FontWeight="Bold">
                 <Hyperlink NavigateUri="BookingPage.xaml">BACK</Hyperlink>
             </TextBlock>
         </Grid>
 
-        <Grid Grid.Row="1" Margin="0,20,0,0">
+        <Grid Grid.Row="1" Margin="0,0,0,0">
             <Grid.ColumnDefinitions>
                 <ColumnDefinition></ColumnDefinition>
                 <ColumnDefinition></ColumnDefinition>
@@ -51,12 +51,12 @@
 
             <Grid Grid.Column="1">
                 <Grid.RowDefinitions>
-                    <RowDefinition Height="auto"></RowDefinition>
+                    <RowDefinition Height="60"></RowDefinition>
                     <RowDefinition Height="150"></RowDefinition>
-                    <RowDefinition Height="120"></RowDefinition>
-                    <RowDefinition></RowDefinition>
+                    <RowDefinition Height="180"></RowDefinition>
+                    <RowDefinition Height="100"></RowDefinition>
                 </Grid.RowDefinitions>
-                <TextBlock Grid.Row="0" Text="HIGH STANDARD APARTMENT" FontSize="24" FontWeight="Bold" VerticalAlignment="Top" Margin="35,0,0,0"/>
+                <TextBlock Grid.Row="0" Text="HIGH STANDARD APARTMENT" Foreground="#1261a0" FontSize="24" FontWeight="Bold" VerticalAlignment="Top" Margin="35,0,0,0"/>
 
                 <Grid Grid.Row="1">
                     <Grid.RowDefinitions>
@@ -76,14 +76,14 @@
                                 <RowDefinition></RowDefinition>
                                 <RowDefinition></RowDefinition>
                             </Grid.RowDefinitions>
-                            <TextBlock Grid.Row="0" Text="Bedrooms" FontSize="12" Foreground="Gray" FontWeight="DemiBold"  VerticalAlignment="Bottom" Margin="35,0,0,0"/>
+                            <TextBlock Grid.Row="0" Text="Bedrooms" FontSize="14" Foreground="Gray" FontWeight="DemiBold"  VerticalAlignment="Bottom" Margin="35,0,0,0"/>
                             <Grid Grid.Row="1">
                                 <Grid.ColumnDefinitions>
                                     <ColumnDefinition Width="auto"></ColumnDefinition>
                                     <ColumnDefinition></ColumnDefinition>
                                 </Grid.ColumnDefinitions>
-                                <TextBlock Grid.Column="0" Text="3" FontSize="13" Foreground="Black" FontWeight="Bold" VerticalAlignment="Top" Margin="35,0,0,0"/>
-                                <Image Grid.Column="1" Source="/Image/bed-32.png" Height="15" Width="20" Opacity="0.8" HorizontalAlignment="Left" VerticalAlignment="Top" Margin="9,2,0,0" ></Image>
+                                <TextBlock Grid.Column="0" Text="3" FontSize="15" Foreground="Black" FontWeight="Bold" VerticalAlignment="Top" Margin="35,0,0,0"/>
+                                <Image Grid.Column="1" Source="/Image/bed-32.png" Height="20" Width="25" Opacity="0.8" HorizontalAlignment="Left" VerticalAlignment="Top" Margin="9,0,0,0" ></Image>
                             </Grid>
                         </Grid>
 
@@ -92,14 +92,14 @@
                                 <RowDefinition></RowDefinition>
                                 <RowDefinition></RowDefinition>
                             </Grid.RowDefinitions>
-                            <TextBlock Grid.Row="0" Text="Bathrooms" FontSize="12" Foreground="Gray" FontWeight="DemiBold"  VerticalAlignment="Bottom" Margin="35,0,0,0"/>
+                            <TextBlock Grid.Row="0" Text="Bathrooms" FontSize="14" Foreground="Gray" FontWeight="DemiBold"  VerticalAlignment="Bottom" Margin="35,0,0,0"/>
                             <Grid Grid.Row="1">
                                 <Grid.ColumnDefinitions>
                                     <ColumnDefinition Width="auto"></ColumnDefinition>
                                     <ColumnDefinition></ColumnDefinition>
                                 </Grid.ColumnDefinitions>
-                                <TextBlock Grid.Column="0" Text="2" FontSize="13" Foreground="Black" FontWeight="Bold" VerticalAlignment="Top" Margin="35,0,0,0"/>
-                                <Image Grid.Column="1"  Height="15" Width="20" Opacity="0.7" HorizontalAlignment="Left" VerticalAlignment="Top" Margin="9,0,0,0" Source="/Image/icons8-bathroom-64.png" ></Image>
+                                <TextBlock Grid.Column="0" Text="2" FontSize="15" Foreground="Black" FontWeight="Bold" VerticalAlignment="Top" Margin="35,0,0,0"/>
+                                <Image Grid.Column="1"  Height="20" Width="25" Opacity="0.7" HorizontalAlignment="Left" VerticalAlignment="Top" Margin="9,0,0,0" Source="/Image/icons8-bathroom-64.png" ></Image>
                             </Grid>
                         </Grid>
 
@@ -108,9 +108,9 @@
                                 <RowDefinition></RowDefinition>
                                 <RowDefinition></RowDefinition>
                             </Grid.RowDefinitions>
-                            <TextBlock Grid.Row="0" Text="Area" FontSize="12" Foreground="Gray" FontWeight="DemiBold"  VerticalAlignment="Bottom" Margin="35,0,0,0"/>
+                            <TextBlock Grid.Row="0" Text="Area" FontSize="14" Foreground="Gray" FontWeight="DemiBold"  VerticalAlignment="Bottom" Margin="35,0,0,0"/>
                             <Grid Grid.Row="1">
-                                <TextBlock Text="101,60 m²" FontSize="13" Foreground="Black" FontWeight="Bold" VerticalAlignment="Top" Margin="35,0,0,0"/>
+                                <TextBlock Text="101,60 m²" FontSize="15" Foreground="Black" FontWeight="Bold" VerticalAlignment="Top" Margin="35,0,0,0"/>
                             </Grid>
                         </Grid>
                     </Grid>
@@ -127,9 +127,9 @@
                                 <RowDefinition></RowDefinition>
                                 <RowDefinition></RowDefinition>
                             </Grid.RowDefinitions>
-                            <TextBlock Grid.Row="0" Text="Built" FontSize="12" Foreground="Gray" FontWeight="DemiBold"  VerticalAlignment="Bottom" Margin="35,0,0,0"/>
+                            <TextBlock Grid.Row="0" Text="Built" FontSize="14" Foreground="Gray" FontWeight="DemiBold"  VerticalAlignment="Bottom" Margin="35,0,0,0"/>
                             <Grid Grid.Row="1">
-                                <TextBlock Grid.Column="0" Text="2017" FontSize="13" Foreground="Black" FontWeight="Bold" VerticalAlignment="Top" Margin="35,0,0,0"/>
+                                <TextBlock Grid.Column="0" Text="2017" FontSize="15" Foreground="Black" FontWeight="Bold" VerticalAlignment="Top" Margin="35,0,0,0"/>
                             </Grid>
                         </Grid>
 
@@ -138,9 +138,9 @@
                                 <RowDefinition></RowDefinition>
                                 <RowDefinition></RowDefinition>
                             </Grid.RowDefinitions>
-                            <TextBlock Grid.Row="0" Text="Utilities" FontSize="12" Foreground="Gray" FontWeight="DemiBold"  VerticalAlignment="Bottom" Margin="35,0,0,0"/>
+                            <TextBlock Grid.Row="0" Text="Utilities" FontSize="14" Foreground="Gray" FontWeight="DemiBold"  VerticalAlignment="Bottom" Margin="35,0,0,0"/>
                             <Grid Grid.Row="1">
-                                <TextBlock Grid.Column="0" Text="Full" FontSize="13" Foreground="Black" FontWeight="Bold" VerticalAlignment="Top" Margin="35,0,0,0"/>
+                                <TextBlock Grid.Column="0" Text="Full" FontSize="15" Foreground="Black" FontWeight="Bold" VerticalAlignment="Top" Margin="35,0,0,0"/>
                             </Grid>
                         </Grid>
 
@@ -149,14 +149,14 @@
                                 <RowDefinition></RowDefinition>
                                 <RowDefinition></RowDefinition>
                             </Grid.RowDefinitions>
-                            <TextBlock Grid.Row="0" Text="Rating" FontSize="12" Foreground="Gray" FontWeight="DemiBold"  VerticalAlignment="Bottom" Margin="35,0,0,0"/>
+                            <TextBlock Grid.Row="0" Text="Rating" FontSize="14" Foreground="Gray" FontWeight="DemiBold"  VerticalAlignment="Bottom" Margin="35,0,0,0"/>
                             <Grid Grid.Row="1">
                                 <Grid.ColumnDefinitions>
                                     <ColumnDefinition></ColumnDefinition>
                                     <ColumnDefinition></ColumnDefinition>
                                 </Grid.ColumnDefinitions>
-                                <TextBlock Grid.Column="0" Text="4.8" FontSize="13" Foreground="Black" FontWeight="Bold" VerticalAlignment="Top" Margin="35,0,0,0"/>
-                                <Image Grid.Column="1"  Height="15" Width="20" Opacity="0.7" HorizontalAlignment="Left" VerticalAlignment="Top" Margin="-12,1,0,0" Source="/Image/star (1).png"   ></Image>
+                                <TextBlock Grid.Column="0" Text="4.8" FontSize="15" Foreground="Black" FontWeight="Bold" VerticalAlignment="Top" Margin="35,0,0,0"/>
+                                <Image Grid.Column="1"  Height="20" Width="20" Opacity="0.7" HorizontalAlignment="Left" VerticalAlignment="Top" Margin="-10,1,0,0" Source="/Image/star (1).png"   ></Image>
                             </Grid>
                         </Grid>
                     </Grid>
@@ -168,8 +168,8 @@
                         <ColumnDefinition Width="*"></ColumnDefinition>
 
                     </Grid.ColumnDefinitions>
-                    <TextBlock Grid.Column="0" Text="Description" FontSize="13" Foreground="Black" FontWeight="Bold" Margin="35,0,0,0"/>
-                    <TextBlock Grid.Column="1" Text="In this apartment, there are 6 rooms, including: one living room, two bathrooms and three bedrooms. This apartment is equipped with fully utilities. Also, we provide many devices in bathrooms, such as: hair shampoo, hair conditioner, hair dryer, ironing and ironing board. I hope you will have a good experience at here." Foreground="Gray" TextWrapping="Wrap" Margin="0,0,2,0"/>
+                    <TextBlock Grid.Column="0" Text="Description" FontSize="14" Foreground="Black" FontWeight="Bold" Margin="35,0,0,0"/>
+                    <TextBlock Grid.Column="1" FontSize="14" Text="In this apartment, there are 6 rooms, including: one living room, two bathrooms and three bedrooms. This apartment is equipped with fully utilities. Also, we provide many devices in bathrooms, such as: hair shampoo, hair conditioner, hair dryer, ironing and ironing board. I hope you will have a good experience at here." Foreground="Gray" TextWrapping="Wrap" Margin="0,0,10,0"/>
                 </Grid>
 
                 <Grid Grid.Row="3" Margin="0,20,0,0">
@@ -177,14 +177,14 @@
                         <ColumnDefinition Width="169"></ColumnDefinition>
                         <ColumnDefinition Width="*"></ColumnDefinition>
                     </Grid.ColumnDefinitions>
-                    <TextBlock Grid.Column="0" Text="Price" FontSize="13" Foreground="Black" FontWeight="Bold" Margin="35,0,0,0"/>
+                    <TextBlock Grid.Column="0" Text="Price" FontSize="14" Foreground="Black" FontWeight="Bold" Margin="35,0,0,0"/>
                     <Grid Grid.Column="1">
                         <Grid.RowDefinitions>
                             <RowDefinition Height="auto"></RowDefinition>
                             <RowDefinition></RowDefinition>
                         </Grid.RowDefinitions>
-                        <TextBlock Grid.Row="0" Text="90 USD (per day)" Foreground="Black" FontSize="13" FontWeight="DemiBold" Margin="0,0,0,0" HorizontalAlignment="Left"  />
-                        <TextBlock Grid.Row="1" Text="2,300 USD (per month)" Foreground="Black" FontSize="13" FontWeight="DemiBold" HorizontalAlignment="Left" Margin="0,0,0,0"   />
+                        <TextBlock Grid.Row="0" Text="90 USD (per day)" Foreground="Black" FontSize="15" FontWeight="DemiBold" Margin="0,0,0,0" HorizontalAlignment="Left"  />
+                        <TextBlock Grid.Row="1" Text="2,300 USD (per month)" Foreground="Black" FontSize="15" FontWeight="DemiBold" HorizontalAlignment="Left" Margin="0,0,0,0"   />
                     </Grid>
                 </Grid>
             </Grid>

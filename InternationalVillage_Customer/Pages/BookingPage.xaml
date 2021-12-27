@@ -14,10 +14,10 @@
 
     <Grid Background="White">
         <Grid.RowDefinitions>
-            <RowDefinition Height="auto"></RowDefinition>
-            <RowDefinition></RowDefinition>
-            <RowDefinition></RowDefinition>
-            <RowDefinition></RowDefinition>
+            <RowDefinition Height="1*"></RowDefinition>
+            <RowDefinition Height="3*"></RowDefinition>
+            <RowDefinition Height="3*"></RowDefinition>
+            <RowDefinition Height="3*"></RowDefinition>
         </Grid.RowDefinitions>
 
         <Grid Grid.Row="0">
@@ -25,7 +25,7 @@
                 <ColumnDefinition></ColumnDefinition>
                 <ColumnDefinition></ColumnDefinition>
             </Grid.ColumnDefinitions>
-            <TextBlock Grid.Column="0" Text="BOOK AN APARTMENT"  HorizontalAlignment="Left"  FontSize="25"  FontWeight="Bold" Margin="30,0,0,0" Padding="0,0,0,5" VerticalAlignment="Top"/>
+            <TextBlock Grid.Column="0" Text="BOOK AN APARTMENT"  HorizontalAlignment="Left" Foreground="#1261a0" FontSize="25"  FontWeight="Bold" Margin="30,0,0,0" Padding="0,0,0,5" VerticalAlignment="Center"/>
         </Grid>
         
                     
@@ -48,9 +48,9 @@
                     <RowDefinition></RowDefinition>
                     <RowDefinition></RowDefinition>
                 </Grid.RowDefinitions>
-                <TextBlock  Grid.Row="0" Text="LUXURY APARTMENT"  FontSize="16" FontWeight="Bold" Margin="20,0,0,7" />
-                <TextBlock Grid.Row="1"  Text="It is one of the apartment belongs to Sunflower International Village." FontSize="12" Margin="20,0,0,0" Grid.RowSpan="2" TextWrapping="Wrap" />
-                <TextBlock Grid.Row="2" Text="This is a harmonious combination of luxurious, modern and ancient style with an area of ​​more than 114,32 m². Also known for its fabulous service and luxurious experience, each room comes equipped with marble bathrooms, in-room lighting, music control and TV with satellite channels and DVD. It is very suitable for families or groups of friends from 6 to 10 people." TextWrapping="Wrap" FontSize="12" Margin="20,-20,0,0"  />
+                <TextBlock  Grid.Row="0" Text="LUXURY APARTMENT"  FontSize="18" FontWeight="Bold" Margin="20,0,0,7" />
+                <TextBlock Grid.Row="1"  Text="It is one of the apartment belongs to Sunflower International Village." FontSize="14" Margin="20,0,0,0" Grid.RowSpan="2" TextWrapping="Wrap" />
+                <TextBlock Grid.Row="2" Text="This is a harmonious combination of luxurious, modern and ancient style with an area of ​​more than 114,32 m². It is very suitable for families or groups of friends from 6 to 10 people." TextWrapping="Wrap" FontSize="14" Margin="20,-20,20,0"  />
                 
                 <Grid Grid.Row="3">
                     <Grid.ColumnDefinitions>
@@ -76,7 +76,7 @@
                                 </Style.Triggers>
                             </Style>
                         </Grid.Resources>
-                        <Button Background="White" Width="120" FontSize="13" FontWeight="Normal" HorizontalAlignment="Right" Margin="0,0,180,0">
+                        <Button Background="White" Width="130" FontSize="15" FontWeight="Normal" HorizontalAlignment="Right" Margin="0,0,180,0">
                             <Hyperlink NavigateUri="LuxuryPage.xaml">View details</Hyperlink>
                         </Button>
                     </Grid>
@@ -100,7 +100,7 @@
                                 </Style.Triggers>
                             </Style>
                         </Grid.Resources>
-                        <Button x:Name="LuxuryBtn" Width="120" FontSize="13" FontWeight="Normal" HorizontalAlignment="Right" Margin="0,0,20,0" >
+                        <Button x:Name="LuxuryBtn" Width="130" FontSize="15" FontWeight="Normal" HorizontalAlignment="Right" Margin="0,0,20,0" >
                             <Hyperlink NavigateUri="ApartmentFormPage.xaml">Book now</Hyperlink>
                             <i:Interaction.Triggers>
                                 <i:EventTrigger EventName="Click">
@@ -132,9 +132,9 @@
                     <RowDefinition></RowDefinition>
                     <RowDefinition></RowDefinition>
                 </Grid.RowDefinitions>
-                <TextBlock  Grid.Row="0" Text="HIGH STANDARD APARTMENT"  FontSize="16" FontWeight="Bold" Margin="20,0,0,7" />
-                <TextBlock Grid.Row="1"  Text="It is one of the apartment belongs to Sunflower International Village." FontSize="12" Margin="20,0,0,0" Grid.RowSpan="2" TextWrapping="Wrap" />
-                <TextBlock Grid.Row="2" Text="This is a harmonious combination of luxurious, modern and ancient style with an area of ​​more than 101,60 m². Also known for its fabulous service and luxurious experience, each room comes equipped with marble bathrooms, in-room lighting, music control and TV with satellite channels and DVD. It is very suitable for families or groups of friends from 4 to 8 people." TextWrapping="Wrap" FontSize="12" Margin="20,-20,0,0"  />
+                <TextBlock  Grid.Row="0" Text="HIGH STANDARD APARTMENT"  FontSize="18" FontWeight="Bold" Margin="20,0,0,7" />
+                <TextBlock Grid.Row="1"  Text="It is one of the apartment belongs to Sunflower International Village." FontSize="14" Margin="20,0,0,0" Grid.RowSpan="2" TextWrapping="Wrap" />
+                <TextBlock Grid.Row="2" Text="Known for its fabulous service and luxurious experience, each room comes equipped with marble bathrooms, in-room lighting, music control and TV . It is suitable for families or groups of friends from 4 to 8 people." TextWrapping="Wrap" FontSize="14" Margin="20,-20,20,0"  />
                 <Grid Grid.Row="3">
                     <Grid.ColumnDefinitions>
                         <ColumnDefinition Width="*"></ColumnDefinition>
@@ -159,7 +159,7 @@
                                 </Style.Triggers>
                             </Style>
                         </Grid.Resources>
-                        <Button Background="White" Width="120" FontSize="13" FontWeight="Normal" HorizontalAlignment="Right" Margin="0,0,180,0">
+                        <Button Background="White" Width="130" FontSize="15" FontWeight="Normal" HorizontalAlignment="Right" Margin="0,0,180,0">
                             <Hyperlink NavigateUri="HighStandardPage.xaml">View details</Hyperlink>
                         </Button>
                     </Grid>
@@ -183,7 +183,7 @@
                                 </Style.Triggers>
                             </Style>
                         </Grid.Resources>
-                        <Button x:Name="HighBtn" Width="120" FontSize="13" FontWeight="Normal" HorizontalAlignment="Right" Margin="0,0,20,0">
+                        <Button x:Name="HighBtn" Width="130" FontSize="15" FontWeight="Normal" HorizontalAlignment="Right" Margin="0,0,20,0">
                             <Hyperlink NavigateUri="ApartmentFormPage.xaml">Book now</Hyperlink>
                             <i:Interaction.Triggers>
                                 <i:EventTrigger EventName="Click">
@@ -221,9 +221,9 @@
                     <RowDefinition></RowDefinition>
                     <RowDefinition></RowDefinition>
                 </Grid.RowDefinitions>
-                <TextBlock  Grid.Row="0" Text="STANDARD APARTMENT"  FontSize="16" FontWeight="Bold" Margin="20,0,-0.333,6.333" Grid.ColumnSpan="2" />
-                <TextBlock Grid.Row="1" Text="It is one of the apartment belongs to Sunflower International Village." FontSize="12" Margin="20,0,0,0" Grid.RowSpan="3" TextWrapping="Wrap" Grid.ColumnSpan="2" />
-                <TextBlock Grid.Row="2" Text="This is a harmonious combination of luxurious, modern and ancient style with an area of ​​more than 83,77 m². Also known for its fabulous service and luxurious experience, each room comes equipped with marble bathrooms, in-room lighting, music control and TV with satellite channels and DVD. It is very suitable for families or groups of friends from 4 to 7 people." TextWrapping="Wrap" FontSize="12" Margin="20,-20,0,0" Grid.ColumnSpan="2" Grid.RowSpan="3"  />
+                <TextBlock  Grid.Row="0" Text="STANDARD APARTMENT"  FontSize="18" FontWeight="Bold" Margin="20,0,-0.333,6.333" Grid.ColumnSpan="2" />
+                <TextBlock Grid.Row="1" Text="It is one of the apartment belongs to Sunflower International Village." FontSize="14" Margin="20,0,0,0" Grid.RowSpan="3" TextWrapping="Wrap" Grid.ColumnSpan="2" />
+                <TextBlock Grid.Row="2" Text="This is a harmonious combination of luxurious, modern and ancient style with an area of ​​more than 83,77 m². It is very suitable for families or groups of friends from 4 to 7 people." TextWrapping="Wrap" FontSize="14" Margin="20,-20,20,0" Grid.ColumnSpan="2" Grid.RowSpan="3"  />
                 <Grid Grid.Row="3" Grid.ColumnSpan="2" Margin="0,0,-0.333,0.333">
                     <Grid.ColumnDefinitions>
                         <ColumnDefinition Width="*"></ColumnDefinition>
@@ -248,7 +248,7 @@
                                 </Style.Triggers>
                             </Style>
                         </Grid.Resources>
-                        <Button Background="White" Width="120" FontSize="13" FontWeight="Normal" HorizontalAlignment="Right" Margin="0,0,180,0">
+                        <Button Background="White" Width="130" FontSize="15" FontWeight="Normal" HorizontalAlignment="Right" Margin="0,0,180,0">
                             <Hyperlink NavigateUri="StandardPage.xaml">View details</Hyperlink>
                         </Button>
                     </Grid>
@@ -272,7 +272,7 @@
                                 </Style.Triggers>
                             </Style>
                         </Grid.Resources>
-                        <Button x:Name="StandardBtn" Width="120" FontSize="13" FontWeight="Normal" HorizontalAlignment="Right" Margin="0,0,20,0">
+                        <Button x:Name="StandardBtn" Width="130" FontSize="15" FontWeight="Normal" HorizontalAlignment="Right" Margin="0,0,20,0">
                             <Hyperlink NavigateUri="ApartmentFormPage.xaml">Book now</Hyperlink>
                             <i:Interaction.Triggers>
                                 <i:EventTrigger EventName="Click">

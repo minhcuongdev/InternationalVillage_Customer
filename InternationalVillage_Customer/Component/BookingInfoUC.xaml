@@ -10,8 +10,7 @@
              
              
              TextElement.Foreground="{DynamicResource MaterialDesignBody}"
-             TextElement.FontWeight="Regular"
-             TextElement.FontSize="13"
+             TextElement.FontWeight="Regular"            
              TextOptions.TextFormattingMode="Ideal"
              TextOptions.TextRenderingMode="Auto"
              FontFamily="{DynamicResource MaterialDesignFont}"
@@ -19,16 +18,16 @@
                        
              x:Name="BookingInformationUC"        
              mc:Ignorable="d" 
-             d:DesignHeight="100" d:DesignWidth="350" Margin="0,0,0,15">
+             d:DesignHeight="130" d:DesignWidth="450" Margin="0,0,0,15">
         
     
     <Grid >
         <materialDesign:Card materialDesign:ShadowAssist.ShadowDepth="Depth2">
             <Grid>
                 <Grid.ColumnDefinitions>
-                    <ColumnDefinition Width="90"></ColumnDefinition>
-                    <ColumnDefinition Width="170"></ColumnDefinition>
-                    <ColumnDefinition></ColumnDefinition>
+                    <ColumnDefinition Width="140"></ColumnDefinition>
+                    <ColumnDefinition Width="5*"></ColumnDefinition>
+                    <ColumnDefinition Width="2*"></ColumnDefinition>
                 </Grid.ColumnDefinitions>
                 
                 <Grid Grid.Column="0">
@@ -47,11 +46,11 @@
                             <ColumnDefinition Width="15"></ColumnDefinition>
                             <ColumnDefinition></ColumnDefinition>
                         </Grid.ColumnDefinitions>
-                        <Image Grid.Column="0" Source="flash.png" Height="13" Width="13" VerticalAlignment="Center" HorizontalAlignment="Left"/>
-                        <TextBlock Grid.Column="1" Text="Booking Information" FontSize="10" FontWeight="ExtraBold" VerticalAlignment="Center" Foreground="Black" HorizontalAlignment="Left" />
+                        <Image Grid.Column="0" Source="/Image/information.png"  VerticalAlignment="Center" HorizontalAlignment="Left"/>
+                        <TextBlock Grid.Column="1" Text="Booking Information" FontSize="16" FontWeight="ExtraBold" VerticalAlignment="Center" Foreground="Black" Margin="10,0,0,0" HorizontalAlignment="Left" />
                     </Grid>
                     <TextBlock x:Name="Type" Grid.Row="1" Text="Luxury Apartment"  Foreground="Black" FontWeight="Bold"
-                           FontSize="9" VerticalAlignment="Center"  TextWrapping="Wrap"/>
+                           FontSize="14" VerticalAlignment="Center"  TextWrapping="Wrap"/>
                     <Grid Grid.Row="2">
                         <Grid.ColumnDefinitions>
                             <ColumnDefinition></ColumnDefinition>
@@ -62,8 +61,8 @@
                                 <RowDefinition></RowDefinition>
                                 <RowDefinition></RowDefinition>
                             </Grid.RowDefinitions>
-                            <TextBlock Grid.Row="0" Text="Check_in Date" FontSize="9" Foreground="gray" VerticalAlignment="Top"/>
-                            <TextBlock Grid.Row="1" Text="Check_in Date" FontSize="9" Foreground="gray" VerticalAlignment="Bottom"/>
+                            <TextBlock Grid.Row="0" Text="Check_in Date" FontSize="14" Foreground="gray" VerticalAlignment="Center"/>
+                            <TextBlock Grid.Row="1" Text="Check_in Date" FontSize="14" Foreground="gray" VerticalAlignment="Center"/>
                         </Grid>
 
                         <Grid Grid.Column="1">
@@ -71,14 +70,14 @@
                                 <RowDefinition></RowDefinition>
                                 <RowDefinition></RowDefinition>
                             </Grid.RowDefinitions>
-                            <TextBlock x:Name="CheckIn" Grid.Row="0" Text="21/10/2020" FontSize="9" Foreground="Black" FontWeight="Bold" VerticalAlignment="Top"/>
-                            <TextBlock x:Name="CheckOut" Grid.Row="1" Text="23/10/2020" FontSize="9" Foreground="Black" FontWeight="Bold" VerticalAlignment="Bottom"/>
+                            <TextBlock x:Name="CheckIn" Grid.Row="0" Text="21/10/2020" FontSize="14" Foreground="Black" FontWeight="Bold" VerticalAlignment="Center"/>
+                            <TextBlock x:Name="CheckOut" Grid.Row="1" Text="23/10/2020" FontSize="14" Foreground="Black" FontWeight="Bold" VerticalAlignment="Center"/>
                         </Grid>
 
                         
                     </Grid>
                     <TextBlock x:Name="State" Grid.Row="4" Text="Approved"  Foreground="Black" FontWeight="Bold"
-                           FontSize="9" VerticalAlignment="Center"  TextWrapping="Wrap"/>
+                           FontSize="14" VerticalAlignment="Center"  TextWrapping="Wrap"/>
                 </Grid>
 
                 <Grid Grid.Column="2">
@@ -86,6 +85,7 @@
                         <Style x:Key="{x:Type Hyperlink}" TargetType="{x:Type Hyperlink}">
                             <Setter Property="Foreground" Value="#2f9cfa" />
                             <Setter Property="TextDecorations" Value="Underline" />
+                            
                             <Style.Triggers>
                                 <Trigger Property="IsMouseOver" Value="True">
                                     <Setter Property="FontWeight" Value="Bold" />
@@ -99,7 +99,7 @@
                             </Style.Triggers>
                         </Style>
                     </Grid.Resources>
-                    <Button x:Name="View"  Command="{Binding Choose}" CommandParameter="{Binding ElementName=BookingInformationUC}" Background="White" Width="90" FontSize="9" FontWeight="Normal" Margin="-12,0,10,0" HorizontalAlignment="Right" Foreground="#FF1B0505" >
+                    <Button x:Name="View"  Command="{Binding Choose}" CommandParameter="{Binding ElementName=BookingInformationUC}" Background="White" Width="140" FontSize="15"  Margin="0,0,20,0" HorizontalAlignment="Right" VerticalAlignment="Center" FontWeight="Bold" Foreground="#2f9cfa" >
                         View Detail
                     </Button>
                 </Grid>

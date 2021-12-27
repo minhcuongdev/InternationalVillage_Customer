@@ -17,4 +17,5 @@
     <viewmodel:BillInforViewModel x:Key="BillInforVM"></viewmodel:BillInforViewModel>
     <viewmodel:BookingDetailViewModel x:Key="BookingDetailVM"></viewmodel:BookingDetailViewModel>
     <viewmodel:EditProfileViewModel x:Key="EditProfileVM"></viewmodel:EditProfileViewModel>
+    <viewmodel:ChangePasswordViewModel x:Key="ChangePasswordVM"></viewmodel:ChangePasswordViewModel>
 </ResourceDictionary>

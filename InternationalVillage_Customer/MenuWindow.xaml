@@ -179,7 +179,7 @@
                                 </i:Interaction.Triggers>
                             </Button>
 
-                            <Button Grid.Row="2" Background="Transparent" BorderThickness="0" Margin="0,10,0,0" >
+                            <Button x:Name="Service" Grid.Row="2" Background="Transparent" BorderThickness="0" Margin="0,10,0,0" >
                                 <Button.Resources>
                                     <Style TargetType="TextBlock" >
                                         <Setter Property="Foreground" Value="Gray"/>
@@ -211,10 +211,17 @@
                                     <i:EventTrigger EventName="Click">
                                         <i:InvokeCommandAction Command="{Binding OpenBookingServicePage}" CommandParameter="{Binding ElementName=PagesNavigation}"/>
                                     </i:EventTrigger>
+                                    <i:EventTrigger EventName="MouseEnter">
+                                        <i:InvokeCommandAction Command="{Binding MouseEnter}" CommandParameter="{Binding ElementName=Service}"/>
+                                    </i:EventTrigger>
+
+                                    <i:EventTrigger EventName="MouseLeave">
+                                        <i:InvokeCommandAction Command="{Binding MouseLeave}" CommandParameter="{Binding ElementName=Service}"/>
+                                    </i:EventTrigger>
                                 </i:Interaction.Triggers>
                             </Button>
 
-                            <Button Grid.Row="3" Background="Transparent" BorderThickness="0" Margin="0,10,0,0" >
+                            <Button x:Name="Mybooking" Grid.Row="3" Background="Transparent" BorderThickness="0" Margin="0,10,0,0" >
 
                                 <Button.Resources>
                                     <Style TargetType="TextBlock" >
@@ -247,10 +254,17 @@
                                     <i:EventTrigger EventName="Click">
                                         <i:InvokeCommandAction Command="{Binding OpenMyBookingPage}" CommandParameter="{Binding ElementName=PagesNavigation}"/>
                                     </i:EventTrigger>
+                                    <i:EventTrigger EventName="MouseEnter">
+                                        <i:InvokeCommandAction Command="{Binding MouseEnter}" CommandParameter="{Binding ElementName=Mybooking}"/>
+                                    </i:EventTrigger>
+
+                                    <i:EventTrigger EventName="MouseLeave">
+                                        <i:InvokeCommandAction Command="{Binding MouseLeave}" CommandParameter="{Binding ElementName=Mybooking}"/>
+                                    </i:EventTrigger>
                                 </i:Interaction.Triggers>
                             </Button>
 
-                            <Button Grid.Row="4" Background="Transparent" BorderThickness="0" Margin="0,10,0,0" >
+                            <Button x:Name="MyBill" Grid.Row="4" Background="Transparent" BorderThickness="0" Margin="0,10,0,0" >
                                 <Button.Resources>
                                     <Style TargetType="TextBlock" >
                                         <Setter Property="Foreground" Value="Gray"/>
@@ -282,10 +296,17 @@
                                     <i:EventTrigger EventName="Click">
                                         <i:InvokeCommandAction Command="{Binding OpenBillPage}" CommandParameter="{Binding ElementName=PagesNavigation}"/>
                                     </i:EventTrigger>
+                                    <i:EventTrigger EventName="MouseEnter">
+                                        <i:InvokeCommandAction Command="{Binding MouseEnter}" CommandParameter="{Binding ElementName=MyBill}"/>
+                                    </i:EventTrigger>
+
+                                    <i:EventTrigger EventName="MouseLeave">
+                                        <i:InvokeCommandAction Command="{Binding MouseLeave}" CommandParameter="{Binding ElementName=MyBill}"/>
+                                    </i:EventTrigger>
                                 </i:Interaction.Triggers>
                             </Button>
 
-                            <Button Grid.Row="5" Background="Transparent" BorderThickness="0" Margin="0,10,0,0" >
+                            <Button x:Name="Noti" Grid.Row="5" Background="Transparent" BorderThickness="0" Margin="0,10,0,0" >
                                 <Button.Resources>
                                     <Style TargetType="TextBlock" >
                                         <Setter Property="Foreground" Value="Gray"/>
@@ -317,10 +338,17 @@
                                     <i:EventTrigger EventName="Click">
                                         <i:InvokeCommandAction Command="{Binding OpenNotificationPage}" CommandParameter="{Binding ElementName=PagesNavigation}"/>
                                     </i:EventTrigger>
+                                    <i:EventTrigger EventName="MouseEnter">
+                                        <i:InvokeCommandAction Command="{Binding MouseEnter}" CommandParameter="{Binding ElementName=Noti}"/>
+                                    </i:EventTrigger>
+
+                                    <i:EventTrigger EventName="MouseLeave">
+                                        <i:InvokeCommandAction Command="{Binding MouseLeave}" CommandParameter="{Binding ElementName=Noti}"/>
+                                    </i:EventTrigger>
                                 </i:Interaction.Triggers>
                             </Button>
 
-                            <Button Grid.Row="6" Background="Transparent" BorderThickness="0" Margin="0,10,0,0" >
+                            <Button x:Name="Incident" Grid.Row="6" Background="Transparent" BorderThickness="0" Margin="0,10,0,0" >
                                 <Button.Resources>
                                     <Style TargetType="TextBlock" >
                                         <Setter Property="Foreground" Value="Gray"/>
@@ -352,12 +380,19 @@
                                     <i:EventTrigger EventName="Click">
                                         <i:InvokeCommandAction Command="{Binding OpenIncidentPage}" CommandParameter="{Binding ElementName=PagesNavigation}"/>
                                     </i:EventTrigger>
+                                    <i:EventTrigger EventName="MouseEnter">
+                                        <i:InvokeCommandAction Command="{Binding MouseEnter}" CommandParameter="{Binding ElementName=Incident}"/>
+                                    </i:EventTrigger>
+
+                                    <i:EventTrigger EventName="MouseLeave">
+                                        <i:InvokeCommandAction Command="{Binding MouseLeave}" CommandParameter="{Binding ElementName=Incident}"/>
+                                    </i:EventTrigger>
                                 </i:Interaction.Triggers>
                             </Button>
 
 
 
-                            <Button Grid.Row="7" Background="Transparent" BorderThickness="0" Margin="-1,10,0,0" >
+                            <Button x:Name="Chat" Grid.Row="7" Background="Transparent" BorderThickness="0" Margin="-1,10,0,0" >
                                 <Button.Resources>
                                     <Style TargetType="TextBlock" >
                                         <Setter Property="Foreground" Value="Gray"/>
@@ -389,11 +424,18 @@
                                     <i:EventTrigger EventName="Click">
                                         <i:InvokeCommandAction Command="{Binding OpenChatPage}" CommandParameter="{Binding ElementName=PagesNavigation}"/>
                                     </i:EventTrigger>
+                                    <i:EventTrigger EventName="MouseEnter">
+                                        <i:InvokeCommandAction Command="{Binding MouseEnter}" CommandParameter="{Binding ElementName=Chat}"/>
+                                    </i:EventTrigger>
+
+                                    <i:EventTrigger EventName="MouseLeave">
+                                        <i:InvokeCommandAction Command="{Binding MouseLeave}" CommandParameter="{Binding ElementName=Chat}"/>
+                                    </i:EventTrigger>
                                 </i:Interaction.Triggers>
                             </Button>
 
 
-                            <Button Grid.Row="8" Background="Transparent" BorderThickness="0" Margin="-1,10,0,0" >
+                            <Button x:Name="LogOut" Grid.Row="8" Background="Transparent" BorderThickness="0" Margin="-1,10,0,0" >
                                 <Button.Resources>
                                     <Style TargetType="TextBlock" >
                                         <Setter Property="Foreground" Value="Gray"/>
@@ -424,6 +466,13 @@
                                 <i:Interaction.Triggers>
                                     <i:EventTrigger EventName="Click">
                                         <i:InvokeCommandAction Command="{Binding Signout}" CommandParameter="{Binding ElementName=MenuWD}"/>
+                                    </i:EventTrigger>
+                                    <i:EventTrigger EventName="MouseEnter">
+                                        <i:InvokeCommandAction Command="{Binding MouseEnter}" CommandParameter="{Binding ElementName=LogOut}"/>
+                                    </i:EventTrigger>
+
+                                    <i:EventTrigger EventName="MouseLeave">
+                                        <i:InvokeCommandAction Command="{Binding MouseLeave}" CommandParameter="{Binding ElementName=LogOut}"/>
                                     </i:EventTrigger>
                                 </i:Interaction.Triggers>
                             </Button>
