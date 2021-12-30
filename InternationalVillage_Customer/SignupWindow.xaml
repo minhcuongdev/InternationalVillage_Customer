@@ -91,7 +91,7 @@
 
                 <TextBlock Grid.Row="3"
                        Style="{StaticResource MaterialDesignBody1TextBlock}"
-                       HorizontalAlignment="Left" Margin="40,0,0,0" FontSize="13" >
+                       HorizontalAlignment="Left" Margin="40,0,0,0" >
                        International Village Management System
                 </TextBlock>
 
@@ -113,9 +113,8 @@
                         VerticalAlignment="Top"                    
                         materialDesign:HintAssist.Hint="FullName" 
                         x:Name="FullName" 
-                        FontSize="12"
                         Padding="10"
-                        Width="260" HorizontalAlignment="Left" Margin="0,0,0,0" Height="42" >
+                        Width="280" HorizontalAlignment="Left" Margin="0,0,0,0" Height="42" >
                             <i:Interaction.Triggers>
                                 <i:EventTrigger EventName="TextChanged">
                                     <i:InvokeCommandAction Command="{Binding FullNameChanged}" CommandParameter="{Binding ElementName=FullName}"/>
@@ -126,7 +125,7 @@
                             </i:Interaction.Triggers>
                         </TextBox>
 
-                        <TextBlock x:Name="FullNameError" Grid.Row="1" Text="Example: VictoryA " FontSize="10" Foreground="Black" Visibility="Visible" VerticalAlignment="Center"/>
+                        <TextBlock x:Name="FullNameError" Grid.Row="1" Text="E.g: VictoryA " Foreground="Black" Visibility="Hidden" VerticalAlignment="Center"/>
 
                     </Grid>
 
@@ -140,9 +139,8 @@
                         VerticalAlignment="Top"                    
                         materialDesign:HintAssist.Hint="Identification" 
                         x:Name="Identification" 
-                        FontSize="12"
                         Padding="10"
-                        Width="260" HorizontalAlignment="Left" Margin="0,0,0,0" Height="42">
+                        Width="280" HorizontalAlignment="Left" Margin="0,0,0,0" Height="42">
                             <i:Interaction.Triggers>
                                 <i:EventTrigger EventName="TextChanged">
                                     <i:InvokeCommandAction Command="{Binding IdentificationChanged}" CommandParameter="{Binding ElementName=Identification}"/>
@@ -153,7 +151,7 @@
                             </i:Interaction.Triggers>
                         </TextBox>
 
-                        <TextBlock x:Name="IdentificationError" Grid.Row="1" Text="Example: 123456789" FontSize="10" Foreground="Black" Visibility="Visible" VerticalAlignment="Center"/>
+                        <TextBlock x:Name="IdentificationError" Grid.Row="1" Text="E.g: 123456789" Foreground="Black" Visibility="Hidden" VerticalAlignment="Center"/>
 
                     </Grid>
 
@@ -167,9 +165,8 @@
                         VerticalAlignment="Top"                    
                         materialDesign:HintAssist.Hint="VISA" 
                         x:Name="VISA" 
-                        FontSize="12"
                         Padding="10"
-                        Width="260" HorizontalAlignment="Left" Margin="0,0,0,0" Height="42">
+                        Width="280" HorizontalAlignment="Left" Margin="0,0,0,0" Height="42">
                             <i:Interaction.Triggers>
                                 <i:EventTrigger EventName="TextChanged">
                                     <i:InvokeCommandAction Command="{Binding VisaChanged}" CommandParameter="{Binding ElementName=VISA}"/>
@@ -180,7 +177,7 @@
                             </i:Interaction.Triggers>
                         </TextBox>
 
-                        <TextBlock x:Name="VisaError" Grid.Row="1" Text="Example: 1234ABC" FontSize="10" Foreground="Black" Visibility="Visible" VerticalAlignment="Center"/>
+                        <TextBlock x:Name="VisaError" Grid.Row="1" Text="E.g: 1234ABC" Foreground="Black" Visibility="Hidden" VerticalAlignment="Center"/>
 
                     </Grid>
 
@@ -194,9 +191,8 @@
                         VerticalAlignment="Top"                    
                         materialDesign:HintAssist.Hint="Username" 
                         x:Name="UserName" 
-                        FontSize="12"
                         Padding="10"
-                        Width="260" HorizontalAlignment="Left" Margin="0,0,0,0" Height="42">
+                        Width="280" HorizontalAlignment="Left" Margin="0,0,0,0" Height="42">
                             <i:Interaction.Triggers>
                                 <i:EventTrigger EventName="TextChanged">
                                     <i:InvokeCommandAction Command="{Binding UserNameChanged}" CommandParameter="{Binding ElementName=UserName}"/>
@@ -207,20 +203,21 @@
                             </i:Interaction.Triggers>
                         </TextBox>
 
-                        <TextBlock x:Name="UserNameError" Grid.Row="1" Text="Please enter username !" FontSize="10" Foreground="Red" Visibility="Hidden" VerticalAlignment="Center"/>
+                        <TextBlock x:Name="UserNameError" Grid.Row="1" Text="Please enter username !" Foreground="Red" Visibility="Hidden" VerticalAlignment="Center"/>
 
                     </Grid>
 
-                    <Grid Grid.Row="4">
+                    <Grid x:Name="PasswordContainer" Grid.Row="4">
                         <Grid.RowDefinitions>
                             <RowDefinition Height="45"></RowDefinition>
                             <RowDefinition></RowDefinition>
                         </Grid.RowDefinitions>
+
                         <PasswordBox Grid.Row="0"
                         Style="{StaticResource MaterialDesignOutlinedPasswordBox}"
                         VerticalAlignment="Top"
+                        Width="280"
                         x:Name="Password"
-                        FontSize="12" Height="42"
                         Padding="10"
                         IsEnabled="True"
                         materialDesign:HintAssist.Hint="Password" >
@@ -233,14 +230,24 @@
                                 </i:EventTrigger>
                             </i:Interaction.Triggers>
                         </PasswordBox>
-
-                        <TextBlock x:Name="PasswordError" Grid.Row="1" Text="Please enter password !" FontSize="10" Foreground="Red" Visibility="Hidden" VerticalAlignment="Center"/>
+                        <TextBox Grid.Row="0" x:Name="VisiblePassword" Padding="10" Visibility="Hidden" Height="42" Style="{StaticResource MaterialDesignOutlinedTextBox}"  VerticalAlignment="Top" HorizontalAlignment="Center" Width="280" />
+                        <Image Grid.Row="0" Cursor="Hand" x:Name="ImgPasswordShowHide" Visibility="Hidden" Source="./Image/Show.jpg" Width="20" Height="20" Margin="200,0,0,0">
+                            <i:Interaction.Triggers>
+                                <i:EventTrigger EventName="PreviewMouseDown">
+                                    <i:InvokeCommandAction Command="{Binding ShowPassword}" CommandParameter="{Binding ElementName=PasswordContainer}"/>
+                                </i:EventTrigger>
+                                <i:EventTrigger EventName="PreviewMouseUp">
+                                    <i:InvokeCommandAction Command="{Binding HidePassword}" CommandParameter="{Binding ElementName=PasswordContainer}"/>
+                                </i:EventTrigger>
+                            </i:Interaction.Triggers>
+                        </Image>
+                        <TextBlock x:Name="PasswordError"  Grid.Row="1" Text="Please enter password !" Foreground="Red" Visibility="Hidden" TextWrapping="WrapWithOverflow" VerticalAlignment="Center"/>
 
                     </Grid>
 
                 </Grid>
 
-                <CheckBox x:Name="Policy" Grid.Row="5" Content="I agree with the Terms and Conditions" Margin="40,0,0,0" Padding="2,2,0,0" Foreground="#176EC6" FontWeight="Bold" FontSize="12">
+                <CheckBox x:Name="Policy" Grid.Row="5" Content="I agree with the Terms and Conditions" Margin="40,0,0,0" Padding="2,2,0,0" Foreground="#176EC6" FontWeight="Bold" >
                     <i:Interaction.Triggers>
                         <i:EventTrigger EventName="Click">
                             <i:InvokeCommandAction Command="{Binding PolicyClicked}" CommandParameter="{Binding ElementName=Policy}"/>
@@ -270,16 +277,16 @@
                             <ColumnDefinition></ColumnDefinition>
                         </Grid.ColumnDefinitions>
                         <Grid Grid.Column="0" VerticalAlignment="Top">
-                            <TextBlock Style="{StaticResource MaterialDesignBody1TextBlock}" Margin="30,0,0,0" FontSize="12" FontWeight="DemiBold"
-                                       Text="?Already have an account" HorizontalAlignment="Center" Padding="0,0,0,0" FlowDirection="RightToLeft" Width="140"
+                            <TextBlock Style="{StaticResource MaterialDesignBody1TextBlock}" Margin="0,0,0,0"  FontWeight="DemiBold"
+                                       Text="?Already have an account" HorizontalAlignment="Center" Padding="0,0,0,0" FlowDirection="RightToLeft" Width="200"
                                        Foreground="#000000" VerticalAlignment="Top">
 
                             </TextBlock>
                         </Grid>
 
                         <Grid Grid.Column="1">
-                            <TextBlock Style="{StaticResource MaterialDesignBody1TextBlock}" Margin="0,0,0,0" FontSize="12" FontWeight="Bold"
-                                       Text="Sign in" HorizontalAlignment="Left" Padding="0,0,0,0" FlowDirection="RightToLeft" Width="40"
+                            <TextBlock Style="{StaticResource MaterialDesignBody1TextBlock}" Margin="0,0,0,0"  FontWeight="Bold"
+                                       Text="Sign in" HorizontalAlignment="Left" Padding="0,0,0,0" FlowDirection="RightToLeft" Width="60"
                                        TextAlignment="Left" Foreground="#176ec6" Cursor="Hand" VerticalAlignment="Top">
                                  <i:Interaction.Triggers>
                                     <i:EventTrigger EventName="MouseDown">

@@ -15,7 +15,6 @@ namespace InternationalVillage_Customer.ViewModel
     {
         public ICommand LoadBillTable { get; set; }
         public ICommand LoadIDBill { get; set; }
-        public ICommand LoadDate { get; set; }
         public ICommand LoadCheckInDate { get; set; }
         public ICommand LoadCheckOutDate { get; set; }
         public ICommand LoadPayDate { get; set; }
@@ -35,7 +34,6 @@ namespace InternationalVillage_Customer.ViewModel
             LoadIDBill = new RelayCommand<TextBlock>((p) => { return true; }, (p) =>
             {
                 p.Text = DetailBillStore.Instance.IdBill;
-
 
             });
             LoadCustomer = new RelayCommand<TextBlock>((p) => { return true; }, (p) =>

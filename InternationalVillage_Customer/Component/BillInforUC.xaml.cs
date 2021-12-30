@@ -23,7 +23,7 @@ namespace InternationalVillage_Customer.Component
     /// </summary>
     public partial class BillInforUC : UserControl
     {
-        public BillInfoViewModel BillInfo { get; set; }
+        public BillInforViewModel Bill { get; set; }
 
         public BillInforUC(string id, string checkin, string checkout, string total)
         {
@@ -34,12 +34,7 @@ namespace InternationalVillage_Customer.Component
             this.TotalMoney.Text = total + "$";
             
 
-            this.DataContext = BillInfo = new BillInfoViewModel();
-        }
-
-        private void ViewDetailBill_Click(object sender, RoutedEventArgs e)
-        {
-            DetailBillStore.Instance.FindBill(this.IDBill.Text);
+            this.DataContext = Bill = new BillInforViewModel();
         }
     }
 }

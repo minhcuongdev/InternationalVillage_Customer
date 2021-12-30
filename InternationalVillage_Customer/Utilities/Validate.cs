@@ -77,6 +77,7 @@ namespace InternationalVillage_Customer.Utilities
 
         public bool Number(TextBlock p, string data, string name, int minimumLenght = 0, int maximumLength = 50)
         {
+            p.Foreground = System.Windows.Media.Brushes.Red;
             if (!isNumber(data))
             {
                 p.Text = name + " must be number !";
@@ -112,10 +113,10 @@ namespace InternationalVillage_Customer.Utilities
 
         public bool Required(TextBlock p,string data,string name,int minimumLenght = 0, int maximumLength = 50)
         {
+            p.Foreground = System.Windows.Media.Brushes.Red;
             if (data.Equals(""))
             {
                 p.Text = "Please enter " + name + " !";
-                p.Foreground = System.Windows.Media.Brushes.Red;
                 p.Visibility = Visibility.Visible;
                 return false;
             }
@@ -148,17 +149,16 @@ namespace InternationalVillage_Customer.Utilities
 
         public bool NumberRange(TextBlock p, string data, string name, int minimum = 0, int maximum = 50)
         {
+            p.Foreground = System.Windows.Media.Brushes.Red;
             if (data.Equals(""))
             {
                 p.Text =  " Please enter "+name;
-                p.Foreground = System.Windows.Media.Brushes.Red;
                 p.Visibility = Visibility.Visible;
                 return false;
             }
             if (!isNumber(data) )
             {
                 p.Text = name + " must be number !";
-                p.Foreground = System.Windows.Media.Brushes.Red;
                 p.Visibility = Visibility.Visible;
                 return false;
             }
@@ -167,7 +167,6 @@ namespace InternationalVillage_Customer.Utilities
                 if (Int32.Parse(data) < minimum+1)
                 {
                     p.Visibility = Visibility.Visible;
-                    p.Foreground = System.Windows.Media.Brushes.Red;
                     p.Text = name + " must be greater than " + minimum + " !";
                     return false;
                 }
@@ -177,7 +176,6 @@ namespace InternationalVillage_Customer.Utilities
                     if (Int32.Parse(data) > maximum)
                     {
                         p.Visibility = Visibility.Visible;
-                        p.Foreground = System.Windows.Media.Brushes.Red;
                         p.Text = name + " must not be exceed " + maximum + " !";
                         return false;
                     }

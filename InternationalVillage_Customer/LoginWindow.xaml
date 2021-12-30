@@ -111,18 +111,20 @@
                     </TextBox>
                 </StackPanel>
 
-                <StackPanel Orientation="Horizontal" Grid.Row="4" Margin="0,20,0,0" HorizontalAlignment="Center">
+                <Grid x:Name="PasswordContainer" Grid.Row="4" Margin="0,20,0,0" HorizontalAlignment="Center">
                     <materialDesign:PackIcon Kind="Key"
                                              Margin="0,5,10,0"
                                              Foreground="{Binding ElementName=PasswordBox, Path=BorderBrush}" VerticalAlignment="Center">
-
                     </materialDesign:PackIcon>
+                    <TextBox x:Name="VisiblePassword"  Style="{StaticResource MaterialDesignFloatingHintTextBox}" Visibility="Hidden" Width="200" Height="auto" Margin="24,0,0,0" FontSize="14"></TextBox>
                     <PasswordBox materialDesign:HintAssist.Hint="Password"
                                  materialDesign:HintAssist.Foreground="#2f9cfa"
                                  materialDesign:TextFieldAssist.UnderlineBrush="#2f9cfa"
                                  Style="{StaticResource MaterialDesignFloatingHintPasswordBox}"
                                  x:Name="PasswordBox"
                                  Width="200"
+                                 Margin="24,0,0,0"
+                                 Visibility="Visible"
                                  >
                         <i:Interaction.Triggers>
                             <i:EventTrigger EventName="PasswordChanged">
@@ -130,7 +132,17 @@
                             </i:EventTrigger>
                         </i:Interaction.Triggers>
                     </PasswordBox>
-                </StackPanel>
+                    <Image Cursor="Hand" x:Name="ImgShowHide" Visibility="Hidden" Source="./Image/Show.jpg" Width="15" Height="15" Margin="190,10,0,0">
+                        <i:Interaction.Triggers>
+                            <i:EventTrigger EventName="PreviewMouseDown">
+                                <i:InvokeCommandAction Command="{Binding ShowPassword}" CommandParameter="{Binding ElementName=PasswordContainer}"/>
+                            </i:EventTrigger>
+                            <i:EventTrigger EventName="PreviewMouseUp">
+                                <i:InvokeCommandAction Command="{Binding HidePassword}" CommandParameter="{Binding ElementName=PasswordContainer}"/>
+                            </i:EventTrigger>
+                        </i:Interaction.Triggers>
+                    </Image>
+                </Grid>
 
                 <StackPanel Grid.Row="5" Orientation="Horizontal" HorizontalAlignment="Left" Margin="90,20,0,0">
                     <Grid>
@@ -141,7 +153,7 @@
                         
 
                         <Grid Grid.Column="1" HorizontalAlignment="Right">
-                            <Label Style="{StaticResource MaterialDesignLabel}" FontSize="14" FontWeight="Bold"
+                            <Label Style="{StaticResource MaterialDesignLabel}" FontSize="14" FontWeight="Bold" Cursor="Hand"
                                        Content="? Forgot password" HorizontalAlignment="Right" FlowDirection="RightToLeft" Width="140"
                                        Foreground="#176ec6"
                                        />

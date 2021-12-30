@@ -13,6 +13,7 @@
       
       mc:Ignorable="d" 
       x:Name="EditProfile"
+      FontSize="15"
       d:DesignHeight="500" d:DesignWidth="800"
       Title="EditProfilePage">
     <i:Interaction.Triggers>
@@ -59,16 +60,16 @@
                             <StackPanel  Orientation="Horizontal">
                                 <Ellipse Width="80" Height="80" Margin="50 0 0 0">
                                     <Ellipse.Fill>
-                                        <ImageBrush x:Name="Avatar" ImageSource="/Assets/Avatar/avatar.png"  Stretch="Fill"/>
+                                        <ImageBrush x:Name="AvatarProfile" ImageSource="/Assets/Avatar/avatar.png"  Stretch="Fill"/>
                                     </Ellipse.Fill>
 
                                 </Ellipse>
 
                                 <Button  Style="{StaticResource MaterialDesignFloatingActionMiniAccentButton}" 
                                 HorizontalAlignment="Left"  
-                                Margin="-22,30,0,0"                                
+                                Margin="-10,40,0,0"                                
                                 Command="{Binding SelectPicture}"
-                                CommandParameter="{Binding ElementName=Avatar}"
+                                CommandParameter="{Binding ElementName=AvatarProfile}"
                                 Width="30" Height="30"
                                 BorderBrush="#2f9cfa"
                                 Background="#2f9cfa"
@@ -76,7 +77,7 @@
                                     <materialDesign:PackIcon Kind="Pencil" Width="15" Height="15" Foreground="White"/>
                                 </Button>
 
-                                <StackPanel Orientation="Vertical" Margin="40 30 0 0">
+                                <StackPanel Visibility="Hidden" Orientation="Vertical" Margin="40 30 0 0">
                                     <Label Content="QuynhTon" Foreground="#020F16" FontSize="16" FontWeight="SemiBold" HorizontalContentAlignment="Center" HorizontalAlignment="Left"/>
                                     <Label Content="ID: 19520244" Foreground="gray" FontSize="14" FontWeight="Regular" HorizontalContentAlignment="Center" HorizontalAlignment="Left" Margin="0, -5, 0, 0"/>
                                 </StackPanel>
@@ -106,8 +107,16 @@
                             materialDesign:HintAssist.Hint="FullName"
                             x:Name="FullName"
                             IsEnabled="True" Margin="50,0,50,0" HorizontalAlignment="Stretch"   >
+                                <i:Interaction.Triggers>
+                                    <i:EventTrigger EventName="TextChanged">
+                                        <i:InvokeCommandAction Command="{Binding FullNameChanged}" CommandParameter="{Binding ElementName=FullName}"/>
+                                    </i:EventTrigger>
+                                    <i:EventTrigger EventName="LostKeyboardFocus">
+                                        <i:InvokeCommandAction Command="{Binding ValidateFullName}" CommandParameter="{Binding ElementName=FullNameError}"/>
+                                    </i:EventTrigger>
+                                </i:Interaction.Triggers>
                             </TextBox>
-                            <TextBlock Grid.Row="1" x:Name="FullNameError" Grid.Column="0" Text="Example: VictoryA " FontSize="14" Foreground="Black" Visibility="Visible" VerticalAlignment="Center" Margin="50,0,0,0" />
+                            <TextBlock Grid.Row="1" x:Name="FullNameError" Grid.Column="0" Text="Example: VictoryA " FontSize="14" Foreground="Black" Visibility="Hidden" VerticalAlignment="Center" Margin="50,0,0,0" />
 
                         </Grid>
 
@@ -131,8 +140,17 @@
                                 materialDesign:HintAssist.Hint="ID Number"
                                 x:Name="ID"
                                 IsEnabled="True" Margin="50,0,30,0" HorizontalAlignment="Stretch"   >
+                                    <i:Interaction.Triggers>
+                                        <i:EventTrigger EventName="TextChanged">
+                                            <i:InvokeCommandAction Command="{Binding IdentificationChanged}" CommandParameter="{Binding ElementName=ID}"/>
+                                        </i:EventTrigger>
+                                        <i:EventTrigger EventName="LostKeyboardFocus">
+                                            <i:InvokeCommandAction Command="{Binding ValidateIdentification}" CommandParameter="{Binding ElementName=IDError}"/>
+                                        </i:EventTrigger>
+                                    </i:Interaction.Triggers>
                                 </TextBox>
-                                <TextBlock Grid.Row="1" x:Name="IDError" Grid.Column="0" Text="Example: 123456789 " FontSize="14" Foreground="Black" Visibility="Visible" VerticalAlignment="Center" Margin="50,0,0,0" />
+                                
+                                <TextBlock Grid.Row="1" x:Name="IDError" Grid.Column="0" Text="Example: 123456789 " FontSize="14" Foreground="Black" Visibility="Hidden" VerticalAlignment="Center" Margin="50,0,0,0" />
 
                             </Grid>
 
@@ -150,9 +168,16 @@
                                 materialDesign:HintAssist.Hint="VISA"
                                 x:Name="VISA"
                                 IsEnabled="True" Margin="30,0,50,0" HorizontalAlignment="Stretch"   >
-
+                                    <i:Interaction.Triggers>
+                                        <i:EventTrigger EventName="TextChanged">
+                                            <i:InvokeCommandAction Command="{Binding VisaChanged}" CommandParameter="{Binding ElementName=VISA}"/>
+                                        </i:EventTrigger>
+                                        <i:EventTrigger EventName="LostKeyboardFocus">
+                                            <i:InvokeCommandAction Command="{Binding ValidateVisa}" CommandParameter="{Binding ElementName=VISAError}"/>
+                                        </i:EventTrigger>
+                                    </i:Interaction.Triggers>
                                 </TextBox>
-                                <TextBlock Grid.Row="1" x:Name="VISAError" Grid.Column="0" Text="Example: ABC12345 " FontSize="14" Foreground="Black" Visibility="Visible" VerticalAlignment="Center" Margin="30,0,0,0" />
+                                <TextBlock Grid.Row="1" x:Name="VISAError" Grid.Column="0" Text="Example: ABC12345 " FontSize="14" Foreground="Black" Visibility="Hidden" VerticalAlignment="Center" Margin="30,0,0,0" />
                             </Grid>
 
                         </Grid>
@@ -168,7 +193,8 @@
                         Height="35"
                         VerticalAlignment="Center"
                         HorizontalAlignment="Right"
-                        Margin="0,0,50,0" >
+                        Margin="0,0,50,0"
+                        Command="{Binding SavePersonalInfomation}" CommandParameter="{Binding ElementName=EditProfile}"    >
                             SAVE CHANGES
                         </Button>
                     </Grid>
@@ -209,9 +235,16 @@
                             materialDesign:HintAssist.Hint="Username"
                             x:Name="Username"
                             IsEnabled="True" Margin="50,0,50,0" HorizontalAlignment="Stretch"   >
-
+                                <i:Interaction.Triggers>
+                                    <i:EventTrigger EventName="TextChanged">
+                                        <i:InvokeCommandAction Command="{Binding UserNameChanged}" CommandParameter="{Binding ElementName=Username}"/>
+                                    </i:EventTrigger>
+                                    <i:EventTrigger EventName="LostKeyboardFocus">
+                                        <i:InvokeCommandAction Command="{Binding ValidateUserName}" CommandParameter="{Binding ElementName=UsernameError}"/>
+                                    </i:EventTrigger>
+                                </i:Interaction.Triggers>
                             </TextBox>
-                            <TextBlock Grid.Row="1" x:Name="UsernameError" Grid.Column="0" Text="Example: VictoryA " FontSize="14" Foreground="Black" Visibility="Visible" VerticalAlignment="Center" Margin="50,10,0,0" />
+                            <TextBlock Grid.Row="1" x:Name="UsernameError" Grid.Column="0" Text="Example: VictoryA " FontSize="14" Foreground="Black" Visibility="Hidden" VerticalAlignment="Center" Margin="50,10,0,0" />
 
                         </Grid>
 
@@ -221,13 +254,13 @@
                                 <ColumnDefinition></ColumnDefinition>
                             </Grid.ColumnDefinitions>
 
-                            <TextBlock Grid.Column="0"
+                            <TextBlock Grid.Column="0" Cursor="Hand"
                             Style="{StaticResource MaterialDesignBody1TextBlock}"
                             HorizontalAlignment="Left" Foreground="#1261a0" FontSize="15" FontWeight="Bold" Margin="50,0,0,0" VerticalAlignment="Center">
                             Forgot password ?
                             </TextBlock>
 
-                            <TextBlock Grid.Column="1"
+                            <TextBlock Grid.Column="1" Cursor="Hand"
                             Style="{StaticResource MaterialDesignBody1TextBlock}"
                             HorizontalAlignment="Left" Foreground="#1261a0" FontSize="15" FontWeight="Bold" Margin="30,0,0,0" VerticalAlignment="Center">
                             Change password ?
@@ -255,7 +288,8 @@
                         Height="35"
                         VerticalAlignment="Center"
                         HorizontalAlignment="Right"
-                        Margin="0,0,50,0" >
+                        Margin="0,0,50,0"
+                        Command="{Binding SaveUsername}" CommandParameter="{Binding ElementName=EditProfile}"   >
                             SAVE CHANGES
                         </Button>
                     </Grid>

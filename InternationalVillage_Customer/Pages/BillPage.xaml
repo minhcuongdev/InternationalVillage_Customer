@@ -100,14 +100,7 @@
                                         <RowDefinition></RowDefinition>
                                     </Grid.RowDefinitions>
                                     <TextBlock Grid.Row="0" Text="ID Bill" FontSize="12" Foreground="Gray" FontWeight="DemiBold"  VerticalAlignment="Bottom" Margin="35,0,0,0"/>
-                                    <TextBlock x:Name="IdBill" Grid.Row="1" Text="011111" FontSize="13" Foreground="Black" FontWeight="Bold" VerticalAlignment="Top" Margin="35,0,0,0">
-                                <i:Interaction.Triggers>
-                                    <i:EventTrigger EventName="Loaded">
-                                        <i:InvokeCommandAction Command="{Binding LoadIdBill}" CommandParameter="{Binding ElementName=IdBill}"/>
-                                    </i:EventTrigger>
-                                </i:Interaction.Triggers>
-                                    </TextBlock>
-
+                                    <TextBlock x:Name="IdBill" Grid.Row="1" Text="011111" FontSize="13" Foreground="Black" FontWeight="Bold" VerticalAlignment="Top" Margin="35,0,0,0" />
                                 </Grid>
 
                                 <Grid Grid.Column="1">
@@ -116,13 +109,9 @@
                                         <RowDefinition></RowDefinition>
                                     </Grid.RowDefinitions>
                                     <TextBlock Grid.Row="0" Text="Date" FontSize="12" Foreground="Gray" FontWeight="DemiBold"  VerticalAlignment="Bottom" Margin="35,0,0,0"/>
-                                    <TextBlock x:Name="Date" Grid.Row="1" Text="23/10/2021" FontSize="13" Foreground="Black" FontWeight="Bold" VerticalAlignment="Top" Margin="35,0,0,0">
-                                <i:Interaction.Triggers>
-                                    <i:EventTrigger EventName="Loaded">
-                                        <i:InvokeCommandAction Command="{Binding LoadDate}" CommandParameter="{Binding ElementName=Date}"/>
-                                    </i:EventTrigger>
-                                </i:Interaction.Triggers>
-                                    </TextBlock>
+                                    <TextBlock x:Name="Date" Grid.Row="1" Text="23/10/2021" FontSize="13" Foreground="Black" FontWeight="Bold" VerticalAlignment="Top" Margin="35,0,0,0" />
+
+
 
                                 </Grid>
                             </Grid>
@@ -139,13 +128,8 @@
                                         <RowDefinition></RowDefinition>
                                     </Grid.RowDefinitions>
                                     <TextBlock Grid.Row="0" Text="Customer" FontSize="12" Foreground="Gray" FontWeight="DemiBold"  VerticalAlignment="Bottom" Margin="35,0,0,0"/>
-                                    <TextBlock x:Name="Customer" Grid.Row="1" Text="Khanh Quynh" FontSize="13" Foreground="Black" FontWeight="Bold" VerticalAlignment="Top" Margin="35,0,0,0">
-                                <i:Interaction.Triggers>
-                                    <i:EventTrigger EventName="Loaded">
-                                        <i:InvokeCommandAction Command="{Binding LoadCustomer}" CommandParameter="{Binding ElementName=Customer}"/>
-                                    </i:EventTrigger>
-                                </i:Interaction.Triggers>
-                                    </TextBlock>
+                                    <TextBlock x:Name="Customer" Grid.Row="1" Text="Khanh Quynh" FontSize="13" Foreground="Black" FontWeight="Bold" VerticalAlignment="Top" Margin="35,0,0,0" />
+
 
                                 </Grid>
 
@@ -155,13 +139,8 @@
                                         <RowDefinition></RowDefinition>
                                     </Grid.RowDefinitions>
                                     <TextBlock Grid.Row="0" Text="Receptionist" FontSize="12" Foreground="Gray" FontWeight="DemiBold"  VerticalAlignment="Bottom" Margin="35,0,0,0"/>
-                                    <TextBlock x:Name="Receptionist" Grid.Row="1" Text="Minh Cuong" FontSize="13" Foreground="Black" FontWeight="Bold" VerticalAlignment="Top" Margin="35,0,0,0">
-                                <i:Interaction.Triggers>
-                                    <i:EventTrigger EventName="Loaded">
-                                        <i:InvokeCommandAction Command="{Binding LoadReceptionist}" CommandParameter="{Binding ElementName=Receptionist}"/>
-                                    </i:EventTrigger>
-                                </i:Interaction.Triggers>
-                                    </TextBlock>
+                                    <TextBlock x:Name="Receptionist" Grid.Row="1" Text="Minh Cuong" FontSize="13" Foreground="Black" FontWeight="Bold" VerticalAlignment="Top" Margin="35,0,0,0" />
+
 
                                 </Grid>
 
@@ -179,13 +158,8 @@
                                         <RowDefinition></RowDefinition>
                                     </Grid.RowDefinitions>
                                     <TextBlock Grid.Row="0" Text="Check-in date" FontSize="12" Foreground="Gray" FontWeight="DemiBold"  VerticalAlignment="Bottom" Margin="35,0,0,0"/>
-                                    <TextBlock x:Name="Checkin" Grid.Row="1" Text="19/10/2021" FontSize="13" Foreground="Black" FontWeight="Bold" VerticalAlignment="Top" Margin="35,0,0,0">
-                                <i:Interaction.Triggers>
-                                    <i:EventTrigger EventName="Loaded">
-                                        <i:InvokeCommandAction Command="{Binding LoadCheckInDate}" CommandParameter="{Binding ElementName=Checkin}"/>
-                                    </i:EventTrigger>
-                                </i:Interaction.Triggers>
-                                    </TextBlock>
+                                    <TextBlock x:Name="Checkin" Grid.Row="1" Text="19/10/2021" FontSize="13" Foreground="Black" FontWeight="Bold" VerticalAlignment="Top" Margin="35,0,0,0"/>
+
 
                                 </Grid>
 
@@ -195,14 +169,7 @@
                                         <RowDefinition></RowDefinition>
                                     </Grid.RowDefinitions>
                                     <TextBlock Grid.Row="0" Text="Check-out date" FontSize="12" Foreground="Gray" FontWeight="DemiBold"  VerticalAlignment="Bottom" Margin="35,0,0,0"/>
-                                    <TextBlock x:Name="Checkout" Grid.Row="1" Text="23/10/2021" FontSize="13" Foreground="Black" FontWeight="Bold" VerticalAlignment="Top" Margin="35,0,0,0">
-                                <i:Interaction.Triggers>
-                                    <i:EventTrigger EventName="Loaded">
-                                        <i:InvokeCommandAction Command="{Binding LoadCheckOutDate}" CommandParameter="{Binding ElementName=Checkout}"/>
-                                    </i:EventTrigger>
-                                </i:Interaction.Triggers>
-                                    </TextBlock>
-
+                                    <TextBlock x:Name="Checkout" Grid.Row="1" Text="23/10/2021" FontSize="13" Foreground="Black" FontWeight="Bold" VerticalAlignment="Top" Margin="35,0,0,0" />
                                 </Grid>
 
                             </Grid>
@@ -218,39 +185,20 @@
                             <TextBlock Grid.Row="0" Text="DETAILS" FontSize="15" FontWeight="Bold" Foreground="#176EC6" HorizontalAlignment="Left" Margin="35,16,0,0" VerticalAlignment="Bottom"/>
 
                             <Grid Grid.Row="1">
-                                <!--<ListView HorizontalAlignment = "Left" Height = "auto" Margin = "10,0,0,0"  VerticalAlignment = "Top" Width = "490">
-                                    <ListView.View>
-                                        <GridView>
-                                            <GridViewColumn Header = "A/S" Width = "150" />
-                                            <GridViewColumn Header = "Quantity" Width = "150"/>
-                                            <GridViewColumn Header = "Price" Width = "100"/>
-                                        </GridView>
-                                    </ListView.View>
-
-                                </ListView>-->
                                 <DataGrid x:Name="BillTable" Margin="35,0,0,0" FontSize="15" Height="auto"  IsReadOnly="True" AlternatingRowBackground="AliceBlue" HorizontalAlignment="Center" VerticalAlignment="Top"  CanUserAddRows="False" AutoGenerateColumns="False">
                                     <DataGrid.Resources>
                                         <Style BasedOn="{StaticResource {x:Type DataGridColumnHeader}}" TargetType="{x:Type DataGridColumnHeader}" >
                                             <Setter Property="Background" Value="White" />
                                             <Setter Property="Foreground" Value="Black" />
                                             <Setter Property="FontWeight" Value="Bold"/>
-                                            
+
                                         </Style>
                                     </DataGrid.Resources>
-
-
-
-
                                     <DataGrid.Columns>
                                         <DataGridTextColumn Width="1*" Header="A/s" Binding="{Binding Name}" />
                                         <DataGridTextColumn Width="1*" Header="Quantity" Binding="{Binding Quantity}" />
                                         <DataGridTextColumn Width="1*" Header="Price" Binding="{Binding Price}" />
                                     </DataGrid.Columns>
-                                    <i:Interaction.Triggers>
-                                        <i:EventTrigger EventName="Loaded">
-                                            <i:InvokeCommandAction Command="{Binding LoadTable}" CommandParameter="{Binding ElementName=BillTable}"/>
-                                        </i:EventTrigger>
-                                    </i:Interaction.Triggers>
                                 </DataGrid>
                             </Grid>
                             
