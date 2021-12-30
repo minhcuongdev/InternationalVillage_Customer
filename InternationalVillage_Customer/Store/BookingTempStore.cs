@@ -47,11 +47,11 @@ namespace InternationalVillage_Customer.Store
             return list;
         }
 
-        public int InsertBooking(string id_Cus, string id_Apart, DateTime checkin, DateTime checkout, int quantity, string state, DateTime time)
+        public int InsertBooking(string id_Cus, string id_Apart, DateTime checkin, DateTime checkout, int quantity, string state, DateTime time, int people)
         {
             
-            string query = string.Format("insert into BookingApartmentTemp values ('{0}','{1}','{2}','{3}',{4},'{5}','{6}');",
-                                                                         id_Cus,id_Apart,checkin.ToString("yyyy-MM-dd H:mm:ss"),checkout.ToString("yyyy-MM-dd H:mm:ss"),quantity,state,time.ToString("yyyy-MM-dd H:mm:ss"));
+            string query = string.Format("insert into BookingApartmentTemp values ('{0}','{1}','{2}','{3}',{4},'{5}','{6}',{7});",
+                                                                         id_Cus,id_Apart,checkin.ToString("yyyy-MM-dd H:mm:ss"),checkout.ToString("yyyy-MM-dd H:mm:ss"),quantity,state,time.ToString("yyyy-MM-dd H:mm:ss"),people);
             return DataProvider.Instance.ExecuteNonQuery(query);
         }
 

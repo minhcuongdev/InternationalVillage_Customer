@@ -184,15 +184,15 @@ namespace InternationalVillage_Customer.ViewModel
                int insertBooking = 0;
                if (typeofApartment.Equals("Luxury (Type 3A)"))
                {
-                    insertBooking = BookingTempStore.Instance.InsertBooking(AccountStore.Instance.IdUser, "3A", checkinDate, checkoutDate, Int32.Parse(numberApartment), "No Accept", DateTime.Now);
+                    insertBooking = BookingTempStore.Instance.InsertBooking(AccountStore.Instance.IdUser, "3A", checkinDate, checkoutDate, Int32.Parse(numberApartment), "No Accept", DateTime.Now, Int32.Parse(numberPeople));
                }
                else if (typeofApartment.Equals("High Standard (Type 3B)"))
                {
-                    insertBooking = BookingTempStore.Instance.InsertBooking(AccountStore.Instance.IdUser, "3B", checkinDate, checkoutDate, Int32.Parse(numberApartment), "No Accept", DateTime.Now);
+                    insertBooking = BookingTempStore.Instance.InsertBooking(AccountStore.Instance.IdUser, "3B", checkinDate, checkoutDate, Int32.Parse(numberApartment), "No Accept", DateTime.Now, Int32.Parse(numberPeople));
                }
                else if (typeofApartment.Equals("Standard (Type 2A)"))
                {
-                   insertBooking = BookingTempStore.Instance.InsertBooking(AccountStore.Instance.IdUser, "2A", checkinDate, checkoutDate, Int32.Parse(numberApartment), "No Accept", DateTime.Now);
+                   insertBooking = BookingTempStore.Instance.InsertBooking(AccountStore.Instance.IdUser, "2A", checkinDate, checkoutDate, Int32.Parse(numberApartment), "No Accept", DateTime.Now, Int32.Parse(numberPeople));
                }
 
                if (insertBooking > 0 )
