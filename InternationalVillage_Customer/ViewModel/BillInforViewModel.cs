@@ -13,30 +13,40 @@ using System.Windows;
 
 namespace InternationalVillage_Customer.ViewModel
 {
-    class BillInforViewModel : BaseViewModel
+    public class BillInforViewModel : BaseViewModel
     {
         public ICommand ViewDetailBill { get; set; }
-        public ICommand LoadIDBill { get; set; }
-        public string IdBill { get => idBill; set => idBill = value; }
 
-
-        string idBill;
 
         public BillInforViewModel()
         {
-            LoadIDBill = new RelayCommand<TextBlock>((p) => { return true; }, (p) =>
+            ViewDetailBill = new RelayCommand<UserControl>((p) => { return true; }, (p) =>
             {
-                idBill = p.Text;
-                MessageBox.Show(idBill);
+                TextBlock idBill = p.FindName("IDBill") as TextBlock;
+                DetailBillStore.Instance.FindBill(idBill.Text);
+                Page page = FindPage(p);
+                if( page != null)
+                {
+                    page.NavigationService.Navigate(new Uri("Pages/BillPage.xaml", UriKind.RelativeOrAbsolute));
+                }
+            });
+        }
 
-            });
-            ViewDetailBill = new RelayCommand<Button>((p) => { return true; }, (p) =>
+        Page FindPage(UserControl p)
+        {
+            FrameworkElement parent = p.Parent as FrameworkElement;
+            for(int i = 0; i< 3;i++)
             {
-                // p.NavigationService.Navigate(new Uri("Pages/BillPage.xaml", UriKind.RelativeOrAbsolute));
-                MessageBox.Show(idBill);
-                DetailBillStore.Instance.FindBill(idBill);
-             
-            });
+                parent = parent.Parent as FrameworkElement;
+            }
+
+
+            if (parent is Page page)
+            {
+                return page;
+            }
+
+            return null;
         }
     }
 }

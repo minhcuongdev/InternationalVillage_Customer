@@ -7,6 +7,7 @@ using System.Windows.Controls;
 using System.Windows.Input;
 using System.Windows;
 
+using InternationalVillage_Customer.Store;
 
 namespace InternationalVillage_Customer.ViewModel
 {
@@ -21,7 +22,14 @@ namespace InternationalVillage_Customer.ViewModel
                 FrameworkElement stackPanel = GetStackPanelParent(p);
                 if (stackPanel is StackPanel s)
                 {
-                    s.Children.Remove(p);
+                    if (p.FindName("TimeCreate") is TextBlock time)
+                    {
+                        DateTime TimeCreate = DateTime.Parse(time.Text);
+                        if (NotificationStore.Instance.DeleteNotification(AccountStore.Instance.IdUser,TimeCreate))
+                        {
+                            s.Children.Remove(p);
+                        }
+                    }
                 }
             });
         }

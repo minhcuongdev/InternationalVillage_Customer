@@ -15,18 +15,11 @@
              TextOptions.TextFormattingMode="Ideal"
              TextOptions.TextRenderingMode="Auto"
              FontFamily="{DynamicResource MaterialDesignFont}"
-             DataContext="{StaticResource BillInforVM}"
+
                        
              x:Name="BillInfor"
              mc:Ignorable="d" 
-             d:DesignHeight="130" d:DesignWidth="450" Margin="0,0,0,15">
-    <i:Interaction.Triggers>
-        <i:EventTrigger EventName="Loaded">
-            <i:InvokeCommandAction Command="{Binding LoadIDBill}" CommandParameter="{Binding ElementName=IDBill}"/>
-        </i:EventTrigger>
-    </i:Interaction.Triggers>
-
-
+             d:DesignHeight="130" d:DesignWidth="700" Margin="0,0,0,15">
     <Grid >
         <materialDesign:Card materialDesign:ShadowAssist.ShadowDepth="Depth2">
             <Grid>
@@ -55,7 +48,7 @@
                         <Image Grid.Column="0" Source="/Image/flash.png" Height="13" Width="13" VerticalAlignment="Center" HorizontalAlignment="Left"/>
                         <TextBlock Grid.Column="1" Text="Bill Information" FontSize="16" FontWeight="ExtraBold" VerticalAlignment="Center" Foreground="Black" HorizontalAlignment="Left" />
                     </Grid>
-                    <TextBlock x:Name="IDBill" Grid.Row="1" Text="ID Bill"  Foreground="Black" FontWeight="Bold"
+                    <TextBlock x:Name="IDBill" Margin="10,0,0,0" Grid.Row="1" Text="ID Bill"  Foreground="Black" FontWeight="Bold"
                            FontSize="14" VerticalAlignment="Center"  TextWrapping="Wrap"/>
                     <Grid Grid.Row="2">
                         <Grid.ColumnDefinitions>
@@ -67,8 +60,8 @@
                                 <RowDefinition></RowDefinition>
                                 <RowDefinition></RowDefinition>
                             </Grid.RowDefinitions>
-                            <TextBlock Grid.Row="0" Text="Check_in Date" FontSize="14" Foreground="gray" VerticalAlignment="Center"/>
-                            <TextBlock Grid.Row="1" Text="Check_in Date" FontSize="14" Foreground="gray" VerticalAlignment="Center"/>
+                            <TextBlock Grid.Row="0" Margin="10,0,0,0" Text="Check_in Date" FontSize="14" Foreground="gray" VerticalAlignment="Center"/>
+                            <TextBlock Grid.Row="1" Margin="10,0,0,0" Text="Check_in Date" FontSize="14" Foreground="gray" VerticalAlignment="Center"/>
                         </Grid>
 
                         <Grid Grid.Column="1">
@@ -82,7 +75,7 @@
 
 
                     </Grid>
-                    <TextBlock x:Name="TotalMoney" Grid.Row="4" Text="2,650$"  Foreground="Black" FontWeight="Bold"
+                    <TextBlock x:Name="TotalMoney" Margin="10,0,0,0" Grid.Row="4" Text="2,650$"  Foreground="Black" FontWeight="Bold"
                            FontSize="14" VerticalAlignment="Center"  TextWrapping="Wrap"/>
                 </Grid>
 
@@ -103,16 +96,11 @@
                             </Style.Triggers>
                         </Style>
                     </Grid.Resources>
-                    <Button x:Name="ViewDetailBill" Background="White" Width="140" FontSize="15" FontWeight="Bold" Margin="0,0,20,0" HorizontalAlignment="Right" Command="{Binding ViewDetailBill}" CommandParameter="{Binding ElementName=ViewDetailBill}" Click="ViewDetailBill_Click" >
-                        <i:Interaction.Triggers>
-                            <i:EventTrigger EventName="Click">
-                                <i:InvokeCommandAction Command="{Binding ViewDetailBill}" CommandParameter="{Binding ElementName=ViewDetailBill}"/>
-                            </i:EventTrigger>
-                        </i:Interaction.Triggers>
-                        <Hyperlink NavigateUri="/Pages/BillPage.xaml">View details</Hyperlink>
+                    <Button x:Name="ViewDetailBill" Background="White" Width="140" FontSize="15" FontWeight="Bold" Margin="0,0,20,0" HorizontalAlignment="Right" Command="{Binding ViewDetailBill}" CommandParameter="{Binding ElementName=BillInfor}" Content="View details" Foreground="#FF2196F3" />
 
-                    </Button>
-            </Grid>                </Grid>
+
+                </Grid>                
+        </Grid>
 
         </materialDesign:Card>
     </Grid>

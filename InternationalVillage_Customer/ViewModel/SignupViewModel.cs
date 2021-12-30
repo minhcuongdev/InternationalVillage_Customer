@@ -9,6 +9,7 @@ using System.Windows.Input;
 
 using InternationalVillage_Customer.Utilities;
 using InternationalVillage_Customer.Store;
+using System.Windows.Media.Imaging;
 
 namespace InternationalVillage_Customer.ViewModel
 {
@@ -18,6 +19,9 @@ namespace InternationalVillage_Customer.ViewModel
         public ICommand Signin { get; set; }
         public ICommand Drag { get; set; }
         public ICommand ClearFocus { get; set; }
+
+        public ICommand ShowPassword { get; set; }
+        public ICommand HidePassword { get; set; }
 
         // Validate Data
         private string fullname = "";
@@ -101,7 +105,7 @@ namespace InternationalVillage_Customer.ViewModel
 
             IdentificationChanged = new RelayCommand<TextBox>((p) => { return true; }, (p) =>
             {
-                Identification = Validate.Instance.TextChanged(p);
+                Identification = Validate.Instance.TextChanged(p,9);
 
             });
             ValidateIdentification = new RelayCommand<TextBlock>((p) => { return true; }, (p) =>
@@ -123,7 +127,7 @@ namespace InternationalVillage_Customer.ViewModel
 
             VisaChanged = new RelayCommand<TextBox>((p) => { return true; }, (p) =>
             {
-                Visa = Validate.Instance.TextChanged(p);
+                Visa = Validate.Instance.TextChanged(p,7);
             });
             ValidateVisa = new RelayCommand<TextBlock>((p) => { return true; }, (p) =>
             {
@@ -151,7 +155,7 @@ namespace InternationalVillage_Customer.ViewModel
             PasswordChanged = new RelayCommand<PasswordBox>((p) => { return true; }, (p) =>
             {
                 Password = Validate.Instance.PasswordChanged(p, 5);
-
+                EnableImage(p, "ImgPasswordShowHide");
             });
             ValidatePassword = new RelayCommand<TextBlock>((p) => { return true; }, (p) =>
             {
@@ -182,6 +186,59 @@ namespace InternationalVillage_Customer.ViewModel
                 }
                 
             });
+
+            ShowPassword = new RelayCommand<Grid>((p) => { return true; }, (p) =>
+            {
+                showPassword(p, "ImgPasswordShowHide", "Password", "VisiblePassword");
+            });
+
+            HidePassword = new RelayCommand<Grid>((p) => { return true; }, (p) =>
+            {
+                hidePassword(p, "ImgPasswordShowHide", "Password", "VisiblePassword");
+            });
         }
+
+        void EnableImage(PasswordBox p, string image)
+        {
+            if (p.Parent is Grid parent)
+            {
+                Image img = parent.FindName(image) as Image;
+                if (Password.Length > 0)
+                {
+                    img.Visibility = Visibility.Visible;
+                }
+                else
+                {
+                    img.Visibility = Visibility.Hidden;
+                }
+            }
+        }
+
+        void showPassword(Grid p, string image, string passwordBox, string visiblePasswordBox)
+        {
+            Image img = p.FindName(image) as Image;
+            TextBox visiblePassword = p.FindName(visiblePasswordBox) as TextBox;
+            PasswordBox password = p.FindName(passwordBox) as PasswordBox;
+
+            img.Source = new BitmapImage(new Uri("Image/Hide.jpg", UriKind.RelativeOrAbsolute));
+            visiblePassword.Visibility = Visibility.Visible;
+            password.Visibility = Visibility.Hidden;
+
+            visiblePassword.Text = password.Password;
+        }
+
+        void hidePassword(Grid p, string image, string passwordBox, string visiblePasswordBox)
+        {
+            Image img = p.FindName(image) as Image;
+            TextBox visiblePassword = p.FindName(visiblePasswordBox) as TextBox;
+            PasswordBox password = p.FindName(passwordBox) as PasswordBox;
+
+            img.Source = new BitmapImage(new Uri("Image/Show.jpg", UriKind.RelativeOrAbsolute));
+            visiblePassword.Visibility = Visibility.Hidden;
+            password.Visibility = Visibility.Visible;
+
+            password.Focus();
+        }
+
     }
 }
