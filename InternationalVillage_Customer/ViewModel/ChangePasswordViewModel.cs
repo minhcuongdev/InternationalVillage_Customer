@@ -59,7 +59,7 @@ namespace InternationalVillage_Customer.ViewModel
             PasswordChanged = new RelayCommand<PasswordBox>((p) => { return true; }, (p) =>
             {
                 Password = Validate.Instance.PasswordChanged(p, 5);
-                EnableImage(p, "ImgCurrentPasswordShowHide");
+                EnableImage(p, "ImgCurrentPasswordShowHide",Password);
             });
             ValidatePassword = new RelayCommand<TextBlock>((p) => { return true; }, (p) =>
             {
@@ -69,7 +69,7 @@ namespace InternationalVillage_Customer.ViewModel
             NewPasswordChanged = new RelayCommand<PasswordBox>((p) => { return true; }, (p) =>
             {
                 NewPassword = Validate.Instance.PasswordChanged(p, 5);
-                EnableImage(p, "ImgNewPasswordShowHide");
+                EnableImage(p, "ImgNewPasswordShowHide",NewPassword);
 
             });
             ValidateNewPassword = new RelayCommand<TextBlock>((p) => { return true; }, (p) =>
@@ -80,7 +80,7 @@ namespace InternationalVillage_Customer.ViewModel
             ConfirmChanged = new RelayCommand<PasswordBox>((p) => { return true; }, (p) =>
             {
                 ConfirmNewPassword= Validate.Instance.PasswordChanged(p, 5);
-                EnableImage(p, "ImgConfirmPasswordShowHide");
+                EnableImage(p, "ImgConfirmPasswordShowHide",ConfirmNewPassword);
             });
             ValidateConfirm = new RelayCommand<TextBlock>((p) => { return true; }, (p) =>
             {
@@ -150,12 +150,12 @@ namespace InternationalVillage_Customer.ViewModel
 
         }
 
-        void EnableImage(PasswordBox p,string image)
+        void EnableImage(PasswordBox p,string image,string password)
         {
             if (p.Parent is Grid parent)
             {
                 Image img = parent.FindName(image) as Image;
-                if (Password.Length > 0)
+                if (password.Length > 0)
                 {
                     img.Visibility = Visibility.Visible;
                 }

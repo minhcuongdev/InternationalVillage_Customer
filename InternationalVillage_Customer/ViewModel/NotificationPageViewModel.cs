@@ -26,7 +26,7 @@ namespace InternationalVillage_Customer.ViewModel
                 {
                     NotificationUC notificationUC = new NotificationUC();
                     notificationUC.ContentOfNotification.Text = noti.Content;
-                    notificationUC.TimeCreate.Text = noti.TimeCreate.ToString("dd/MM/yyyy HH:mm:ss");
+                    notificationUC.TimeCreate.Text = noti.TimeCreate.ToString("MM/dd/yyyy HH:mm:ss");
                     p.Children.Add(notificationUC);
                 }
 

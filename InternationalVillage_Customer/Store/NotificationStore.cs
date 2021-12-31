@@ -35,7 +35,7 @@ namespace InternationalVillage_Customer.Store
 
         public bool DeleteNotification(string idUser,DateTime createTime)
         {
-            string query = string.Format("update Notification set Status = 'Delete' where Id_User = '{0}' and TimeCreate = '{1}';", idUser, createTime.ToString("yyyy-dd-MM HH:mm:ss"));
+            string query = string.Format("update Notification set Status = 'Delete' where Id_User = '{0}' and TimeCreate = '{1}';", idUser, createTime.ToString("yyyy-MM-dd H:mm:ss"));
             return DataProvider.Instance.ExecuteNonQuery(query) > 0;
         }
     }
