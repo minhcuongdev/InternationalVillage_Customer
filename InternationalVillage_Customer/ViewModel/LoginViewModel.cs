@@ -25,6 +25,8 @@ namespace InternationalVillage_Customer.ViewModel
 
         public ICommand ShowPassword { get; set; }
         public ICommand HidePassword { get; set; }
+        public ICommand OpenForgotPassword { get; set; }
+
 
         private string username = "";
         private string password = "";
@@ -90,8 +92,14 @@ namespace InternationalVillage_Customer.ViewModel
                     p.Close();
                 } else
                 {
-                    MessageBox.Show("Wrong Account !! Please, Enter again !!");
+                    MessageBox.Show("Wrong Account !! Please, enter again !!");
                 }
+            });
+
+            OpenForgotPassword = new RelayCommand<Window>((p) => { return true; }, (p) =>
+            {               
+                    ForgotPasswordWindow Fforgotpassword = new ForgotPasswordWindow();
+                    Fforgotpassword.ShowDialog();                              
             });
 
             CreateAccount = new RelayCommand<Window>((p) => { return true; }, (p) =>
