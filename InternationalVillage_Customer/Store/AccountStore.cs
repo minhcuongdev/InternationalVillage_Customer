@@ -80,6 +80,13 @@ namespace InternationalVillage_Customer.Store
             return DataProvider.Instance.ExecuteNonQuery(query) > 0;
         }
 
+        public DataTable GetPasswordByUsername (string username)
+        {
+            string query = string.Format("select Password from Account where Username = '" + username + "'");
+            DataTable result = DataProvider.Instance.ExecuteQuery(query);
+            return result;
+        }
+
         // Test get data
         public Account GetAccount(string username,string password)
         {

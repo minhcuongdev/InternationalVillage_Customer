@@ -20,6 +20,7 @@ namespace InternationalVillage_Customer.ViewModel
         public ICommand LoadProfile { get; set; }
         public ICommand SelectPicture { get; set; }
         public ICommand OpenChangePassword { get; set; }
+        public ICommand OpenForgotPassword { get; set; }
 
         public ICommand SavePersonalInfomation { get; set; }
         public ICommand SaveUsername { get; set; }
@@ -147,6 +148,12 @@ namespace InternationalVillage_Customer.ViewModel
             {
                 ChangePasswordWindow FChangePass = new ChangePasswordWindow();
                 FChangePass.ShowDialog();
+            });
+
+            OpenForgotPassword = new RelayCommand<Page>((p) => { return true; }, (p) =>
+            {
+                ForgotPasswordWindow Fforgotpass = new ForgotPasswordWindow();
+                Fforgotpass.ShowDialog();
             });
 
             SavePersonalInfomation = new RelayCommand<Page>((p) => { return isFullNameCorrect && isIdentificationCorrect && isVisaCorrect; }, (p) =>
