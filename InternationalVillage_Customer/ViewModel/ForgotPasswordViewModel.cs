@@ -86,7 +86,7 @@ namespace InternationalVillage_Customer.ViewModel
                 {
                     using (MailMessage mail = new MailMessage())
                     {
-                        mail.From = new MailAddress("bookreleasingsystem@gmail.com");
+                        mail.From = new MailAddress("internationalvillagesystem@gmail.com");
                         mail.To.Add(Email);
                         mail.Subject = "ACCOUNT RECOVERY";
                         //DataTable data = AccountStore.Instance.GetPasswordByUsername(username);
@@ -105,7 +105,7 @@ namespace InternationalVillage_Customer.ViewModel
 
                             using (SmtpClient smtp = new SmtpClient("smtp.gmail.com", 587))
                             {
-                                smtp.Credentials = new System.Net.NetworkCredential("bookreleasingsystem@gmail.com", "123456789cuongquynhtam");
+                                smtp.Credentials = new System.Net.NetworkCredential("internationalvillagesystem@gmail.com", "123456789cuongquynhtam");
                                 smtp.EnableSsl = true;
                                 smtp.Send(mail);
                                 p.Close();
