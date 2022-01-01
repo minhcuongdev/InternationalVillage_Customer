@@ -98,7 +98,7 @@ namespace InternationalVillage_Customer.ViewModel
                         }
                         else
                         {
-                            string str = "Hello User: " + username + Environment.NewLine + "Your password is: " + password;
+                            string str = "Hello User: " + username + "." +Environment.NewLine + "Your password is: " + password;
                             mail.Body = str;
                             mail.IsBodyHtml = true;
 
