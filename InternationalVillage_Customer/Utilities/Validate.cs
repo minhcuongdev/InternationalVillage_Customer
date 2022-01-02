@@ -215,12 +215,12 @@ namespace InternationalVillage_Customer.Utilities
             }
             catch (RegexMatchTimeoutException e)
             {
-                
+                MessageBox.Show(e.Message);
                 return false;
             }
             catch (ArgumentException e)
             {
-                
+                MessageBox.Show(e.Message);
                 return false;
             }
 
