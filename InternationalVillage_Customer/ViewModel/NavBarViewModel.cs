@@ -6,7 +6,9 @@ using System.Threading.Tasks;
 using System.Windows.Controls;
 using System.Windows.Input;
 using System.Windows;
+using InternationalVillage_Customer.Services;
 
+using InternationalVillage_Customer.Store;
 
 namespace InternationalVillage_Customer.ViewModel
 {
@@ -16,6 +18,7 @@ namespace InternationalVillage_Customer.ViewModel
         public ICommand MaximizeWindow { get; set; }
         public ICommand MinimizeWindow { get; set; }
         public ICommand DragWindow { get; set; }
+
 
         public NavBarViewModel()
         {
@@ -69,6 +72,7 @@ namespace InternationalVillage_Customer.ViewModel
 
             return parent;
         }
+
     }
 }
 
