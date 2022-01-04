@@ -14,11 +14,15 @@ using System.Windows.Media.Imaging;
 using System.Windows.Shapes;
 
 using InternationalVillage_Customer.Store;
+using InternationalVillage_Customer.Services;
+using InternationalVillage_Customer.Model;
+using System.Collections.ObjectModel;
 
 namespace InternationalVillage_Customer.ViewModel
 {
     class MenuViewModel : BaseViewModel
     {
+        private IChatService chatService;
 
         public ICommand OpenHomePage { get; set; }
         public ICommand OpenBookingPage { get; set; }
@@ -37,9 +41,10 @@ namespace InternationalVillage_Customer.ViewModel
         public ICommand LoadAvatar { get; set; }
         public ICommand LoadName { get; set; }
 
-        public MenuViewModel()
+        public MenuViewModel(IChatService chatSvc)
         {
-            
+            chatService = chatSvc;
+            ChatStore.Instance.ChatService = chatService;
             OpenHomePage = new RelayCommand<Frame>((p) => { return true; }, (p) =>
             {
                 p.Navigate(new System.Uri("Pages/HomePage.xaml", UriKind.RelativeOrAbsolute));
@@ -118,5 +123,62 @@ namespace InternationalVillage_Customer.ViewModel
                 p.Content = AccountStore.Instance.Name;
             });
         }
+        
+
+        #region Logout Command
+        private ICommand _logoutCommand;
+        public ICommand LogoutCommand
+        {
+            get
+            {
+                return _logoutCommand ?? (_logoutCommand =
+                    new RelayCommandAsync(() => Logout(), (o) => CanLogout()));
+            }
+        }
+
+        private async Task<bool> Logout()
+        {
+            try
+            {
+                await chatService.LogoutAsync();
+                //UserMode = UserModes.Login;
+                ChatStore.Instance.IsLoggedIn = false;
+                ChatStore.Instance.IsConnected = false;
+                return true;
+            }
+            catch (Exception e)
+            {
+                MessageBox.Show(e.Message);
+                return false;
+            }
+        }
+
+        private bool CanLogout()
+        {
+            return ChatStore.Instance.IsConnected && ChatStore.Instance.IsLoggedIn;
+        }
+        #endregion        
+
+        #region Connect Command
+        private ICommand _connectCommand;
+        public ICommand ConnectCommand
+        {
+            get
+            {
+                return _connectCommand ?? (_connectCommand = new RelayCommandAsync(() => Connect()));
+            }
+        }
+
+        private async Task<bool> Connect()
+        {
+            try
+            {
+                await chatService.ConnectAsync();
+                ChatStore.Instance.IsConnected = true;
+                return true;
+            }
+            catch (Exception) { return false; }
+        }
+        #endregion
     }
 }
