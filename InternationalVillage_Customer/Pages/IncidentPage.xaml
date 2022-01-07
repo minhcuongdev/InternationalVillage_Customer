@@ -40,7 +40,7 @@
                 <Grid Grid.Column="0">
                     <Border Grid.Column="0" CornerRadius="15" Margin="10,10,0,10">
                         <Border.Background>
-                            <ImageBrush  Stretch="UniformToFill" ImageSource="/Image/Luxury.jpg" />
+                            <ImageBrush  Stretch="UniformToFill" ImageSource="/Image/incident.jpg" Opacity="0.75" />
                         </Border.Background>
                     </Border>
                 </Grid>

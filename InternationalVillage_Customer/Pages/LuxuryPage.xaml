@@ -53,7 +53,7 @@
                 <Grid.RowDefinitions>
                     <RowDefinition Height="60"></RowDefinition>
                     <RowDefinition Height="150"></RowDefinition>
-                    <RowDefinition Height="180"></RowDefinition>
+                    <RowDefinition Height="200"></RowDefinition>
                     <RowDefinition Height="100"></RowDefinition>
                 </Grid.RowDefinitions>
                 <TextBlock Grid.Row="0" Text="LUXURY APARTMENT" Foreground="#1261a0" FontSize="30" FontWeight="Bold" VerticalAlignment="Top" Margin="35,0,0,0"/>
